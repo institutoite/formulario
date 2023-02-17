@@ -1,0 +1,48 @@
+.card {
+    border: 1px solid #e1e1e1;
+    box-shadow: 2px 2px 10px #e1e1e1;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.card img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.card-content {
+    padding: 20px;
+}
+
+.card-content h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.card-content p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.button {
+    display: inline-block;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+.degradado{
+    background: rgb(38, 186, 165);
+    background: linear-gradient(to top left, rgb(38, 186, 165), rgba(30, 150, 132, 0.911));
+    color: white;
+    
+}
