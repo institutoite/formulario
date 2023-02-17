@@ -33,7 +33,22 @@ class MateriaController extends Controller
      */
     public function store(StoreMateriaRequest $request): RedirectResponse
     {
-        //
+        $materia = new Materia;
+        $materia->materia = $request->materia;
+        $materia->slogan = $request->slogan;
+        $materia->detalle = $request->detalle;
+        $materia->save();
+        
+
+        Image::create([
+            'url'=>$nombreimagen,
+            'imageable_id'=>$materia->id,
+            'imageable_type'=>'App\Models\Materia'
+        ]);
+
+
+
+    return redirect('materias')->with('success', 'Materia creada exitosamente.');
     }
 
     /**

@@ -9,7 +9,7 @@ class Materia extends Model
 {
     use HasFactory;
     public function image()
-{
-    return $this->morphOne(Image::class, 'imageable');
-}
+    {
+        return $this->morphOne(Image::class, 'imageable');
+    }
 }

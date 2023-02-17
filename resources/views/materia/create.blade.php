@@ -13,8 +13,11 @@
                 FORMULARIO CREAR MATERIA
             </div>
             <div class="card-body">
-                @include('materia.form')
-                @include('include.store')
+                <form action="{{route('materias.store')}}" method="POST">
+                    @csrf
+                    @include('materia.form')
+                    @include('include.store')
+                </form>
             </div>
         </div>
     </div>
@@ -27,6 +30,7 @@
 
 @section('js')
     <script src="{{ asset('vendor/ckeditor/ckeditor.js') }}"></script>
+    
     <script>
         ClassicEditor.create(document.querySelector('#detalle'));
     </script>

@@ -11,7 +11,7 @@ class StoreMateriaRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,9 @@ class StoreMateriaRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'materia' => 'required|unique:materias|max:25',
+            'slogan' => 'required|max:150',
+            'detalle' => 'required|max:1500',
         ];
     }
 }

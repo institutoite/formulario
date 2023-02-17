@@ -1,0 +1,51 @@
+use App\Models\Image;
+
+Image::create(['url'=>'url-1','imageable_id'=>1,'imageable_type'=>'App\Models\Materia']);
+use App\Models\Image;
+
+Image::create(['url'=>'url-1','imageable_id'=>1,'imageable_type'=>'App\Models\Materia']);
+use App\Models\Image;
+
+Image::create(['url'=>'url-1','imageable_id'=>1,'imageable_type'=>'App\Models\Materia']);
+
+$i=Image::all();
+use App\Models\Image;
+
+Image::create(['url'=>'url-1','imageable_id'=>1,'imageable_type'=>'App\Models\Materia']);
+
+$i=Image::all();
+use App\Models\Image;
+
+Image::create(['url'=>'url-1','imageable_id'=>1,'imageable_type'=>'App\Models\Materia']);
+
+$i=Image::all();
+use App\Models\Image;
+
+Image::create(['url'=>'url-1','imageable_id'=>1,'imageable_type'=>'App\Models\Materia']);
+
+$i=Image::all();
+use App\Models\Image;
+
+Image::create(['url'=>'url-1','imageable_id'=>1,'imageable_type'=>'App\Models\Materia']);
+
+$i=Image::all();
+use App\Models\Image;
+
+Image::create(['url'=>'url-1','imageable_id'=>1,'imageable_type'=>'App\Models\Materia']);
+
+$i=Image::all();
+use App\Models\Image;
+
+Image::create(['url'=>'url-1','imageable_id'=>1,'imageable_type'=>'App\Models\Materia']);
+
+$i=Image::all();
+use App\Models\Image;
+
+Image::create(['url'=>'url-1','imageable_id'=>1,'imageable_type'=>'App\Models\Materia']);
+
+$i=Image::all();
+use App\Models\Image;
+
+
+
+$i=Image::all();
