@@ -7,6 +7,9 @@ use App\Http\Requests\StoreMateriaRequest;
 use App\Http\Requests\UpdateMateriaRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class MateriaController extends Controller
 {
@@ -38,17 +41,22 @@ class MateriaController extends Controller
         $materia->slogan = $request->slogan;
         $materia->detalle = $request->detalle;
         $materia->save();
-        
-
-        Image::create([
-            'url'=>$nombreimagen,
-            'imageable_id'=>$materia->id,
-            'imageable_type'=>'App\Models\Materia'
-        ]);
-
-
-
-    return redirect('materias')->with('success', 'Materia creada exitosamente.');
+        //dd($request->hasFile('url'));
+        if ($request->hasFile('url')){
+            $foto=$request->file('url');
+            $nombreImagen='materias/'.$materia->materia.Str::random(5).'.jpg';
+            $imagen= Image::make($foto);
+            $imagen->resize(300,300,function($constraint){
+                $constraint->upsize();
+            });
+            $fotito = Storage::disk('public')->put($nombreImagen, $imagen->stream());
+            Image::create([
+                'url'=>$nombreImagen,
+                'imageable_id'=>$materia->id,
+                'imageable_type'=>'App\Models\Materia',
+            ]);
+        }
+        return redirect('materias')->with('success', 'Materia creada exitosamente.');
     }
 
     /**

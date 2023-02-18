@@ -37,3 +37,5 @@
   <label for="detalle">Detalle:</label>
   <textarea class="form-control @error('detalle') is-invalid @enderror" rows="5" id="detalle" name="detalle" placeholder="Ingrese el detalle de la materia"></textarea>
 </div>
+
+<input type="file" name="url" id="url" class="file-input">
