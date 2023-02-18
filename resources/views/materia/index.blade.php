@@ -3,6 +3,7 @@
     <link rel="stylesheet" href="{{asset('bootstrap/css/bootstrap.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-BTkxV7Ou8VVZTsLwZIn57c1gmiEUE2OxDxv7+PrKk8h/o7yXrzAa+YSrQe/T1OKKPz7mJrPZgA3qWd5ll5GtQw==" crossorigin="anonymous" />
     <link rel="stylesheet" href="{{asset('css/card.css')}}">
+    <link rel="stylesheet" href="{{asset('vendor/sweetalert2/sweetalert2.min.css')}}">
 @stop
 @section('title', 'Materias')
 
@@ -21,12 +22,18 @@
                             <div class="card">
                                 <div class="card-header degradado">
                                     <h3>{{$materia->materia}}</h3>
+                                    <a href="{{route('materias.edit',$materia)}}" class=""><i class="fas fa-edit text-secondary"></i></a>
+                                    {{-- <a href="{{route('materias.show',$materia)}}" class=""><i class="fas fa-eye text-secondary"></i></a> --}}
+                                    <a class="eliminar" id="{{$materia->id}}"><i class="fas fa-trash-alt text-danger"></i></a>
+                                    {{-- <a href="#" data-toggle="modal" data-target="#confirm-delete">Eliminar</a> --}}
                                 </div>
                                 <div class="card-content">
-                                    <img src="imagen-materia.jpg" alt="Imagen de la materia">
+                                    <img src="{{URL::to('/').Storage::url('public/'.$materia->imagen->url)}}" alt="Imagen de la materia">
                                     <h2>{{$materia->slogan}}</h2>
                                     <div class="text-center">
                                         <a href="#" class="btn btn-secondary">Ver detalles</a>
+                                        
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -36,7 +43,7 @@
             </div>
         </div>
 
-    {{-- </div> --}}
+        
 @stop
 
 @section('css')
@@ -45,4 +52,55 @@
 
 @section('js')
     <script> console.log('Hi!'); </script>
+    <script src="{{asset('vendor/sweetalert2/sweetalert2.all.js')}}"></script>
+    <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+          
+
+            $(".eliminar").on("click", function(e){
+                e.preventDefault();
+                id_materia=$(this).attr('id');
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                
+                Swal.fire({
+                    title: 'Estas seguro(a) de eliminar este registro?',
+                    text: "Si eliminas el registro no lo podras recuperar jamás!",
+                    icon: 'question',
+                    showCancelButton: true,
+                    showConfirmButton: true,
+                    confirmButtonColor: '#25ff80',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Eliminar..!',
+                    position: 'center',
+                }).then((result) => {
+                    if (result.value) {
+                        $.ajax({
+                            url: 'eliminar/materia/'+id_materia,
+                            type: 'DELETE',
+                            data: {
+                                _token: $("meta[name='csrf-token']").attr("content"),
+                            },
+                            success: function (result) {
+                                console.log(result);
+                                $("#" + id_materia).parents('.card').first().remove();
+                                //mensajeGrande(result.mensaje, 'success', 2000);
+                                
+                            },
+                            error: function (xhr, ajaxOptions, thrownError) {
+                                //mensajeErr();
+                            }
+                        });
+                    } else {
+                        //mensajePequenio('El registro NO se eliminó', 'error', 2000);
+                    }
+                })
+            });
+            
+        });
+    </script>
 @stop

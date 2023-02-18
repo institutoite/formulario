@@ -25,6 +25,7 @@ class StoreMateriaRequest extends FormRequest
             'materia' => 'required|unique:materias|max:25',
             'slogan' => 'required|max:150',
             'detalle' => 'required|max:1500',
+            'url' => 'nullable|image|max:3000',
         ];
     }
 }

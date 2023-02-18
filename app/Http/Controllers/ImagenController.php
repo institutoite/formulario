@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Image;
-use App\Http\Requests\StoreImageRequest;
-use App\Http\Requests\UpdateImageRequest;
+use App\Models\Imagen;
+use App\Http\Requests\StoreImagenRequest;
+use App\Http\Requests\UpdateImagenRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 
-class ImageController extends Controller
+class ImagenController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -29,7 +29,7 @@ class ImageController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreImageRequest $request): RedirectResponse
+    public function store(StoreImagenRequest $request): RedirectResponse
     {
         //
     }
@@ -37,7 +37,7 @@ class ImageController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Image $image): Response
+    public function show(Imagen $imagen): Response
     {
         //
     }
@@ -45,7 +45,7 @@ class ImageController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Image $image): Response
+    public function edit(Imagen $imagen): Response
     {
         //
     }
@@ -53,7 +53,7 @@ class ImageController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateImageRequest $request, Image $image): RedirectResponse
+    public function update(UpdateImagenRequest $request, Imagen $imagen): RedirectResponse
     {
         //
     }
@@ -61,7 +61,7 @@ class ImageController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Image $image): RedirectResponse
+    public function destroy(Imagen $imagen): RedirectResponse
     {
         //
     }

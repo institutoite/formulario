@@ -5,6 +5,8 @@
     <link href="{{ asset('vendor/fileinput/css/fileinput.css') }}" rel="stylesheet">
 @stop
 @section('title', 'Materias')
+
+
 @section('content')
     <div class="card mt-3">
         <div class="card">
@@ -12,16 +14,19 @@
                 FORMULARIO CREAR MATERIA
             </div>
             <div class="card-body">
-                <form action="{{route('materias.store')}}" method="POST"  enctype="multipart/form-data">
+                <form method="POST" action="{{ route('materias.update', $materia->id) }}" enctype="multipart/form-data">
                     @csrf
+                    @method('PUT')
                     @include('materia.form')
-                    @include('include.store')
+                    @include('include.update')
                 </form>
             </div>
         </div>
     </div>
 
 @stop
+
+
 
 @section('js')
     <script src="{{ asset('vendor/ckeditor/ckeditor.js') }}"></script>
@@ -37,15 +42,18 @@
         ClassicEditor.create(document.querySelector('#detalle'));
         
         // fileinput 
+      var currentImageUrl = "{{URL::to('/').Storage::url('public/'.$materia->imagen->url)}}";
+
         $('.file-input').fileinput({
-            initialPreviewAsData: true,
             deleteUrl: "/site/file-delete",
             overwriteInitial: true,
             maxFileSize: 2000,
             initialCaption: "click aqui para subir fotos",
             language:'es',
             theme:'fas',
-            
+            initialPreview: '<img src="' + currentImageUrl + '" class="file-preview-image" alt="Current Image">',
+            initialPreviewConfig: [{caption: 'Current Image', size: null, width: "120px", url: currentImageUrl, key: 1}],
+            initialPreviewAsData: false
         });
     </script>
 @stop

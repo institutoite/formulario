@@ -3,7 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-
+use Illuminate\Validation\Rule;
 class UpdateMateriaRequest extends FormRequest
 {
     /**
@@ -11,7 +11,7 @@ class UpdateMateriaRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,8 +21,17 @@ class UpdateMateriaRequest extends FormRequest
      */
     public function rules(): array
     {
+        $materia = $this->route('materia'); // Obtener la materia actual desde la ruta
+        //$materiaId = $materia ? $materia->id : null;
         return [
-            //
+            'materia' => [
+            'required',
+            Rule::unique('materias')->ignore($materia->id),
+            'max:25'
+            ],
+            'slogan' => 'required|max:150',
+            'detalle' => 'required|max:1500',
+            'url' => 'nullable|image|max:3000'
         ];
     }
 }

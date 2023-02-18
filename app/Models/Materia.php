@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Materia extends Model
 {
     use HasFactory;
-    public function image()
+    public function imagen()
     {
-        return $this->morphOne(Image::class, 'imageable');
+        return $this->morphOne(Imagen::class, 'imageable');
     }
 }

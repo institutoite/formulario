@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Materia;
+use App\Models\Imagen;
 use App\Http\Requests\StoreMateriaRequest;
 use App\Http\Requests\UpdateMateriaRequest;
 use Illuminate\Http\RedirectResponse;
@@ -10,6 +11,7 @@ use Illuminate\Http\Response;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+use RealRashid\SweetAlert\Facades\Alert as Alert;
 
 class MateriaController extends Controller
 {
@@ -50,7 +52,7 @@ class MateriaController extends Controller
                 $constraint->upsize();
             });
             $fotito = Storage::disk('public')->put($nombreImagen, $imagen->stream());
-            Image::create([
+            Imagen::create([
                 'url'=>$nombreImagen,
                 'imageable_id'=>$materia->id,
                 'imageable_type'=>'App\Models\Materia',
@@ -64,7 +66,7 @@ class MateriaController extends Controller
      */
     public function show(Materia $materia): Response
     {
-        //
+         return response()->view('materia.create');
     }
 
     /**
@@ -72,7 +74,7 @@ class MateriaController extends Controller
      */
     public function edit(Materia $materia): Response
     {
-        //
+        return response()->view('materia.edit', compact('materia'));
     }
 
     /**
@@ -80,14 +82,41 @@ class MateriaController extends Controller
      */
     public function update(UpdateMateriaRequest $request, Materia $materia): RedirectResponse
     {
-        //
+        $materia->materia = $request->materia;
+        $materia->slogan = $request->slogan;
+        $materia->detalle = $request->detalle;
+        $materia->save();
+
+        if ($request->hasFile('url')) {
+            
+            if (Storage::disk('public')->exists($materia->imagen->url)) {
+                Storage::disk('public')->delete($materia->imagen->url);
+            }
+            //dd(Storage::disk('public')->exists($materia->imagen->url));
+            $foto = $request->file('url');
+            $nombreImagen = 'materias/' . $materia->materia . Str::random(5) . '.jpg';
+            $imagen = Image::make($foto);
+            $imagen->resize(300, 300, function($constraint){
+                $constraint->upsize();
+            });
+            $fotito = Storage::disk('public')->put($nombreImagen, $imagen->stream());
+            //$imagencita=$materia->imagen;
+            $imagencita = $materia->imagen;
+            $imagencita->url=$nombreImagen;
+            $imagencita->save(); 
+        }
+
+        return redirect()->route('materias.index')->with('success', 'Materia actualizada exitosamente.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Materia $materia): RedirectResponse
+    public function destroy(Materia $materia)
     {
-        //
+        // Alert::success('Mensaje exitoso', 'Datos guardados correctamente');
+        $materia->delete();
+        return response()->json(["mensaje" =>"Elinminado correctamente"]);
+        //return redirect()->route('materias.index')->with('success', 'Materia actualizada exitosamente.');
     }
 }

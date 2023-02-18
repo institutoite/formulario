@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Materia;
+use App\Models\Imagen;
 
 class MateriaSeeder extends Seeder
 {
@@ -37,6 +38,32 @@ class MateriaSeeder extends Seeder
             "materia"=>"Estadística",
             "slogan"=>"La estadística te permite tomar decisiones inteligentes basadas en datos",
             "detalle"=>"La estadística es una ciencia que se ocupa de la recolección, análisis e interpretación de datos. La estadística es esencial en muchos campos, como la investigación científica, la toma de decisiones empresariales y la planificación gubernamental. La estadística nos permite describir y entender las tendencias y patrones en los datos, y nos da herramientas para hacer predicciones y tomar decisiones informadas basadas en evidencia. En resumen, la estadística es una herramienta importante para el análisis de datos y la investigación, y es esencial para comprender y solucionar problemas en una amplia variedad de áreas y disciplinas."
+        ]);
+
+        Imagen::create([
+            "imageable_id"=>1,
+            "imageable_type"=>"App\Models\Materia",
+            "url"=>"imagen.pjg",
+        ]);
+        Imagen::create([
+            "imageable_id"=>2,
+            "imageable_type"=>"App\Models\Materia",
+            "url"=>"imagen.pjg",
+        ]);
+        Imagen::create([
+            "imageable_id"=>3,
+            "imageable_type"=>"App\Models\Materia",
+            "url"=>"imagen.pjg",
+        ]);
+        Imagen::create([
+            "imageable_id"=>4,
+            "imageable_type"=>"App\Models\Materia",
+            "url"=>"imagen.pjg",
+        ]);
+        Imagen::create([
+            "imageable_id"=>5,
+            "imageable_type"=>"App\Models\Materia",
+            "url"=>"imagen.pjg",
         ]);
     }
 }
