@@ -11,16 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('variables', function (Blueprint $table) {
+        Schema::create('unidads', function (Blueprint $table) {
             $table->id();
-            $table->string('variable',10);
-            $table->string('detalle',1500);
-            
+            $table->string('unidad',25 );
+            $table->string('abreviatura',20 );
             $table->unsignedBigInteger('dimension_id');
             $table->foreign('dimension_id')->references('id')->on('dimensions');
-            
-            $table->unsignedBigInteger('formula_id');
-            $table->foreign('formula_id')->references('id')->on('formulas');
             $table->timestamps();
         });
     }
@@ -30,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('variables');
+        Schema::dropIfExists('unidads');
     }
 };

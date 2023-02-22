@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->integer('numero')->unsigned();
             $table->string('ejemplo', 100);
-            $table->string('detalle', 100);
+            $table->string('detalle', 1500);
+            $table->bigInteger('indice')->unsigned()->nullable();
             $table->timestamps();
         });
     }

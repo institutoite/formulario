@@ -15,7 +15,12 @@ return new class extends Migration
             $table->id();
             $table->string('nombre', 100);
             $table->string('formula', 100);
-            $table->string('detalle', 100)->nullable();
+            $table->string('detalle', 800)->nullable();
+            $table->bigInteger('indice')->unsigned()->nullable();
+
+            $table->unsignedBigInteger('tema_id');
+            $table->foreign('tema_id')->references('id')->on('temas');
+
             $table->timestamps();
         });
     }

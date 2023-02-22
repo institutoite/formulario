@@ -5,10 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Variable extends Model
+class Dimension extends Model
 {
     use HasFactory;
-    public function formula(){
-        return $this->belongsTo(Formula::class);
-    }
 }

@@ -1,51 +1,52 @@
-use App\Models\Image;
+use App\Models\Formula;
+$f= Formula::find(1);
+$f->imagen
+  
 
-Image::create(['url'=>'url-1','imageable_id'=>1,'imageable_type'=>'App\Models\Materia']);
-use App\Models\Image;
+use App\Models\Formula;
+$f= Formula::find(1);
 
-Image::create(['url'=>'url-1','imageable_id'=>1,'imageable_type'=>'App\Models\Materia']);
-use App\Models\Image;
+  
 
-Image::create(['url'=>'url-1','imageable_id'=>1,'imageable_type'=>'App\Models\Materia']);
+use App\Models\Formula;
+$f= Formula::find(1);
+Imagen::create([
+  'url'=>$nombreImagen,
+  'imageable_id'=>$tema->id,
+  'imageable_type'=>'App\Models\Tema',
+]);
 
-$i=Image::all();
-use App\Models\Image;
+  
 
-Image::create(['url'=>'url-1','imageable_id'=>1,'imageable_type'=>'App\Models\Materia']);
+use App\Models\Formula;
+$f= Formula::find(1);
+Imagen::create([
+  'url'=>"temas/imagen.jpg",
+  'imageable_id'=>1,
+  'imageable_type'=>'App\Models\Tema',
+]);
 
-$i=Image::all();
-use App\Models\Image;
+  
 
-Image::create(['url'=>'url-1','imageable_id'=>1,'imageable_type'=>'App\Models\Materia']);
+use App\Models\Formula;
+$f= Formula::find(1);
 
-$i=Image::all();
-use App\Models\Image;
+$f->imagen
+  
 
-Image::create(['url'=>'url-1','imageable_id'=>1,'imageable_type'=>'App\Models\Materia']);
+use App\Models\Formula;
+$f= Tema::find(1);
 
-$i=Image::all();
-use App\Models\Image;
+$f->imagen
+  
 
-Image::create(['url'=>'url-1','imageable_id'=>1,'imageable_type'=>'App\Models\Materia']);
+use App\Models\Formula;
+$f= Tema::find(1);
+Imagen::create([
+  'url'=>"formulas/imagen.jpg",
+  'imageable_id'=>1,
+  'imageable_type'=>'App\Models\Formula',
+]);
+$f->imagen
+  
 
-$i=Image::all();
-use App\Models\Image;
-
-Image::create(['url'=>'url-1','imageable_id'=>1,'imageable_type'=>'App\Models\Materia']);
-
-$i=Image::all();
-use App\Models\Image;
-
-Image::create(['url'=>'url-1','imageable_id'=>1,'imageable_type'=>'App\Models\Materia']);
-
-$i=Image::all();
-use App\Models\Image;
-
-Image::create(['url'=>'url-1','imageable_id'=>1,'imageable_type'=>'App\Models\Materia']);
-
-$i=Image::all();
-use App\Models\Image;
-
-
-
-$i=Image::all();

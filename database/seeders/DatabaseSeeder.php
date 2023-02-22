@@ -20,6 +20,11 @@ class DatabaseSeeder extends Seeder
         // ]);
         $this->call([
             MateriaSeeder::class,
+            TemaSeeder::class,
+            FormulaSeeder::class,
+            DimensionSeeder::class,
+            UnidadSeeder::class,
+            VariableSeeder::class,
         ]);
     }
 }

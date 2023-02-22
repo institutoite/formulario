@@ -43,27 +43,27 @@ class MateriaSeeder extends Seeder
         Imagen::create([
             "imageable_id"=>1,
             "imageable_type"=>"App\Models\Materia",
-            "url"=>"imagen.pjg",
+            "url"=>"materias/imagen.jpg",
         ]);
         Imagen::create([
             "imageable_id"=>2,
             "imageable_type"=>"App\Models\Materia",
-            "url"=>"imagen.pjg",
+            "url"=>"materias/imagen.jpg",
         ]);
         Imagen::create([
             "imageable_id"=>3,
             "imageable_type"=>"App\Models\Materia",
-            "url"=>"imagen.pjg",
+            "url"=>"materias/imagen.jpg",
         ]);
         Imagen::create([
             "imageable_id"=>4,
             "imageable_type"=>"App\Models\Materia",
-            "url"=>"imagen.pjg",
+            "url"=>"materias/imagen.jpg",
         ]);
         Imagen::create([
             "imageable_id"=>5,
             "imageable_type"=>"App\Models\Materia",
-            "url"=>"imagen.pjg",
+            "url"=>"materias/imagen.jpg",
         ]);
     }
 }

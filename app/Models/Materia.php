@@ -12,4 +12,8 @@ class Materia extends Model
     {
         return $this->morphOne(Imagen::class, 'imageable');
     }
+    public function temas()
+    {
+        return $this->hasMany(Tema::class);
+    }
 }

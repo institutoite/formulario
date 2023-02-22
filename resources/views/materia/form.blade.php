@@ -1,7 +1,7 @@
 
 <div class="row">
   <div class="col-xs-12 col-sm-12 col-md-6 col-lg-5">
-     @if($errors->has('materia'))
+      @if($errors->has('materia'))
           <span class="text-danger"> {{ $errors->first('materia')}}</span>
       @endif
   </div>
@@ -37,8 +37,7 @@
   </div>
   <div class="col-xs-12 col-sm-12 col-md-6 col-lg-5">
       <div class="form-floating mb-3 text-gray">
-        
-<input type="file" name="url" id="url" class="file-input">
+        <input type="file" name="url" id="url" class="file-input">
         <label for="url">Imagen</label>
       </div>
   </div>
@@ -57,30 +56,3 @@
       @endif
   </div>
 </div>
-
-
-
-
-
-{{-- 
-  <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        @if($errors->has('detalle'))
-            <span class="text-danger"> {{ $errors->first('detalle')}}</span>
-        @endif
-    </div>
-  </div>
-<div class="form-group">
-  <label for="detalle">Detalle:</label>
-  <textarea class="form-control @error('detalle') is-invalid @enderror" rows="5" id="detalle" name="detalle"  placeholder="Ingrese el detalle de la materia">{{old('detalle',$materia->detalle ?? '')}}</textarea>
-</div>
-
-
-  <div class="row">
-  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-      
-  </div>
-</div>
-
- --}}
-

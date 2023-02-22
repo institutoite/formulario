@@ -5,35 +5,56 @@
     <link rel="stylesheet" href="{{asset('css/card.css')}}">
     <link rel="stylesheet" href="{{asset('vendor/sweetalert2/sweetalert2.min.css')}}">
 @stop
-@section('title', 'Materias')
-
+@section('title', 'Temas')
 @section('content')
     {{-- <div class="contenedor"> --}}
+     
+        <div class="contenedor">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+                    
+                        <h1>Fórmulas de {{ $materia->materia }}</h1>
+                        <hr>
+                        <p class="slogan">{{ $materia->slogan }}</p>
+                        <hr>
+                        <p class="detalle">{{ $materia->detalle }}</p>
+                   
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                    
+                        <img src="{{URL::to('/').Storage::url('public/'.$materia->imagen->url)}}" alt="Imagen de la materia">
+                    
+                </div>
+            </div>
+        </div>
+        
+
         <div class="card mt-3">
             <div class="card-header bg-secondary">
-                Seleccione la materia de su interés
-                <a href="{{route('materias.create')}}" class="btn btn-primary float-right"><i class="fa fa-plus"></i>&nbsp;Nuevo</a>
+                Seleccione el tema de su interés
+                <a href="{{route('materias.index')}}" class="btn btn-primary float-right"><i class="fa fa-plus"></i>&nbsp;Nuevo</a>
             </div>
             <div class="card-body">
-             
                 <div class="row">
-                    @foreach ($materias as $materia)
-                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                    @foreach ($temas as $tema)
+                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
                             <div class="card carta">
                                 <div class="card-header degradado">
-                                    <h3>{{$materia->materia}}</h3>
                                     
+                                    <div class="show-more">
+                                        <div class="title">{{$tema->tema}}</div>
+                                    </div>
                                 </div>
                                 <div class="card-content">
-                                    <div class="actions">
-                                        <a href="{{route('materias.edit',$materia)}}"><i class="fas fa-edit text-secondary"></i></a>
-                                        <a class="eliminar" id="{{$materia->id}}"><i class="fas fa-trash-alt text-danger"></i></a>
-                                        <a href="{{ route("temas.crear",$materia->id) }}" ><i class="fas fa-plus-circle"></i></a>
+                                     <div class="actions">
+                                        <a href="{{route('temas.edit',$tema)}}"><i class="fas fa-edit text-secondary"></i></a>
+                                        <a class="eliminar" id="{{$tema->id}}"><i class="fas fa-trash-alt text-danger"></i></a>
+                                        <a href="{{ route("formulas.create",$tema->id) }}" ><i class="fas fa-plus-circle"></i></a>
                                     </div>
-                                    <img src="{{URL::to('/').Storage::url('public/'.$materia->imagen->url)}}" alt="Imagen de la materia">
-                                    <p class="slogan">{{$materia->slogan}}</p>
+                                    <img src="{{URL::to('/').Storage::url('public/'.$tema->imagen->url)}}" alt="Imagen del tema">
+                                    <p class="slogan">{{$tema->slogan}}</p>
                                     <div class="text-center">
-                                        <a href="{{ route("temas.index",$materia) }}" class="btn btn-secondary">Ver Temas</a>
+                                        <a href="{{ route("formulas.index",$tema) }}" class="btn btn-secondary">Ver Fórmulas</a>
                                     </div>
                                 </div>
                             </div>
@@ -55,25 +76,6 @@
     <script>
         $(document).ready(function() {
           
-        // $('a[data-method]').click(function(event) {
-        //         event.preventDefault();
-        //         const method = $(this).data('method');
-        //         const url = $(this).data('url');
-        //         $.ajax({
-        //             url: url,
-        //             method: method,
-        //             headers: {
-        //             'X-CSRF-TOKEN': '{{ csrf_token() }}'
-        //             },
-        //             success: function(response) {
-                        
-        //             },
-        //             error: function(error) {
-        //             // Manejar errores de la solicitud
-        //             }
-        //         });
-        //     });
-
 
             $(".eliminar").on("click", function(e){
                 e.preventDefault();

@@ -376,7 +376,7 @@ return [
         [
             'text'       => 'Temas',
             'icon_color' => 'indigo',
-            'url'        => 'temas',
+            'url'      => '',
         ],
         [
             'text'       => 'information',

@@ -3,15 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Models\Materia;
-use App\Models\Imagen;
+
 use App\Http\Requests\StoreMateriaRequest;
 use App\Http\Requests\UpdateMateriaRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
+
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert as Alert;
+use App\Models\Imagen;
 
 class MateriaController extends Controller
 {

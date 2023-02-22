@@ -29,9 +29,19 @@ class VariableController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreVariableRequest $request): RedirectResponse
+    public function store($variables, $descripciones, $formula, $dimensiones)
     {
-        //
+        $cuantas_variables=count($variables);
+        $i=0;
+        while($i<$cuantas_variables){
+            $variable=new Variable();
+            $variable->variable=$variables[$i];
+            $variable->detalle=$detalles[$i];
+            $variable->formula_id=$formula->id;
+            $variable->dimension_id=$dimensiones[$i];
+            $variable->save();
+            $i=$i+1;
+        }
     }
 
     /**

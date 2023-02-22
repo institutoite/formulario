@@ -35,13 +35,29 @@ Route::put('materias/{materia}', [MateriaController::class,'update'])->name('mat
 Route::delete('eliminar/materia/{materia}', [MateriaController::class,'destroy'])->name('materias.eliminar');
 
 
-Route::get('temas', [TemaController::class,'index'])->name('temas.index');
-Route::get('temas/create', [TemaController::class,'create'])->name('temas.create');
+Route::get('temas/{materia}', [TemaController::class,'index'])->name('temas.index');
+Route::get('temas/crear/{materia}', [TemaController::class,'crear'])->name('temas.crear');
 Route::post('temas', [TemaController::class,'store'])->name('temas.store');
 Route::get('temas/show/{tema}', [TemaController::class,'show'])->name('temas.show');
 Route::get('temas/{tema}/edit', [TemaController::class,'edit'])->name('temas.edit');
 Route::put('temas/{tema}', [TemaController::class,'update'])->name('temas.update');
 Route::delete('eliminar/tema/{tema}', [TemaController::class,'destroy'])->name('temas.eliminar');
+
+Route::get('formulas/{tema}', [FormulaController::class,'index'])->name('formulas.index');
+Route::get('formulas/create/{tema}', [FormulaController::class,'create'])->name('formulas.create');
+Route::post('formulas', [FormulaController::class,'store'])->name('formulas.store');
+Route::get('formulas/show/{formula}', [FormulaController::class,'show'])->name('formulas.show');
+Route::get('formulas/{formula}/edit', [FormulaController::class,'edit'])->name('formulas.edit');
+Route::put('formulas/{formula}', [FormulaController::class,'update'])->name('formulas.update');
+Route::delete('eliminar/formula/{formula}', [FormulaController::class,'destroy'])->name('formulas.eliminar');
+
+Route::get('variables/{formula}', [variableController::class,'index'])->name('variables.index');
+Route::get('variables/create/{formula}', [variableController::class,'create'])->name('variables.create');
+Route::post('variables', [variableController::class,'store'])->name('variables.store');
+Route::get('variables/show/{variable}', [variableController::class,'show'])->name('variables.show');
+Route::get('variables/{variable}/edit', [variableController::class,'edit'])->name('variables.edit');
+Route::put('variables/{variable}', [variableController::class,'update'])->name('variables.update');
+Route::delete('eliminar/variable/{variable}', [variableController::class,'destroy'])->name('variables.eliminar');
 
 
 

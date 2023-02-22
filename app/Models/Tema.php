@@ -8,4 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Tema extends Model
 {
     use HasFactory;
+    public function imagen()
+    {
+        return $this->morphOne(Imagen::class, 'imageable');
+    }
+    public function materia(){
+        return $this->belongsTo(Materia::class);
+    }
+    public function formulas()
+    {
+        return $this->hasMany(Formula::class);
+    }
+   
 }

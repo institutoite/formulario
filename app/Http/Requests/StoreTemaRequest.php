@@ -11,7 +11,7 @@ class StoreTemaRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,11 @@ class StoreTemaRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'tema' => 'required|string|unique:temas|max:100',
+            'slogan' => 'required|string|max:250',
+            'detalle' => 'required|string|max:1500',
+            'indice' => 'nullable|integer|unsigned',
+            'materia_id' => 'required|integer|exists:materias,id'
         ];
     }
 }
