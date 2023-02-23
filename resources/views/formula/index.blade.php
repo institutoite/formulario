@@ -80,11 +80,12 @@
                                             </thead>
                                             <tbody>
                                                 @foreach ($variables as $variable)
-                                                    <tr>
+                                                    <tr id="{{ $variable->id }}">
                                                         <td><strong>{{ $variable->variable }}</strong></td>
                                                         <td>{{ $variable->detalle }}</td>
                                                         <td>
-                                                            <a href="{{route('variables.edit',$variable)}}"><i class="fas fa-edit text-secondary"></i></a>
+                                                            {{-- <a href="{{route('variables.edit',$variable)}}"><i class="fas fa-edit text-secondary"></i></a> --}}
+                                                            <a class="editar" ><i class="fas fa-edit text-secondary"></i></a>
                                                             <a class="eliminar" id="{{$variable->id}}"><i class="fas fa-trash-alt text-danger"></i></a>
                                                             <a href="{{ route("variables.create",$formula->id) }}" ><i class="fas fa-plus-circle"></i></a>
                                                         </td>
@@ -125,7 +126,7 @@
             </div>
         </div>
     </div>
-    
+    @include('variable.modales')
 @stop
 
 @section('css')
@@ -137,11 +138,91 @@
     <script src="{{asset('vendor/sweetalert2/sweetalert2.all.js')}}"></script>
     <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script> 
+    
 
 
     <script>
         $(document).ready(function() {
-          
+            $(".editar").on("click", function(e){
+                e.preventDefault();
+                let variable_id=$(this).closest('tr').attr("id");
+                //console.log(variable_id);
+                $.ajax({
+                    url:"{{url('editar/variable')}}/"+variable_id,
+                    // url:"{{url('persona/ultimaobservacion')}}",
+                    success: function (result) {
+                        $("#variable").val(result.variable.variable);
+                        $("#detalle").val(result.variable.detalle);
+                        $("#variable_id").val(result.variable.id);
+                        $dimensions="";
+                        result.dimensiones.forEach(dimension => {
+                            if(dimension.id==result.variable.id)
+                            $dimensions+="<option value='"+dimension.id+"' selected>"+ dimension.dimension +"</option>"
+                            else
+                            $dimensions+="<option value='"+dimension.id+"'>"+ dimension.dimension +"</option>"
+                        });
+                        $("#dimension_id").append($dimensions);
+                        $("#modal-editar").modal("show");
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        //mensajeErr();
+                    }
+                });
+
+            });
+            $(document).on("submit","#formulario-editar-variable",function(e){
+                e.preventDefault();//detenemos el envio
+                $variable=$('#variable').val();
+                $detalle=$('#detalle').val();
+                $dimension_id=$('#dimension_id').val();
+                $variable_id=$('#variable_id').val();
+                console.log($dimension_id);
+                var token = $("input[name=_token]").val();
+                $.ajaxSetup({
+                headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                    url : "{{url('variable/update')}}",
+                    headers:{'X-CSRF-TOKEN':token},
+                    data:{
+                            variable:$variable,
+                            detalle:$detalle,
+                            dimension_id:$dimension_id,
+                            variable_id:$variable_id,
+                            token:token,
+                        },
+                    success : function(json) {
+                        console.log(json);
+                        if(json.error){
+                        $("#error_motivo").html(json.error);
+                        }else{
+                            $("#modal-editar").modal("hide");
+                            
+                            const Toast = Swal.mixin({
+                                toast: true,
+                                position: 'top-end',
+                                showConfirmButton: false,
+                                timer: 1500,
+                                })
+                                Toast.fire({
+                                icon: 'success',
+                                title: 'Se actualizó correctamente el registro'
+                            })
+                            $("#"+json.variable.id+" td:first-child").text(json.variable.variable);
+                            $("#"+json.variable.id+" td:first-child").next().text(json.variable.detalle);
+                            //console.log(json.variable.id);
+                        } 
+                    },
+                    error:function(jqXHR,estado,error){
+                        console.log("Erorr");
+                    },
+                });
+            });
+
 
             $(".eliminar").on("click", function(e){
                 e.preventDefault();

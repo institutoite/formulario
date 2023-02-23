@@ -51,13 +51,13 @@ Route::get('formulas/{formula}/edit', [FormulaController::class,'edit'])->name('
 Route::put('formulas/{formula}', [FormulaController::class,'update'])->name('formulas.update');
 Route::delete('eliminar/formula/{formula}', [FormulaController::class,'destroy'])->name('formulas.eliminar');
 
-Route::get('variables/{formula}', [variableController::class,'index'])->name('variables.index');
-Route::get('variables/create/{formula}', [variableController::class,'create'])->name('variables.create');
-Route::post('variables', [variableController::class,'store'])->name('variables.store');
-Route::get('variables/show/{variable}', [variableController::class,'show'])->name('variables.show');
-Route::get('variables/{variable}/edit', [variableController::class,'edit'])->name('variables.edit');
-Route::put('variables/{variable}', [variableController::class,'update'])->name('variables.update');
-Route::delete('eliminar/variable/{variable}', [variableController::class,'destroy'])->name('variables.eliminar');
+Route::get('variables/{formula}', [VariableController::class,'index'])->name('variables.index');
+Route::get('variables/create/{formula}', [VariableController::class,'create'])->name('variables.create');
+Route::post('variables', [VariableController::class,'store'])->name('variables.store');
+Route::get('variables/show/{variable}', [VariableController::class,'show'])->name('variables.show');
+Route::get('editar/variable/{variable}', [VariableController::class,'edit'])->name('variables.edit');
+Route::get('variable/update', [VariableController::class,'update'])->name('variables.update');
+Route::delete('eliminar/variable/{variable}', [VariableController::class,'destroy'])->name('variables.eliminar');
 
 
 

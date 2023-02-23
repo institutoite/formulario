@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Variable;
+use App\Models\Dimension;
 use App\Http\Requests\StoreVariableRequest;
 use App\Http\Requests\UpdateVariableRequest;
 use Illuminate\Http\RedirectResponse;
@@ -13,7 +14,7 @@ class VariableController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(): Response
+    public function index()
     {
         //
     }
@@ -21,7 +22,7 @@ class VariableController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create(): Response
+    public function create()
     {
         //
     }
@@ -43,7 +44,7 @@ class VariableController extends Controller
             $i=$i+1;
         }
     }
-
+// 
     /**
      * Display the specified resource.
      */
@@ -55,20 +56,40 @@ class VariableController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Variable $variable): Response
+    public function edit($variable_id)
     {
-        //
+        $variable=Variable::find($variable_id);
+        $data=["variable"=>$variable,"dimensiones"=>Dimension::all()];
+        return response()->json($data);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateVariableRequest $request, Variable $variable): RedirectResponse
+    public function update(UpdateVariableRequest $request)
     {
-        //
+        
+        $variable = Variable::findOrFail($request->variable_id);
+        
+        //return response()->json(["a"=>$variable]);
+        // $validator = Validator::make($request->all(), [
+        //     'motivo'=>['required','max:80',Rule::unique('motivos', 'motivo')->ignore($motivo)],
+        //     'tipomotivo_id'=>'required',
+        // ]);
+        
+        // if ($validator->passes()) {
+            
+            $variable->variable = $request->variable;
+            $variable->detalle = $request->detalle;
+            $variable->dimension_id = $request->dimension_id;
+            $variable->save();
+            return response()->json(['variable'=>$variable]);
+        // }else{
+        //     return response()->json(['error' => $validator->errors()->first()]);
+        // }
     }
 
-    /**
+     /**
      * Remove the specified resource from storage.
      */
     public function destroy(Variable $variable): RedirectResponse
