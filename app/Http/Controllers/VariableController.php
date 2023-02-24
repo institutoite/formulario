@@ -44,6 +44,18 @@ class VariableController extends Controller
             $i=$i+1;
         }
     }
+    public function guardarAjax(StoreVariableRequest $request)
+    {
+        //return response()->json($request->all());
+            $variable=new Variable();
+            $variable->variable=$request->variable;
+            $variable->detalle=$request->detalle;
+            $variable->formula_id=$request->formula_id;
+            $variable->dimension_id=$request->dimension_id;
+            $variable->save();
+            return response()->json($variable);
+        
+    }
 // 
     /**
      * Display the specified resource.
@@ -95,6 +107,7 @@ class VariableController extends Controller
     public function destroy(Variable $variable)
     {
         $variable->delete();
+        
         return response()->json(["mensaje" =>"Elinminado correctamente"]);
     }
 }

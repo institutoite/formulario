@@ -70,17 +70,17 @@
                                     </div>
                                     <div class="col-12">
                                         
-                                        <table class="table table-default">
+                                        <table id="{{ "formula".$formula->id }}" class="table table-bordered table-hover table-striped table-avatar">
                                             <thead>
-                                                <tr id="{{ $formula->id }}">
+                                                <tr>
                                                     <th>Variable</th>
                                                     <th>Descripción</th>
                                                     <th>Acciones<a class="crear" href="" ><i class="fas fa-plus-circle"></i></a></th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody id="variables">
                                                 @foreach ($variables as $variable)
-                                                    <tr id="{{ $variable->id }}">
+                                                    <tr id="{{$variable->id }}">
                                                         <td><strong>{{ $variable->variable }}</strong></td>
                                                         <td>{{ $variable->detalle }}</td>
                                                         <td>
@@ -144,7 +144,7 @@
 
     <script>
         $(document).ready(function() {
-            $(".editar").on("click", function(e){
+            $("table").on("click",'.editar', function(e){
                 e.preventDefault();
                 let variable_id=$(this).closest('tr').attr("id");
                 //console.log(variable_id);
@@ -152,6 +152,7 @@
                     url:"{{url('editar/variable')}}/"+variable_id,
                     // url:"{{url('persona/ultimaobservacion')}}",
                     success: function (result) {
+                        console.log(result);
                         $("#variable").val(result.variable.variable);
                         $("#detalle").val(result.variable.detalle);
                         $("#variable_id").val(result.variable.id);
@@ -173,18 +174,15 @@
             });
             $(".crear").on("click", function(e){
                 e.preventDefault();
-                let formula_id=$(this).closest('tr').attr("id");
-                console.log(formula_id);
+                let formula_id=$(this).closest('table').attr("id").substring(7);
+                console.log("id:"+formula_id);
                  $("#modal-crear").modal("show");
                  $.ajax({
                     url:"{{url('get/dimensiones')}}",
-                    // url:"{{url('persona/ultimaobservacion')}}",
                     success: function (result) {
-                        console.log(result);
                         $dimensions="";
                         result.forEach(dimension => {
                             $dimensions+="<option value='"+dimension.id+"'>"+ dimension.dimension +"</option>"
-                            console.log(dimension.dimension);
                         });
                         
                         $("#id_dimension").append($dimensions);
@@ -247,9 +245,58 @@
                     },
                 });
             });
+            $(document).on("submit","#formulario-crear-variable",function(e){
+                e.preventDefault();//detenemos el envio
+                $variable=$('#variablecrear').val();
+                $detalle=$('#detallecrear').val();
+                $dimension_id=$('#id_dimension').val();
+                $formula_id=$('#formula_id').val();
+               
+                var token = $("input[name=_token]").val();
+                $.ajaxSetup({
+                headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                    url : "{{url('variable/store')}}",
+                    headers:{'X-CSRF-TOKEN':token},
+                    data:{
+                            variable:$variable,
+                            detalle:$detalle,
+                            dimension_id:$dimension_id,
+                            formula_id:$formula_id,
+                            token:token,
+                        },
+                    success : function(json) {
+                        console.log($("#formula"+$formula_id).child("tbody").html());
+                        if(json.error){
+                        $("#error_motivo").html(json.error);
+                        }else{
+                            $("#modal-crear").modal("hide");
+                            
+                            const Toast = Swal.mixin({
+                                toast: true,
+                                position: 'top-end',
+                                showConfirmButton: false,
+                                timer: 1500,
+                                })
+                                Toast.fire({
+                                icon: 'success',
+                                title: 'Se creó correctamente el registro'
+                            })
+                            $("table #formula"+$formula_id+" tbody").append("<tr id="+json.id+"><td><strong>"+json.variable+"</strong></td><td>"+json.detalle+"</td><td><a class='editar' ><i class='fas fa-edit text-secondary'></i></a><a class='eliminar'><i class='fas fa-trash-alt text-danger'></i></a></td>");
+                            //$(this).closest('tr').attr("id").substring(7);
+                        } 
+                    },
+                    error:function(jqXHR,estado,error){
+                        console.log("Erorr");
+                    },
+                });
+            });
 
 
-            $(".eliminar").on("click", function(e){
+            $("table").on("click",".eliminar", function(e){
                 e.preventDefault();
                 let variable_id=$(this).closest("tr").attr("id");
                 $.ajaxSetup({
@@ -278,7 +325,7 @@
                             },
                             success: function (result) {
                                 console.log(result);
-                                $("#" + variable_id).parents('.card').first().remove();
+                                $("#" + variable_id).remove();
                                 // mensajeGrande(result.mensaje, 'success', 2000);
                                 
                             },

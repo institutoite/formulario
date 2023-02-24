@@ -123,15 +123,15 @@
                             
                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" > 
                                 <div class="form-floating mb-3">
-                                    <input class="form-control" type="text" name="variable" id="variable" value="">
-                                    <label for="variable">Variable</label>
+                                    <input class="form-control" type="text" name="variablecrear" id="variablecrear" value="">
+                                    <label for="variablecrear">Variable</label>
                                 </div>
                             </div>
                             
                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" > 
                                 <div class="form-floating mb-3">
-                                    <input class="form-control" type="text" name="detalle" id="detalle" value="">
-                                    <label for="detalle">Detalle</label>
+                                    <input class="form-control" type="text" name="detallecrear" id="detallecrear" value="">
+                                    <label for="detallecrear">Detalle</label>
                                 </div>
                             </div>
                             

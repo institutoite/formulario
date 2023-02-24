@@ -54,7 +54,7 @@ Route::delete('eliminar/formula/{formula}', [FormulaController::class,'destroy']
 
 Route::get('variables/{formula}', [VariableController::class,'index'])->name('variables.index');
 Route::get('variables/create/{formula}', [VariableController::class,'create'])->name('variables.create');
-Route::post('variables', [VariableController::class,'store'])->name('variables.store');
+Route::get('variable/store', [VariableController::class,'guardarAjax'])->name('variables.store');
 Route::get('variables/show/{variable}', [VariableController::class,'show'])->name('variables.show');
 Route::get('editar/variable/{variable}', [VariableController::class,'edit'])->name('variables.edit');
 Route::get('variable/update', [VariableController::class,'update'])->name('variables.update');
