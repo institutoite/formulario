@@ -65,4 +65,9 @@ class DimensionController extends Controller
     {
         //
     }
+
+    public function getDimension(){
+        $dimensiones=Dimension::all();
+        return response()->json($dimensiones);
+    }
 }

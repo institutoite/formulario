@@ -72,10 +72,10 @@
                                         
                                         <table class="table table-default">
                                             <thead>
-                                                <tr>
+                                                <tr id="{{ $formula->id }}">
                                                     <th>Variable</th>
                                                     <th>Descripción</th>
-                                                    <th>Acciones</th>
+                                                    <th>Acciones<a class="crear" href="" ><i class="fas fa-plus-circle"></i></a></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -84,10 +84,9 @@
                                                         <td><strong>{{ $variable->variable }}</strong></td>
                                                         <td>{{ $variable->detalle }}</td>
                                                         <td>
-                                                            {{-- <a href="{{route('variables.edit',$variable)}}"><i class="fas fa-edit text-secondary"></i></a> --}}
                                                             <a class="editar" ><i class="fas fa-edit text-secondary"></i></a>
-                                                            <a class="eliminar" id="{{$variable->id}}"><i class="fas fa-trash-alt text-danger"></i></a>
-                                                            <a href="{{ route("variables.create",$formula->id) }}" ><i class="fas fa-plus-circle"></i></a>
+                                                            <a class="eliminar"><i class="fas fa-trash-alt text-danger"></i></a>
+                                                            
                                                         </td>
                                                     </tr>
                                                 @endforeach
@@ -172,6 +171,32 @@
                 });
 
             });
+            $(".crear").on("click", function(e){
+                e.preventDefault();
+                let formula_id=$(this).closest('tr').attr("id");
+                console.log(formula_id);
+                 $("#modal-crear").modal("show");
+                 $.ajax({
+                    url:"{{url('get/dimensiones')}}",
+                    // url:"{{url('persona/ultimaobservacion')}}",
+                    success: function (result) {
+                        console.log(result);
+                        $dimensions="";
+                        result.forEach(dimension => {
+                            $dimensions+="<option value='"+dimension.id+"'>"+ dimension.dimension +"</option>"
+                            console.log(dimension.dimension);
+                        });
+                        
+                        $("#id_dimension").append($dimensions);
+                       
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        //mensajeErr();
+                    }
+                });
+                $("#formula_id").val(formula_id);
+
+            });
             $(document).on("submit","#formulario-editar-variable",function(e){
                 e.preventDefault();//detenemos el envio
                 $variable=$('#variable').val();
@@ -212,7 +237,7 @@
                                 icon: 'success',
                                 title: 'Se actualizó correctamente el registro'
                             })
-                            $("#"+json.variable.id+" td:first-child").text(json.variable.variable);
+                            $("#"+json.variable.id+" td:first-child").html("<strong>"+json.variable.variable);
                             $("#"+json.variable.id+" td:first-child").next().text(json.variable.detalle);
                             //console.log(json.variable.id);
                         } 
@@ -226,7 +251,7 @@
 
             $(".eliminar").on("click", function(e){
                 e.preventDefault();
-                id_materia=$(this).attr('id');
+                let variable_id=$(this).closest("tr").attr("id");
                 $.ajaxSetup({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -246,15 +271,15 @@
                 }).then((result) => {
                     if (result.value) {
                         $.ajax({
-                            url: 'eliminar/materia/'+id_materia,
+                            url: "{{ url('eliminar/variable/') }}/"+variable_id,
                             type: 'DELETE',
                             data: {
                                 _token: $("meta[name='csrf-token']").attr("content"),
                             },
                             success: function (result) {
                                 console.log(result);
-                                $("#" + id_materia).parents('.card').first().remove();
-                                //mensajeGrande(result.mensaje, 'success', 2000);
+                                $("#" + variable_id).parents('.card').first().remove();
+                                // mensajeGrande(result.mensaje, 'success', 2000);
                                 
                             },
                             error: function (xhr, ajaxOptions, thrownError) {

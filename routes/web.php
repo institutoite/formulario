@@ -7,6 +7,7 @@ use App\Http\Controllers\TemaController;
 use App\Http\Controllers\FormulaController;
 use App\Http\Controllers\VariableController;
 use App\Http\Controllers\EjemploController;
+use App\Http\Controllers\DimensionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -59,7 +60,6 @@ Route::get('editar/variable/{variable}', [VariableController::class,'edit'])->na
 Route::get('variable/update', [VariableController::class,'update'])->name('variables.update');
 Route::delete('eliminar/variable/{variable}', [VariableController::class,'destroy'])->name('variables.eliminar');
 
-
-
+Route::get('get/dimensiones', [DimensionController::class,'getDimension'])->name('dimensiones.get');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

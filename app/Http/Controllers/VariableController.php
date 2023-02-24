@@ -24,7 +24,7 @@ class VariableController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -92,8 +92,9 @@ class VariableController extends Controller
      /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Variable $variable): RedirectResponse
+    public function destroy(Variable $variable)
     {
-        //
+        $variable->delete();
+        return response()->json(["mensaje" =>"Elinminado correctamente"]);
     }
 }
