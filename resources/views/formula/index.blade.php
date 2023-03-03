@@ -1,7 +1,8 @@
 @extends('adminlte::page')
 @section('css')
     <link rel="stylesheet" href="{{asset('bootstrap/css/bootstrap.css')}}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-BTkxV7Ou8VVZTsLwZIn57c1gmiEUE2OxDxv7+PrKk8h/o7yXrzAa+YSrQe/T1OKKPz7mJrPZgA3qWd5ll5GtQw==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" crossorigin="anonymous" />
+    
 
     <link rel="stylesheet" href="{{asset('css/card.css')}}">
     <link rel="stylesheet" href="{{asset('vendor/sweetalert2/sweetalert2.min.css')}}">
@@ -12,8 +13,7 @@
      
 
 
-    <div class="card mt-3">
-       
+    
             <div class="card">
                 <div class="card-header">
                     <h1>RESUMEN DE FÓRMULAS</h1>
@@ -24,7 +24,8 @@
                             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                                 <div class="card">
                                     <div class="card-header">
-                                        {{ $formula->nombre }}
+                                        {{ $formula->nombre }} &nbsp;
+                                        
                                     </div>
                                     <div class="card-body">
                                         {{ $formula->formula }}
@@ -47,7 +48,11 @@
              
                 <div class="card">
                     <div class="card-header">
-                        <h2>{{ $formula->nombre }}</h2>
+                            <h2>{{ $formula->nombre }}</h2>
+                            <div id={{ "form".$formula->id }} class="d-flex justify-content-end">
+                                <a class="editar" href="{{ route("formulas.edit",$formula) }}" ><i class="fas fa-edit text-secondary"></i></a>
+                                <a class="eliminarformula"><i class="fas fa-trash-alt text-danger"></i></a>
+                            </div>
                     </div>
                     <div class="card-body">
                         <div class="row">
@@ -75,7 +80,10 @@
                                                 <tr>
                                                     <th>Variable</th>
                                                     <th>Descripción</th>
-                                                    <th>Acciones<a class="crear" href="" ><i class="fas fa-plus-circle"></i></a></th>
+                                                    <th>Acciones &nbsp; 
+                                                        <a class="crear" href="" ><i class="fas fa-plus-circle"></i></a> &nbsp;
+                                                        
+                                                    </th>
                                                 </tr>
                                             </thead>
                                             <tbody id="variables">
@@ -269,7 +277,6 @@
                             token:token,
                         },
                     success : function(json) {
-                        console.log($("#formula"+$formula_id).child("tbody").html());
                         if(json.error){
                         $("#error_motivo").html(json.error);
                         }else{
@@ -285,7 +292,8 @@
                                 icon: 'success',
                                 title: 'Se creó correctamente el registro'
                             })
-                            $("table #formula"+$formula_id+" tbody").append("<tr id="+json.id+"><td><strong>"+json.variable+"</strong></td><td>"+json.detalle+"</td><td><a class='editar' ><i class='fas fa-edit text-secondary'></i></a><a class='eliminar'><i class='fas fa-trash-alt text-danger'></i></a></td>");
+                            $("#formula"+$formula_id).children("tbody").append("<tr id="+json.id+"><td><strong>"+json.variable+"</strong></td><td>"+json.detalle+"</td><td><a class='editar' ><i class='fas fa-edit text-secondary'></i></a><a class='eliminar'><i class='fas fa-trash-alt text-danger'></i></a></td>");
+                            // $("#formula"+$formula_id).children("tbody")
                             //$(this).closest('tr').attr("id").substring(7);
                         } 
                     },
@@ -326,6 +334,50 @@
                             success: function (result) {
                                 console.log(result);
                                 $("#" + variable_id).remove();
+                                // mensajeGrande(result.mensaje, 'success', 2000);
+                                
+                            },
+                            error: function (xhr, ajaxOptions, thrownError) {
+                                //mensajeErr();
+                            }
+                        });
+                    } else {
+                        //mensajePequenio('El registro NO se eliminó', 'error', 2000);
+                    }
+                })
+            });
+            $("table").on("click",".eliminarformula", function(e){
+                e.preventDefault();
+                // let formula_id=$(this).closest("tr").attr("id");
+                var formulaid=$(this).closest('table').attr("id").substring(4);
+                console.log(formulaid);
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                
+                Swal.fire({
+                    title: 'Estas seguro(a) de eliminar este registro?',
+                    text: "Si eliminas el registro no lo podras recuperar jamás!",
+                    icon: 'question',
+                    showCancelButton: true,
+                    showConfirmButton: true,
+                    confirmButtonColor: '#25ff80',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Eliminar..!',
+                    position: 'center',
+                }).then((result) => {
+                    if (result.value) {
+                        $.ajax({
+                            url: "{{ url('eliminar/formula/') }}/"+formulaid,
+                            type: 'DELETE',
+                            data: {
+                                _token: $("meta[name='csrf-token']").attr("content"),
+                            },
+                            success: function (result) {
+                                console.log(result);
+                                $("#form" + formulaid).remove();
                                 // mensajeGrande(result.mensaje, 'success', 2000);
                                 
                             },

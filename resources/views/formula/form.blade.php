@@ -16,7 +16,7 @@
 <div class="row">
   <div class="col-xs-12 col-sm-12 col-md-6 col-lg-5">
     <div class="form-floating mb-3 text-gray">
-      <input type="text" class="form-control @error('nombre') is-invalid @enderror" id="nombre" name="nombre" value="{{old('nombre',$nombre->nombre ?? '')}}" placeholder="Ingrese el nombre del nombre">
+      <input type="text" class="form-control @error('nombre') is-invalid @enderror" id="nombre" name="nombre" value="{{old('nombre',$formula->nombre ?? '')}}" placeholder="Ingrese el nombre del nombre">
       <label for="tena">nombre</label>
     </div>
   </div>
@@ -37,7 +37,7 @@
   </div>
 </div>
 
-<div class="row">
+<div class="row mt-3">
   <div class="col-xs-12 col-sm-12 col-md-6 col-lg-5">
       @if($errors->has('detalle'))
           <span class="text-danger"> {{ $errors->first('detalle')}}</span>

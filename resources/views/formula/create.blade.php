@@ -9,7 +9,7 @@
     <div class="card mt-3">
         <div class="card">
             <div class="card-header">
-                FORMULARIO CREAR TEMA PARA LA MATERIA: {{ $tema->tema }}
+                CREAR FORMULA PARA EL TEMA: {{ $tema->tema }}
             </div>
             <div class="card-body">
                 <form action="{{route('formulas.store')}}" method="POST"  enctype="multipart/form-data">

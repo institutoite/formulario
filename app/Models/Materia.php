@@ -16,4 +16,5 @@ class Materia extends Model
     {
         return $this->hasMany(Tema::class);
     }
+    
 }

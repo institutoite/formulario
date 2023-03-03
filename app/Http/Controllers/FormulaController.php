@@ -80,7 +80,7 @@ class FormulaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Formula $formula): Response
+    public function show(Formula $formula)
     {
         //
     }
@@ -88,17 +88,44 @@ class FormulaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Formula $formula): Response
+    public function edit(Formula $formula)
     {
-        //
+    
+        $tema=$formula->tema;   
+        return view("formula.edit",compact("formula","tema"));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateFormulaRequest $request, Formula $formula): RedirectResponse
+    public function update(UpdateFormulaRequest $request, Formula $formula)
     {
-        //
+        //dd($request->all());
+        $formula->nombre = $request->nombre;
+        $formula->formula = $request->formula;
+        $formula->detalle = $request->detalle;
+        $formula->indice = 0;
+        $formula->save();
+        if ($request->hasFile('url')) {
+            
+            if (Storage::disk('public')->exists($materia->imagen->url)) {
+                Storage::disk('public')->delete($materia->imagen->url);
+            }
+            //dd(Storage::disk('public')->exists($materia->imagen->url));
+            $foto = $request->file('url');
+            $nombreImagen = 'formulas/' . $formula->nombre . Str::random(5) . '.jpg';
+            $imagen = Image::make($foto);
+            $imagen->resize(300, 300, function($constraint){
+                $constraint->upsize();
+            });
+            $fotito = Storage::disk('public')->put($nombreImagen, $imagen->stream());
+            //$imagencita=$materia->imagen;
+            $imagencita = $formula->imagen;
+            $imagencita->url=$nombreImagen;
+            $imagencita->save(); 
+        }
+        $tema=$formula->tema;
+        return redirect()->route("formulas.index",$tema)->with('success', 'Fórmula creada exitosamente.');
     }
 
     /**

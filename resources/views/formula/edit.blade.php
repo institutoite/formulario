@@ -4,20 +4,20 @@
     <link rel="stylesheet" href="{{asset('css/card.css')}}">
     <link href="{{ asset('vendor/fileinput/css/fileinput.css') }}" rel="stylesheet">
 @stop
-@section('title', 'Materias')
+@section('title', 'Formulas')
 
 
 @section('content')
     <div class="card mt-3">
         <div class="card">
             <div class="card-header">
-                FORMULARIO CREAR MATERIA
+                FORMULARIO EDITAR FORMULA
             </div>
             <div class="card-body">
-                <form method="POST" action="{{ route('materias.update', $materia->id) }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('formulas.update', $formula->id) }}" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
-                    @include('materia.form')
+                    @include('formula.form')
                     @include('include.update')
                 </form>
             </div>
@@ -42,7 +42,7 @@
         ClassicEditor.create(document.querySelector('#detalle'));
         
         // fileinput 
-      var currentImageUrl = "{{URL::to('/').Storage::url('public/'.$materia->imagen->url)}}";
+        var currentImageUrl = "{{URL::to('/').Storage::url('public/'.$formula->imagen->url)}}";
 
         $('.file-input').fileinput({
             deleteUrl: "/site/file-delete",
@@ -51,7 +51,7 @@
             initialCaption: "click aqui para subir fotos",
             language:'es',
             theme:'fas',
-            initialPreview: '<img src="' + currentImageUrl + '" class="file-preview-image" alt="Current Image">',
+            initialPreview: '<img src="' + currentImageUrl + '" class="file-preview-image" alt="Sin Imagen">',
             initialPreviewConfig: [{caption: 'Current Image', size: null, width: "120px", url: currentImageUrl, key: 1}],
             initialPreviewAsData: false
         });
