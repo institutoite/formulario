@@ -30,7 +30,9 @@
                                         <a class="eliminar" id="{{$materia->id}}"><i class="fas fa-trash-alt text-danger"></i></a>
                                         <a href="{{ route("temas.crear",$materia->id) }}" ><i class="fas fa-plus-circle"></i></a>
                                     </div>
+                                    @isset($materia->imagen->url)
                                     <img src="{{URL::to('/').Storage::url('public/'.$materia->imagen->url)}}" alt="Imagen de la materia">
+                                    @endisset
                                     <p class="slogan">{{$materia->slogan}}</p>
                                     <div class="text-center">
                                         <a href="{{ route("temas.index",$materia) }}" class="btn btn-secondary">Ver Temas</a>
