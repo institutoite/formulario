@@ -73,11 +73,9 @@
                 <div id="ecuacion" class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 
                 </div>
-                    <div id='message-error' class="alert alert-danger danger text-danger" role='alert' style="display: none">
-                        <strong id="error"></strong>
-                    </div>
-
-          
+                <div id='message-error' class="alert alert-danger danger text-danger" role='alert' style="display: none">
+                    <strong id="error"></strong>
+                </div>
             </div>
         </div>
     </div>

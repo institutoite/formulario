@@ -159,7 +159,7 @@
             $("table").on("click",'.editar', function(e){
                 e.preventDefault();
                 let variable_id=$(this).closest('tr').attr("id");
-                //console.log(variable_id);
+                console.log(variable_id);
                 $.ajax({
                     url:"{{url('editar/variable')}}/"+variable_id,
                     // url:"{{url('persona/ultimaobservacion')}}",
@@ -185,20 +185,20 @@
 
             });
             $(".crear").on("click", function(e){
+                console.log("clikc");
                 e.preventDefault();
                 let formula_id=$(this).closest('table').attr("id").substring(7);
                 console.log("id:"+formula_id);
-                 $("#modal-crear").modal("show");
-                 $.ajax({
+
+                $("#modal-crear").modal("show");
+                $.ajax({
                     url:"{{url('get/dimensiones')}}",
                     success: function (result) {
                         $dimensions="";
                         result.forEach(dimension => {
                             $dimensions+="<option value='"+dimension.id+"'>"+ dimension.dimension +"</option>"
                         });
-                        
                         $("#id_dimension").append($dimensions);
-                       
                     },
                     error: function (xhr, ajaxOptions, thrownError) {
                         //mensajeErr();
@@ -263,7 +263,7 @@
                 $detalle=$('#detallecrear').val();
                 $dimension_id=$('#id_dimension').val();
                 $formula_id=$('#formula_id').val();
-               
+                console.log("fdsfsd  fdsf d");
                 var token = $("input[name=_token]").val();
                 $.ajaxSetup({
                 headers: {
