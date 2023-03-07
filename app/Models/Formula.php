@@ -19,4 +19,7 @@ class Formula extends Model
     public function variables(){
         return $this->hasMany(Variable::class);
     }
+    public function ejemplos(){
+        return $this->hasMany(Ejemplo::class);
+    }
 }

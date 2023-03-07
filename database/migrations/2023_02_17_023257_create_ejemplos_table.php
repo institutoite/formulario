@@ -17,6 +17,10 @@ return new class extends Migration
             $table->string('ejemplo', 100);
             $table->string('detalle', 1500);
             $table->bigInteger('indice')->unsigned()->nullable();
+            
+            $table->unsignedBigInteger('formula_id');
+            $table->foreign('formula_id')->references('id')->on('formulas');
+
             $table->timestamps();
         });
     }

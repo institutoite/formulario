@@ -1,0 +1,13 @@
+asociacions(id,nit, nombre, sigla, telefono,coe)
+participantes(id,carnet, nombre, direccion,telefono,genero,fechanacimiento)
+categorias(id,participante_id,vehiculo_id)
+circuitos(id,ubicacion,participante_id,tiempo,fecha_inicio,fecha_fin)
+rallys(id,direccion1,direccion2,direccion3,participante_id,fecha_fin,fecha_inicio,tiempo_tramo)
+inscripcions(id,participante_id,vehiculo_id,team_id)
+vehiculos(id,placa,color,geguro)
+tecnicos(id,carnet,nombre,cargo)
+teams(id,team)
+respustos(id,repuesto)
+ubicacions(id,ubicacion)
+premios(id,premio,participante_id,team_id)
+

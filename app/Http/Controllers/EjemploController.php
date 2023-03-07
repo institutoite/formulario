@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ejemplo;
+use App\Models\Formula;
 use App\Http\Requests\StoreEjemploRequest;
 use App\Http\Requests\UpdateEjemploRequest;
 use Illuminate\Http\RedirectResponse;
@@ -18,28 +19,36 @@ class EjemploController extends Controller
         //
     }
 
+    public function ejemplos(Formula $formula){
+        return $formula->ejemplos;
+    }
     /**
      * Show the form for creating a new resource.
      */
-    public function create(): Response
+    public function create(Formula $formula)
     {
-        //
+        return response()->json($formula);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreEjemploRequest $request): RedirectResponse
+    public function store(StoreEjemploRequest $request)
     {
-        //
+
+        return response()->json($request->all());
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Ejemplo $ejemplo): Response
+    public function show(Formula $formula)
     {
-        //
+        $tema=$formula->tema;
+        $materia=$tema->materia;
+        $ejemplos=$formula->ejemplos;
+        $variables=$formula->variables;
+        return view("formula.show",compact("variables","ejemplos","formula","tema","materia"));
     }
 
     /**

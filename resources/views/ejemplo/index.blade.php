@@ -9,15 +9,10 @@
 @stop
 @section('title', 'Temas')
 @section('content')
-    {{-- <div class="contenedor"> --}}
-     
-
-
-    
             <div class="card">
                 <div class="card-header bg-secondary">
                     <h1 class="text-white">FÓRMULAS DEL TEMA:{{ $tema->tema }}</h1> 
-                     <a href="{{route('formulas.create',$tema)}}" class="btn btn-primary float-right"><i class="fa fa-plus"></i>&nbsp;Nuevo</a>
+                    <a href="{{route('formulas.create',$tema)}}" class="btn btn-primary float-right"><i class="fa fa-plus"></i>&nbsp;Nuevo</a>
                 </div>
                 <div class="card-body">
                     <div class="row">

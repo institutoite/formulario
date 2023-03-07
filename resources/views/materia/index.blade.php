@@ -22,7 +22,6 @@
                             <div class="card carta">
                                 <div class="card-header degradado">
                                     <h3>{{$materia->materia}}</h3>
-                                    
                                 </div>
                                 <div class="card-content">
                                     <div class="actions">

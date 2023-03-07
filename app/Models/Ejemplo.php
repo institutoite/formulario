@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Ejemplo extends Model
 {
     use HasFactory;
+        public function formula(){
+        return $this->belongsTo(Formula::class);
+    }
 }
