@@ -44,7 +44,7 @@
                                     
                                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" > 
                                         <div class="form-floating mb-3">
-                                            <input class="form-control" type="text" name="ejemplo" id="ejemplo" value="">
+                                            <input class="form-control" type="text" name="ejemplo" id="ejemplo" value="" oninput="actualizarContenido()">
                                             <label for="ejemplo">Ejemplo</label>
                                         </div>
                                     </div>
@@ -69,10 +69,13 @@
                             </div>
                         </div>
                     </div>
+                    <div id="ecuacion" class="col-xs-12 col-sm-12 col-md-6 col-lg-6 bg-secondary">
+                        <div id="contenido">
+                            
+                        </div>
+                    </div>
                 </div>    
-                <div id="ecuacion" class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-
-                </div>
+                
                 <div id='message-error' class="alert alert-danger danger text-danger" role='alert' style="display: none">
                     <strong id="error"></strong>
                 </div>

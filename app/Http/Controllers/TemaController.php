@@ -81,27 +81,52 @@ class TemaController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Tema $tema): Response
+   public function edit(Tema $tema)
     {
-        //
+        $materia=$tema->materia;   
+        return view("tema.edit",compact("tema","materia"));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateTemaRequest $request, Tema $tema): RedirectResponse
+    public function update(UpdateTemaRequest $request, Tema $tema)
     {
-        //
+       
+        $tema->tema = $request->tema;
+        $tema->slogan = $request->slogan;
+        $tema->detalle = $request->detalle;
+        $tema->materia_id = $request->materia_id;
+        $tema->indice = 0;
+        $tema->save();
+
+        $materia= Materia::findOrFail($tema->materia_id);
+        //dd($request->hasFile('url'));
+        if ($request->hasFile('url')){
+            if (Storage::disk('public')->exists($tema->imagen->url)) {
+                Storage::disk('public')->delete($tema->imagen->url);
+            }
+
+            $foto=$request->file('url');
+            $nombreImagen='temas/'.$tema->tema.Str::random(5).'.jpg';
+            $imagen= Image::make($foto);
+            $imagen->resize(300,300,function($constraint){
+                $constraint->upsize();
+            });
+            $fotito = Storage::disk('public')->put($nombreImagen, $imagen->stream());
+            $imagencita = $formula->imagen;
+            $imagencita->url=$nombreImagen;
+            $imagencita->save(); 
+        }
+        return redirect()->route("temas.index",$materia)->with('success', 'Materia creada exitosamente.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Tema $tema): RedirectResponse
+    public function destroy(Tema $tema)
     {
-        //
+        $tema->delete();
+        return response()->json(["d"=>2]);
     }
 }

@@ -20,14 +20,18 @@ class EjemploController extends Controller
     }
 
     public function ejemplos(Formula $formula){
-        return $formula->ejemplos;
+
+        $ejemplos=$formula->ejemplo;
+        $tema=$formula->tema;
+        $materia=$tema->materia;
+        return view("ejemplo.show",compact("materia","tema","formula","ejemplos"));
     }
     /**
      * Show the form for creating a new resource.
      */
     public function create(Formula $formula)
     {
-        return response()->json($formula);
+        return view("ejemplo.create",compact("formula"));
     }
 
     /**

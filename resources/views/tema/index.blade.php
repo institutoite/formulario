@@ -12,13 +12,11 @@
         <div class="contenedor">
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
-                    
-                        <h1>Fórmulas de {{ $materia->materia }}</h1>
-                        <hr>
-                        <p class="slogan">{{ $materia->slogan }}</p>
-                        <hr>
-                        <p class="detalle">{{ $materia->detalle }}</p>
-                   
+                    <h1>Fórmulas de {{ $materia->materia }}</h1>
+                    <hr>
+                    <p class="slogan">{{ $materia->slogan }}</p>
+                    <hr>
+                    <p class="detalle">{{ $materia->detalle }}</p>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                     
@@ -32,7 +30,7 @@
         <div class="card mt-3">
             <div class="card-header bg-secondary">
                 Seleccione el tema de su interés
-                <a href="{{route('materias.index')}}" class="btn btn-primary float-right"><i class="fa fa-plus"></i>&nbsp;Nuevo</a>
+                <a href="{{route('temas.crear',$materia)}}" class="btn btn-primary float-right"><i class="fa fa-plus"></i>&nbsp;Nuevo</a>
             </div>
             <div class="card-body">
                 <div class="row">
@@ -70,13 +68,11 @@
 @stop
 
 @section('js')
-    <script> console.log('Hi!'); </script>
     <script src="{{asset('vendor/sweetalert2/sweetalert2.all.js')}}"></script>
     <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
     <script>
         $(document).ready(function() {
-          
-
+           
             $(".eliminar").on("click", function(e){
                 e.preventDefault();
                 id_materia=$(this).attr('id');
@@ -99,7 +95,7 @@
                 }).then((result) => {
                     if (result.value) {
                         $.ajax({
-                            url: 'eliminar/materia/'+id_materia,
+                            url: '../eliminar/tema/'+id_materia,
                             type: 'DELETE',
                             data: {
                                 _token: $("meta[name='csrf-token']").attr("content"),

@@ -62,7 +62,7 @@ Route::get('variable/update', [VariableController::class,'update'])->name('varia
 Route::delete('eliminar/variable/{variable}', [VariableController::class,'destroy'])->name('variables.eliminar');
 
 Route::get('ejemplos/{formula}', [EjemploController::class,'index'])->name('ejemplos.index');
-Route::get('ejemplos/view/{formula}', [EjemploController::class,'show'])->name('ejemplos.view');
+Route::get('ejemplos/view/{formula}', [EjemploController::class,'show'])->name('ejemplos.show');
 Route::get('get/ejemplo/{formula}', [EjemploController::class,'ejemplos'])->name('ejemplos.view');
 Route::get('ejemplos/create/{formula}', [EjemploController::class,'create'])->name('ejemplos.create');
 Route::get('ejemplo/store', [EjemploController::class,'guardarAjax'])->name('ejemplos.store');
