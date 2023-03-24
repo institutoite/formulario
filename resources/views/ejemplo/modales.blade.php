@@ -56,7 +56,7 @@
                                         </div>
                                     </div>
                                     
-                                    <input class="form-control" hidden type="number" id="formula_id" value="{{ $formula->id }}">
+                                    <input class="form-control" type="number" id="formula_id" value="{{ $formula->id }}">
 
                                     <div class="container-fluid h-100 mt-3"> 
                                         <div class="row w-100 align-items-center">

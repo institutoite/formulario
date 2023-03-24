@@ -126,7 +126,6 @@
                     url:"{{url('ejemplos/create')}}/"+formula_id,
                     success: function (json) {
                         console.log(json);
-                       
                     },
                     error: function (xhr, ajaxOptions, thrownError) {
                         //mensajeErr();
@@ -141,6 +140,8 @@
                 $('#ecuacion').text(number);
                 console.log("change");
             });
+
+            
         });
     </script>
 @stop

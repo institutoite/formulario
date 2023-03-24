@@ -14,7 +14,7 @@ class EjemploController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(): Response
+    public function index()
     {
         //
     }
@@ -25,6 +25,13 @@ class EjemploController extends Controller
         $tema=$formula->tema;
         $materia=$tema->materia;
         return view("ejemplo.show",compact("materia","tema","formula","ejemplos"));
+    }
+    // public function listarAjax(Request $request){
+    public function listarAjax(){
+        $formula_id=1;
+        // $ejemplos=Formula::findOrFail($request->formula_id)->ejemplos;
+        $ejemplos=Formula::findOrFail($formula_id)->ejemplos;
+        return response()->json($ejemplos);
     }
     /**
      * Show the form for creating a new resource.
@@ -37,10 +44,16 @@ class EjemploController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreEjemploRequest $request)
+    public function guardarAjax(StoreEjemploRequest $request)
     {
-
-        return response()->json($request->all());
+        $ejemplo=new Ejemplo();
+        $ejemplo->numero=$request->numero;
+        $ejemplo->ejemplo=$request->ejemplo;
+        $ejemplo->detalle=$request->detalle;
+        $ejemplo->formula_id=$request->formula_id;
+        $ejemplo->save();
+        $ejemplos=Formula::findOrFail($request->formula_id)->ejemplos;
+        return response()->json($ejemplos);
     }
 
     /**

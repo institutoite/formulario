@@ -30,7 +30,7 @@ class VariableController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store($variables, $descripciones, $formula, $dimensiones)
+    public function store($variables, $detalles, $formula, $dimensiones)
     {
         if(isset($variables)>0){
             $cuantas_variables=count($variables);

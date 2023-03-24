@@ -69,6 +69,7 @@ Route::get('ejemplo/store', [EjemploController::class,'guardarAjax'])->name('eje
 Route::get('ejemplos/show/{ejemplo}', [EjemploController::class,'show'])->name('ejemplos.show');
 Route::get('editar/ejemplo/{ejemplo}', [EjemploController::class,'edit'])->name('ejemplos.edit');
 Route::get('ejemplo/update', [EjemploController::class,'update'])->name('ejemplos.update');
+Route::get('ejemplos/listar', [EjemploController::class,'listarAjax'])->name('ejemplos.listar');
 Route::delete('eliminar/ejemplo/{ejemplo}', [EjemploController::class,'destroy'])->name('ejemplos.eliminar');
 
 Route::get('get/dimensiones', [DimensionController::class,'getDimension'])->name('dimensiones.get');

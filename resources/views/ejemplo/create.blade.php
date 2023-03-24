@@ -13,7 +13,7 @@
                 <a href="{{route('formulas.index',$tema)}}" class="btn btn-primary float-right"><i class="fa fa-plus"></i>&nbsp;Listar</a>
             </div>
             <div class="card-body">
-                <form action="{{route('formulas.store')}}" method="POST"  enctype="multipart/form-data">
+                <form action="{{route('ejemplo.store')}}" method="POST"  enctype="multipart/form-data">
                     @csrf
                     @include('ejemplo.form')
                     @include('include.store')

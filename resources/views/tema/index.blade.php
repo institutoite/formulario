@@ -19,9 +19,8 @@
                     <p class="detalle">{{ $materia->detalle }}</p>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                    
+                   
                         <img src="{{URL::to('/').Storage::url('public/'.$materia->imagen->url)}}" alt="Imagen de la materia">
-                    
                 </div>
             </div>
         </div>
@@ -49,7 +48,9 @@
                                         <a class="eliminar" id="{{$tema->id}}"><i class="fas fa-trash-alt text-danger"></i></a>
                                         <a href="{{ route("formulas.create",$tema->id) }}" ><i class="fas fa-plus-circle"></i></a>
                                     </div>
-                                    <img src="{{URL::to('/').Storage::url('public/'.$tema->imagen->url)}}" alt="Imagen del tema">
+                                     @if ($tema->imagen)
+                                        <img src="{{URL::to('/').Storage::url('public/'.$tema->imagen->url)}}" alt="Imagen del tema">
+                                    @endif
                                     <p class="slogan">{{$tema->slogan}}</p>
                                     <div class="text-center">
                                         <a href="{{ route("formulas.index",$tema) }}" class="btn btn-secondary">Ver Fórmulas</a>
@@ -115,6 +116,8 @@
                     }
                 })
             });
+
+            $("")
             
         });
     </script>

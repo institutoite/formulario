@@ -131,9 +131,9 @@
                     <p class="detalle">{{ $tema->detalle }}</p>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                
+                 @if ($materia->imagen)
                     <img src="{{URL::to('/').Storage::url('public/'.$tema->imagen->url)}}" alt="Imagen de la materia">
-                
+                @endif
             </div>
         </div>
     </div>
