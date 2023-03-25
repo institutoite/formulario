@@ -177,7 +177,6 @@
             actualizarContenido(); // Mostrar el contenido inicial
             $(document).on("submit","#formulario-crear-ejemplo",function(e){
                 e.preventDefault();//detenemos el envio
-                
                 $numero=$('#numero').val();    
                 $ejemplo=$('#ejemplo').val();
                 $detalle=$('#detalle').val();
