@@ -26,7 +26,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('matematicas',[MatematicaController::class, 'index']); 
-Route::get('prueba',[EjemploController::class, 'prueba']); 
+//Route::get('prueba',[EjemploController::class, 'listarAjax']); 
 
 Route::get('materias', [MateriaController::class,'index'])->name('materias.index');
 Route::get('materias/create', [MateriaController::class,'create'])->name('materias.create');
@@ -66,10 +66,10 @@ Route::get('ejemplos/view/{formula}', [EjemploController::class,'show'])->name('
 Route::get('get/ejemplo/{formula}', [EjemploController::class,'ejemplos'])->name('ejemplos.view');
 Route::get('ejemplos/create/{formula}', [EjemploController::class,'create'])->name('ejemplos.create');
 Route::get('ejemplo/store', [EjemploController::class,'guardarAjax'])->name('ejemplos.store');
-Route::get('ejemplos/show/{ejemplo}', [EjemploController::class,'show'])->name('ejemplos.show');
+// Route::get('ejemplos/show/{ejemplo}', [EjemploController::class,'show'])->name('ejemplos.show');
 Route::get('editar/ejemplo/{ejemplo}', [EjemploController::class,'edit'])->name('ejemplos.edit');
 Route::get('ejemplo/update', [EjemploController::class,'update'])->name('ejemplos.update');
-Route::get('ejemplos/listar', [EjemploController::class,'listarAjax'])->name('ejemplos.listar');
+Route::get('ejemplos/listar/otro', [EjemploController::class,'listarAjax'])->name('ejemplos.listar');
 Route::delete('eliminar/ejemplo/{ejemplo}', [EjemploController::class,'destroy'])->name('ejemplos.eliminar');
 
 Route::get('get/dimensiones', [DimensionController::class,'getDimension'])->name('dimensiones.get');

@@ -49,6 +49,315 @@ class TemaSeeder extends Seeder
             "indice"=>2,
             "materia_id"=>2,
         ]);
+        /** TEMAS AGREGADOS POR ATILIO */
+        Tema::create([
+            "tema"=>"LOGARITMOS",
+            "materia_id"=>1,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"INTRODUCCION A LA GEOMETRIA ANALITICA",
+            "materia_id"=>1,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"PROGRESIONES ARITMETICAS Y GEOMETRICAS",
+            "materia_id"=>1,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"LOGICA SIMBOLICA",
+            "materia_id"=>1,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"DESIGUALDADES Y VALOR ABSOLUTO",
+            "materia_id"=>1,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"RAZONES TRIGONOMETRICAS",
+            "materia_id"=>1,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"TRIANGULOS RECTANGULOS",
+            "materia_id"=>1,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"IDENTIDADES",
+            "materia_id"=>1,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"SISTEMA DE ECUACIONES LINEALES",
+            "materia_id"=>1,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"CONJUNTOS",
+            "materia_id"=>1,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"FUNCIONES",
+            "materia_id"=>1,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"RELACIONES",
+            "materia_id"=>1,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"LA RECTA",
+            "materia_id"=>1,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"LA CIRCUNFERECIA",
+            "materia_id"=>1,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"LA PARABOLA",
+            "materia_id"=>1,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"LA ELIPSE",
+            "materia_id"=>1,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"LA HIPERBOLA",
+            "materia_id"=>1,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"LIMITES",
+            "materia_id"=>1,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"DERIVADAS",
+            "materia_id"=>1,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"INTEGRALES",
+            "materia_id"=>1,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"DESCOMPOSICION FACTORIAL",
+            "materia_id"=>1,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"M.C.D. expresiones algebráicas",
+            "materia_id"=>1,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"AREAS DE FIGURAS PLANAS",
+            "materia_id"=>1,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"VOLUMENES DE CUERPOS",
+            "materia_id"=>1,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"M.C.M de expresiones algebráicas",
+            "materia_id"=>1,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"TRIANGULOS OBLICUANGULOS",
+            "materia_id"=>1,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"RELACION INVERSA Y DIRECTAMENTE PROPORCIONALES",
+            "materia_id"=>1,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"REGLA DE 3 SIMPLE Y COMPUESTA",
+            "materia_id"=>1,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"CLASIFICACION DE LOS TRIANGULOS SEGUN SUS LADOS",
+            "materia_id"=>1,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"CLASIFICACION DE LOS TRIANGULOS SEGUN SUS ANGULOS",
+            "materia_id"=>1,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"PERIMETROS DE FIGURAS NOTABLES",
+            "materia_id"=>1,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"AREA DE POLIGONOS POR COORDENADAS",
+            "materia_id"=>1,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"CONVERSION DE FRACCIONES DECIMALES A FRACCIONES COMUNES",
+            "materia_id"=>1,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"NOTACIÓN CIENTIFICA",
+            "materia_id"=>1,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"PRODUCTOS NOTABLES",
+            "materia_id"=>1,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"COCIENTES NOTABLES",
+            "materia_id"=>1,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"BINOMIO DE NEWTON POR EL TRIANGULO DE PASSCAL Y POR COMBINATORIA",
+            "materia_id"=>1,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"FACTORIAL,COMBINACION, PERMUTACION Y VARIACION",
+            "materia_id"=>1,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"INDUCCION COMPLETA",
+            "materia_id"=>1,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"NUMEROS COMLEJOS",
+            "materia_id"=>1,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"MULTIPLICADORES DE LAGRANGE",
+            "materia_id"=>1,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"GRAFICA DE FUNCIONES TRIGONOMETRICAS",
+            "materia_id"=>1,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"CRITERIOS DE DIVISIBILIDAD",
+            "materia_id"=>1,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"RAIZ CUADRADA Y RAIZ CUBICA",
+            "materia_id"=>1,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
         Imagen::create([
             "imageable_id"=>1,
             "imageable_type"=>"App\Models\Tema",
@@ -73,4 +382,3 @@ class TemaSeeder extends Seeder
     }
 }
 
- 

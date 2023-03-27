@@ -29,8 +29,10 @@ class EjemploController extends Controller
     // public function listarAjax(Request $request){
     public function listarAjax(){
         $formula_id=1;
+        // return response()->json($request->all());
         // $ejemplos=Formula::findOrFail($request->formula_id)->ejemplos;
         $ejemplos=Formula::findOrFail($formula_id)->ejemplos;
+        //dd($ejemplos);
         return response()->json($ejemplos);
     }
     /**

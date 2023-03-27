@@ -69,15 +69,18 @@
                 </div>
             </div>
         </div>
+        <div id="tabla-container"></div>
         <table class="table table-light">
             <thead class="thead-light">
                 <tr>
                     <th>#</th>
                     <th>#</th>
                     <th>#</th>
+                    <th>#</th>
+                    <th>#</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="datos">
               
             </tbody>
         </table>
@@ -121,47 +124,34 @@
         // });
     
 </script>
-
-    <script>
-  
-        //  function mostrarTexto() {
-        //         var texto = $("#ejemplo").val();
-        //         console.log(texto);
-        //         $("#contenido").html("<p>"+texto+"</p>");
-        //         MathJax.startup.document.clear();
-        //         MathJax.typesetPromise([$("#contenido")]);
-
-        //         MathJax.startup.document.clear();
-        //         MathJax.typesetPromise([divContenido]);
-
-        //         // MathJax.typesetClear([$("#ejemplo")]);
-        //         // MathJax.typesetPromise([], latex);
-        //         // document.getElementById("contenido").innerHTML = texto;
-        //     }
-    </script>
-
     <script>
         $(document).ready(function() {
             tabla = $("tabla");
             console.log(tabla);
             $.ajax({
-                    url : "{{url('ejemplos/listar')}}",
+                    url : "{{url('ejemplos/listar/otro')}}",
                     data:{
                             formula_id:$("#formula_id").val(),
                         },
                     success : function(json) {
-                   
-                        $.each(json, function(i, ejemplo) {
-                        // Crear una nueva fila de la tabla con los datos del ejemplo
-                        var fila = $("<tr>").append(
-                            $("<td>").text(ejemplo.numero),
-                            $("<td>").text(ejemplo.ejemplo),
-                            $("<td>").text(ejemplo.detalle)
-                        );
-                         console.log(json);
-                        // Agregar la fila a la tabla
-                        tabla.append(fila);
+                        console.log("estos son los ejemplos");
+                        console.log(json);
+
+                        // var html = "<table>";
+                        // html += "<thead><tr><th>Número</th><th>Ejemplo</th><th>Detalle</th><th>Índice</th><th>ID de fórmula</th></tr></thead>";
+                        // html += "<tbody>";
+                        html="";
+                        $.each(json, function(index, row) {
+                        html += "<tr id='"+row.id+"'>";
+                        html += "<td>" + row.numero + "</td>";
+                        html += "<td>" + row.ejemplo + "</td>";
+                        html += "<td>" + row.detalle + "</td>";
+                        html += "<td class='editarejemplo'><i class='fas fa-edit text-secondary'></i></td>";
+                        html += "<td class='eliminar'><i class='fas fa-trash-alt text-danger'></td>";
+                        html += "</tr>";
                         });
+                        //html += "</tbody></table>";
+                        $("#datos").html(html);
                     },
                     error:function(jqXHR,estado,error){
                         console.log("Erorr");
@@ -173,6 +163,10 @@
             $("#crearejemplo").on("click", function(e){
                 e.preventDefault();
                 $("#modal-crear-ejemplo").modal("show");
+            });
+            $("table").on('click',".editarejemplo", function(e){
+                e.preventDefault();
+                console.log("click");
             });
             actualizarContenido(); // Mostrar el contenido inicial
             $(document).on("submit","#formulario-crear-ejemplo",function(e){
@@ -199,7 +193,8 @@
                             token:token,
                         },
                     success : function(json) {
-                        console.log(json);
+                        
+
                         if(json.error){
                         $("#error_motivo").html(json.error);
                         }else{
