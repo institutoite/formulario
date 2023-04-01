@@ -153,7 +153,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <input class="form-control" type="number" id="formula_id" value="">
+                            <input class="form-control" hidden type="number" id="formula_id" value="">
                             <div class="container-fluid h-100 mt-3"> 
                                 <div class="row w-100 align-items-center">
                                     <div class="col text-center">

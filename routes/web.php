@@ -8,6 +8,7 @@ use App\Http\Controllers\FormulaController;
 use App\Http\Controllers\VariableController;
 use App\Http\Controllers\EjemploController;
 use App\Http\Controllers\DimensionController;
+use App\Models\Materia;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,7 +21,8 @@ use App\Http\Controllers\DimensionController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $materias=Materia::all();
+    return view('welcome',compact("materias"));
 });
 
 Auth::routes();

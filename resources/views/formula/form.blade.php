@@ -27,6 +27,9 @@
       </div>
   </div>
 </div>
+<div id="previsualizar" class="row bg-secondary p-4 text-center">
+
+</div>
 <div class="row">
   <div class="col-12">
     

@@ -99,9 +99,7 @@ class VariableController extends Controller
             $variable->dimension_id = $request->dimension_id;
             $variable->save();
             return response()->json(['variable'=>$variable]);
-        // }else{
-        //     return response()->json(['error' => $validator->errors()->first()]);
-        // }
+       
     }
 
      /**

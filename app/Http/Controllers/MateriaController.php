@@ -54,12 +54,15 @@ class MateriaController extends Controller
                 $constraint->upsize();
             });
             $fotito = Storage::disk('public')->put($nombreImagen, $imagen->stream());
-            Imagen::create([
+            
+        }else{
+            $nombreImagen='formulas/formula.jpg';
+        }
+        Imagen::create([
                 'url'=>$nombreImagen,
                 'imageable_id'=>$materia->id,
                 'imageable_type'=>'App\Models\Materia',
             ]);
-        }
         return redirect('materias')->with('success', 'Materia creada exitosamente.');
     }
 

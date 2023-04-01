@@ -64,12 +64,15 @@ class TemaController extends Controller
                 $constraint->upsize();
             });
             $fotito = Storage::disk('public')->put($nombreImagen, $imagen->stream());
-            Imagen::create([
+            
+        }else{
+             $nombreImagen='formulas/formula.jpg';
+        }
+        Imagen::create([
                 'url'=>$nombreImagen,
                 'imageable_id'=>$tema->id,
                 'imageable_type'=>'App\Models\Tema',
             ]);
-        }
         return redirect()->route("temas.index",$materia)->with('success', 'Materia creada exitosamente.');
     }
 

@@ -50,12 +50,12 @@ class EjemploController extends Controller
     {
         $ejemplo=new Ejemplo();
         $ejemplo->numero=$request->numero;
-        $ejemplo->ejemplo=$request->ejemplo;
+        $ejemplo->ejemplo="$$".$request->ejemplo."$$";
         $ejemplo->detalle=$request->detalle;
         $ejemplo->formula_id=$request->formula_id;
         $ejemplo->save();
         $ejemplos=Formula::findOrFail($request->formula_id)->ejemplos;
-        return response()->json($ejemplos);
+        return response()->json($ejemplo);
     }
 
     /**
@@ -73,24 +73,31 @@ class EjemploController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Ejemplo $ejemplo): Response
+    public function edit(Ejemplo $ejemplo)
     {
-        //
+        //data=["ejemplo"=>$ejemplo,"for"]
+        return response()->json($ejemplo);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateEjemploRequest $request, Ejemplo $ejemplo): RedirectResponse
+    public function update(UpdateEjemploRequest $request)
     {
-        //
+        $ejemplo = Ejemplo::findOrFail($request->ejemplo_id);
+        $ejemplo->ejemplo = "$$".$request->ejemplo."$$";
+        $ejemplo->numero = $request->numero;
+        $ejemplo->detalle = $request->detalle;
+        $ejemplo->save();
+        return response()->json($ejemplo);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Ejemplo $ejemplo): RedirectResponse
+    public function destroy(Ejemplo $ejemplo)
     {
-        //
+        $ejemplo->delete();
+        return response()->json(["mensaje" =>"Registro Eliminado correctamente"]);
     }
 }

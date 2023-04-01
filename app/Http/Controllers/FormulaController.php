@@ -50,7 +50,7 @@ class FormulaController extends Controller
         //dd($request->all());
         $formula = new Formula();
         $formula->nombre = $request->nombre;
-        $formula->formula = $request->formula;
+        $formula->formula = "$$".$request->formula."$$";
         $formula->detalle = $request->detalle;
         $formula->tema_id = $request->tema_id;
         $formula->indice = 0;
@@ -60,20 +60,22 @@ class FormulaController extends Controller
         $ObjetoVariable->store($request->variables,$request->detalle,$formula,$request->dimensiones);
 
         $tema= Tema::findOrFail($formula->tema_id);
-        if ($request->hasFile('url')){
-            $foto=$request->file('url');
-            $nombreImagen='formulas/'.$formula->nombre.Str::random(5).'.jpg';
-            $imagen= Image::make($foto);
-            $imagen->resize(300,300,function($constraint){
-                $constraint->upsize();
-            });
-            $fotito = Storage::disk('public')->put($nombreImagen, $imagen->stream());
-            Imagen::create([
-                'url'=>$nombreImagen,
-                'imageable_id'=>$formula->id,
-                'imageable_type'=>'App\Models\Formula',
-            ]);
+            if ($request->hasFile('url')){
+                $foto=$request->file('url');
+                $nombreImagen='formulas/'.$formula->nombre.Str::random(5).'.jpg';
+                $imagen= Image::make($foto);
+                $imagen->resize(300,300,function($constraint){
+                    $constraint->upsize();
+                });
+                $fotito = Storage::disk('public')->put($nombreImagen, $imagen->stream());
+        }else{
+            $nombreImagen='formulas/formula.jpg';
         }
+        Imagen::create([
+            'url'=>$nombreImagen,
+            'imageable_id'=>$formula->id,
+            'imageable_type'=>'App\Models\Formula',
+        ]);
         return redirect()->route("formulas.index",$tema)->with('success', 'Materia creada exitosamente.');
     }
 
@@ -102,7 +104,7 @@ class FormulaController extends Controller
     {
         //dd($request->all());
         $formula->nombre = $request->nombre;
-        $formula->formula = $request->formula;
+        $formula->formula = "$$".$request->formula."$$";
         $formula->detalle = $request->detalle;
         $formula->indice = 0;
         $formula->save();

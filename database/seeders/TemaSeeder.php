@@ -50,27 +50,44 @@ class TemaSeeder extends Seeder
             "materia_id"=>2,
         ]);
         /** TEMAS AGREGADOS POR ATILIO */
-        Tema::create([
-            "tema"=>"LOGARITMOS",
-            "materia_id"=>1,
-            "slogan"=>"",
-            "detalle"=>"",
-            "indice"=>1,
-        ]);
-        Tema::create([
-            "tema"=>"INTRODUCCION A LA GEOMETRIA ANALITICA",
-            "materia_id"=>1,
-            "slogan"=>"",
-            "detalle"=>"",
-            "indice"=>1,
-        ]);
-        Tema::create([
-            "tema"=>"PROGRESIONES ARITMETICAS Y GEOMETRICAS",
-            "materia_id"=>1,
-            "slogan"=>"",
-            "detalle"=>"",
-            "indice"=>1,
-        ]);
+       Copy code
+// Tema 1
+// Slogan: Descubre el poder de los logaritmos
+// Descripción: Los logaritmos son una herramienta matemática poderosa que se usa en muchas áreas diferentes. En este tema, aprenderás cómo funcionan los logaritmos, cómo calcularlos y cómo aplicarlos en problemas del mundo real.
+
+Tema::create([
+    "tema"=>"LOGARITMOS",
+    "materia_id"=>1,
+    "slogan"=>"Descubre el poder de los logaritmos",
+    "detalle"=>"Los logaritmos son una herramienta matemática poderosa que se usa en muchas áreas diferentes. En este tema, aprenderás cómo funcionan los logaritmos, cómo calcularlos y cómo aplicarlos en problemas del mundo real.",
+    "indice"=>1,
+]);
+
+// Tema 2
+// Slogan: Explora la belleza de la geometría analítica
+// Descripción: La geometría analítica combina la geometría y el álgebra para crear una herramienta poderosa para resolver problemas geométricos. En este tema, aprenderás los fundamentos de la geometría analítica, incluyendo cómo trabajar con coordenadas y cómo encontrar ecuaciones de líneas y formas geométricas.
+
+Tema::create([
+    "tema"=>"INTRODUCCION A LA GEOMETRIA ANALITICA",
+    "materia_id"=>1,
+    "slogan"=>"Explora la belleza de la geometría analítica",
+    "detalle"=>"La geometría analítica combina la geometría y el álgebra para crear una herramienta poderosa para resolver problemas geométricos. En este tema, aprenderás los fundamentos de la geometría analítica, incluyendo cómo trabajar con coordenadas y cómo encontrar ecuaciones de líneas y formas geométricas.",
+    "indice"=>1,
+]);
+
+// Tema 3
+// Slogan: Descubre el patrón detrás de las progresiones
+// Descripción: Las progresiones aritméticas y geométricas son secuencias numéricas que aparecen en muchos problemas y situaciones diferentes. En este tema, aprenderás cómo reconocer y trabajar con progresiones, incluyendo cómo encontrar términos y sumas.
+
+Tema::create([
+    "tema"=>"PROGRESIONES ARITMETICAS Y GEOMETRICAS",
+    "materia_id"=>1,
+    "slogan"=>"Descubre el patrón detrás de las progresiones",
+    "detalle"=>"Las progresiones aritméticas y geométricas son secuencias numéricas que aparecen en muchos problemas y situaciones diferentes. En este tema, aprenderás cómo reconocer y trabajar con progresiones, incluyendo cómo encontrar términos y sumas.",
+    "indice"=>1,
+]);
+
+// Tema
         Tema::create([
             "tema"=>"LOGICA SIMBOLICA",
             "materia_id"=>1,
@@ -351,6 +368,8 @@ class TemaSeeder extends Seeder
             "detalle"=>"",
             "indice"=>1,
         ]);
+        
+        
         Tema::create([
             "tema"=>"RAIZ CUADRADA Y RAIZ CUBICA",
             "materia_id"=>1,
@@ -358,11 +377,309 @@ class TemaSeeder extends Seeder
             "detalle"=>"",
             "indice"=>1,
         ]);
+
+        /** fisica  */
+        Tema::create([
+            "tema"=>"NOTACION CIENTIFICA",
+            "materia_id"=>2,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"ESCALA TERMICA",
+            "materia_id"=>2,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"DILATACION TERMICA",
+            "materia_id"=>2,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"CALORIMETRIA",
+            "materia_id"=>2,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"LEY DE LOS GASES",
+            "materia_id"=>2,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"MOVIMIENTO RECTILINEO UNIFORMEMENTE VARIADO",
+            "materia_id"=>2,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"MOVIMIENTO VERTICAL- CAIDA LIBRE",
+            "materia_id"=>2,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"MOVIMIENTO PARABOLICO",
+            "materia_id"=>2,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"MOVIMIENTO CIRCULAR UNIFORME",
+            "materia_id"=>2,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"MOVIMIENTO CIRCULAR UNIFORMEMENTE VARIADO",
+            "materia_id"=>2,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"MOVIMIENTO OSCILATORIO",
+            "materia_id"=>2,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"DINAMICA DE PARTICULAS",
+            "materia_id"=>2,
+            "slogan"=>"",
+            
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"FUERZA ELECTRICA",
+            "materia_id"=>2,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"CAMPO ELECTRICO",
+            "materia_id"=>2,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"POTENCIAL ELECTRICO",
+            "materia_id"=>2,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"TRABAJO ELECTRICO",
+            "materia_id"=>2,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"CAPACIDAD ELECTRICA",
+            "materia_id"=>2,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"ASOCIACION DE CONDENSADORES",
+            "materia_id"=>2,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::
+        
+        create([
+            "tema"=>"CIRCUITOS ELECTRICOS",
+            "materia_id"=>2,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"LEYES DE KIRCHHOFF",
+            "materia_id"=>2,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"LEYES DE KEPLER",
+            "materia_id"=>2,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"OPTICA",
+            "materia_id"=>2,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"TERMODINAMICA",
+            "materia_id"=>2,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"ELECTROMAGNETISMO",
+            "materia_id"=>2,
+            "slogan"=>"",
+            "detalle"=>"",
+
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"EQUILIBRIO TERMICO",
+            "materia_id"=>2,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"CAMBIOS DE ESTADO",
+            "materia_id"=>2,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+
+
+        Tema::create([
+            "tema"=>"TEORIA DE ERRORES",
+            "materia_id"=>2,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"CENTROS DE GRAVEDAD Y MOMENTOS DE INERCIA",
+            "materia_id"=>2,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"PRINCIO DE ARQUIMEDES",
+            "materia_id"=>2,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"PRICIPIO DE PASCAL",
+            "materia_id"=>2,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"EMPUJES Y FLOTACION",
+            "materia_id"=>2,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"ECUACION DE CONTINUDAD",
+            "materia_id"=>2,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"ECUACION DE BERNOULLI",
+            "materia_id"=>2,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"LEY DE LA CONSERVACION DE LA ENERGIA",
+            "materia_id"=>2,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"LEY DE LA CONSERVACION DE LA CANTIDAD DE MOVIMIENTO",
+            "materia_id"=>2,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"TRABAJO,ENERGIA Y POTENCIA",
+            "materia_id"=>2,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"CORRIENTE ELECTRICA",
+            "materia_id"=>2,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"VECTORES",
+
+            "materia_id"=>2,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"GRAVITACION UNIVERSAL",
+            "materia_id"=>2,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"LEYES DE TERMODINAMICA",
+            "materia_id"=>2,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+        Tema::create([
+            "tema"=>"ECUACIONES DIMENSIONALES",
+            "materia_id"=>2,
+            "slogan"=>"",
+            "detalle"=>"",
+            "indice"=>1,
+        ]);
+
         Imagen::create([
             "imageable_id"=>1,
             "imageable_type"=>"App\Models\Tema",
             "url"=>"temas/imagen.jpg",
         ]);
+
         Imagen::create([
             "imageable_id"=>2,
             "imageable_type"=>"App\Models\Tema",
