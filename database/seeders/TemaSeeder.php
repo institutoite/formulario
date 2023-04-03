@@ -50,7 +50,7 @@ class TemaSeeder extends Seeder
             "materia_id"=>2,
         ]);
         /** TEMAS AGREGADOS POR ATILIO */
-       Copy code
+       
 // Tema 1
 // Slogan: Descubre el poder de los logaritmos
 // Descripción: Los logaritmos son una herramienta matemática poderosa que se usa en muchas áreas diferentes. En este tema, aprenderás cómo funcionan los logaritmos, cómo calcularlos y cómo aplicarlos en problemas del mundo real.
