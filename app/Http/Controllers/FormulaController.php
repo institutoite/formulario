@@ -110,8 +110,8 @@ class FormulaController extends Controller
         $formula->save();
         if ($request->hasFile('url')) {
             
-            if (Storage::disk('public')->exists($materia->imagen->url)) {
-                Storage::disk('public')->delete($materia->imagen->url);
+            if (Storage::disk('public')->exists($formula->imagen->url)) {
+                Storage::disk('public')->delete($formula->imagen->url);
             }
             //dd(Storage::disk('public')->exists($materia->imagen->url));
             $foto = $request->file('url');
