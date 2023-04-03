@@ -45,11 +45,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.js" integrity="sha256-riEobt1CgYPnICe8nCZd1KQfJGZlW7hJGj92yReFY+g=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.js"></script>
     
+    @isset($formula->imagen)
+        var currentImageUrl = "{{URL::to('/').Storage::url('public/'.$formula->imagen->url)}}";
+    @endisset
+
     <script>
         ClassicEditor.create(document.querySelector('#detalle'));
         
-        // fileinput 
-        var currentImageUrl = "{{URL::to('/').Storage::url('public/'.$formula->imagen->url)}}";
+        
+        
 
         $('.file-input').fileinput({
             deleteUrl: "/site/file-delete",

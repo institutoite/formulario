@@ -94,6 +94,7 @@ class FormulaController extends Controller
     {
     
         $tema=$formula->tema;   
+        $formula->formula=str_replace("$","",$formula->formula);
         return view("formula.edit",compact("formula","tema"));
     }
 
