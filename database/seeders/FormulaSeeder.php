@@ -42,6 +42,17 @@ class FormulaSeeder extends Seeder
             "imageable_type"=>"App\Models\Formula",
             "url"=>"formulas/cuadratica.jpg",
         ]);
+        Imagen::create([
+            "imageable_id"=>2,
+            "imageable_type"=>"App\Models\Formula",
+            "url"=>"formulas/cuadratica.jpg",
+        ]);
+        Imagen::create([
+            "imageable_id"=>3,
+            "imageable_type"=>"App\Models\Formula",
+            "url"=>"formulas/cuadratica.jpg",
+        ]);
+       
     }
 }
 
