@@ -41,20 +41,20 @@
     <script src="{{ asset('vendor/fileinput/js/locales/es.js') }}"></script>
     
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css" integrity="sha256-x5TVfS1Xb9d7XdHvDrcj+gO8ZMQGJHmzOrjv3egfIg8=" crossorigin="anonymous" />
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css" integrity="sha256-x5TVfS1Xb9d7XdHvDrcj+gO8ZMQGJHmzOrjv3egfIg8=" crossorigin="anonymous" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.js" integrity="sha256-riEobt1CgYPnICe8nCZd1KQfJGZlW7hJGj92yReFY+g=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.js"></script>
     
-    @isset($formula->imagen)
-        var currentImageUrl = "{{URL::to('/').Storage::url('public/'.$formula->imagen->url)}}";
-    @endisset
+    {{-- @isset($formula->imagen)
+        
+    @endisset --}}
 
     <script>
         ClassicEditor.create(document.querySelector('#detalle'));
         
         
-        
-
+        var currentImageUrl = "{{URL::to('/').Storage::url('public/'.$formula->imagen->url)}}";
+        console.log("{{ $formula->imagen->url }}");
         $('.file-input').fileinput({
             deleteUrl: "/site/file-delete",
             overwriteInitial: true,
@@ -73,7 +73,7 @@
             input.addEventListener('input', (event) => {
                 katex.render(input.value, previsualizar);
             });
-
+           
         });
     </script>
 @stop
