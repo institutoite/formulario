@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('formulas', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre', 100);
-            $table->string('formula', 100);
-            $table->string('detalle', 800)->nullable();
+            $table->string('nombre', 250);
+            $table->string('formula', 2500);
+            $table->string('detalle', 5000)->nullable();
             $table->bigInteger('indice')->unsigned()->nullable();
 
             $table->unsignedBigInteger('tema_id');

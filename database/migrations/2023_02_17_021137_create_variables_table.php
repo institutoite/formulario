@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('variables', function (Blueprint $table) {
             $table->id();
-            $table->string('variable',10);
-            $table->string('detalle',1500);
+            $table->string('variable',20);
+            $table->string('detalle',5000);
             
             $table->unsignedBigInteger('dimension_id');
             $table->foreign('dimension_id')->references('id')->on('dimensions');

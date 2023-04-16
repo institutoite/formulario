@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('temas', function (Blueprint $table) {
             $table->id();
-            $table->string('tema', 100);
+            $table->string('tema', 250);
             $table->string('slogan', 250);
-            $table->string('detalle', 1500);
+            $table->string('detalle', 5000);
             $table->bigInteger('indice')->unsigned();
 
             $table->unsignedBigInteger('materia_id');

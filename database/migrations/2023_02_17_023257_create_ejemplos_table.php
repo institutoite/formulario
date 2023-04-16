@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('ejemplos', function (Blueprint $table) {
             $table->id();
             $table->integer('numero')->unsigned();
-            $table->string('ejemplo', 100);
-            $table->string('detalle', 1500);
+            $table->string('ejemplo', 3000);
+            $table->string('detalle', 5000);
             $table->bigInteger('indice')->unsigned()->nullable();
             
             $table->unsignedBigInteger('formula_id');

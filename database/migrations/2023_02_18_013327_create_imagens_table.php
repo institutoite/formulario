@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('imagens', function (Blueprint $table) {
             $table->id();
-            $table->string('url',50)->nullable();
+            $table->string('url',100)->nullable();
             $table->unsignedBigInteger('imageable_id');
             $table->string('imageable_type',50);
             //$table->primary(['imageable_id','imageable_type']);

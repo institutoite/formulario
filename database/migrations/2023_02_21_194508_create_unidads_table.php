@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('unidads', function (Blueprint $table) {
             $table->id();
-            $table->string('unidad',25 );
-            $table->string('abreviatura',20 );
+            $table->string('unidad',100 );
+            $table->string('abreviatura',500 );
             $table->unsignedBigInteger('dimension_id');
             $table->foreign('dimension_id')->references('id')->on('dimensions');
             $table->timestamps();

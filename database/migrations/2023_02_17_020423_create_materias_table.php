@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('materia',25);
             $table->string('slogan', 150);
-            $table->string('detalle', 1500);
+            $table->string('detalle', 2000);
             $table->bigInteger('indice')->unsigned()->nullable();
             $table->timestamps();   
         });
