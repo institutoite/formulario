@@ -22,9 +22,9 @@ class StoreFormulaRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nombre'=> 'required|string|max:100',
-            'formula'=> 'required|string|max:100',
-            'detalle'=> 'nullable|string|max:800',
+            'nombre'=> 'required|string|max:250',
+            'formula'=> 'required|string|max:2500',
+            'detalle'=> 'nullable|string|max:5000',
             'tema_id'=> 'required|exists:temas,id',
         ];
     }

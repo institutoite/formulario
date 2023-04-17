@@ -24,7 +24,7 @@ class StoreMateriaRequest extends FormRequest
         return [
             'materia' => 'required|unique:materias|max:25',
             'slogan' => 'required|max:150',
-            'detalle' => 'required|max:1500',
+            'detalle' => 'required|max:2000',
             'url' => 'nullable|image|max:3000',
         ];
     }
