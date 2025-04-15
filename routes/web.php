@@ -9,6 +9,8 @@ use App\Http\Controllers\VariableController;
 use App\Http\Controllers\EjemploController;
 use App\Http\Controllers\DimensionController;
 use App\Models\Materia;
+use Illuminate\Support\Facades\Auth;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,7 +27,10 @@ Route::get('/', function () {
     return view('welcome',compact("materias"));
 });
 
+
 Auth::routes();
+Route::post('enviar', [MateriaController::class,'enviar'])->name('contacto.enviar');
+Route::post('enviar/DFDS', [MateriaController::class,'enviarS'])->name('newsletter.suscribir');
 
 Route::get('matematicas',[MatematicaController::class, 'index']); 
 //Route::get('prueba',[EjemploController::class, 'listarAjax']); 

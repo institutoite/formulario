@@ -1,0 +1,693 @@
+/* Variables */
+:root {
+    /* Colores principales */
+    --primary-color: rgb(38, 186, 165);
+    --primary-light: rgba(38, 186, 165, 0.1);
+    --primary-dark: rgb(28, 150, 133);
+    
+    /* Colores secundarios */
+    --secondary-color: rgb(55, 95, 122);
+    --secondary-light: rgba(55, 95, 122, 0.1);
+    --secondary-dark: rgb(40, 70, 90);
+    
+    /* Escala de grises */
+    --dark-color: #1f2937;
+    --darker-color: #111827;
+    --light-color: #f9fafb;
+    --lighter-color: #ffffff;
+    --gray-color: #6b7280;
+    --gray-light: #e5e7eb;
+    --gray-dark: #4b5563;
+    
+    /* Colores de estado */
+    --success-color: #10b981;
+    --warning-color: #f59e0b;
+    --danger-color: #ef4444;
+    --info-color: #3b82f6;
+    
+    /* Variables de diseño */
+    --border-radius: 8px;
+    --border-radius-sm: 4px;
+    --box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --box-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --transition: all 0.3s ease;
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Reset y estilos base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--light-color);
+    color: var(--dark-color);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header */
+.main-header {
+    background-color: white;
+    box-shadow: var(--box-shadow);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+}
+
+.logo-container h1 {
+    color: var(--primary-color);
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+}
+
+.tagline {
+    color: var(--gray-color);
+    font-size: 0.9rem;
+}
+
+.main-nav .nav-links {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}
+
+.main-nav .nav-links a {
+    color: var(--dark-color);
+    font-weight: 500;
+    text-decoration: none;
+    transition: var(--transition);
+    position: relative;
+}
+
+.main-nav .nav-links a.active,
+.main-nav .nav-links a:hover {
+    color: var(--primary-color);
+}
+
+.main-nav .nav-links a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--primary-color);
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--dark-color);
+    cursor: pointer;
+}
+
+/* Breadcrumb */
+.breadcrumb-container {
+    background-color: var(--light-color);
+    padding: 15px 0;
+    border-bottom: 1px solid var(--gray-light);
+}
+
+.breadcrumb {
+    display: flex;
+    gap: 10px;
+    list-style: none;
+    font-size: 0.9rem;
+}
+
+.breadcrumb li:not(:last-child)::after {
+    content: '/';
+    margin-left: 10px;
+    color: var(--gray-color);
+}
+
+.breadcrumb a {
+    color: var(--gray-color);
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    color: var(--primary-color);
+}
+
+/* Main App Container */
+.app-container {
+    padding: 30px 0;
+}
+
+/* Formula Cards */
+.formulas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.formula-card {
+    background-color: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.formula-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--box-shadow-lg);
+}
+
+.formula-card-header {
+    background-color: var(--secondary-light);
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--gray-light);
+}
+
+.formula-card-header h3 {
+    color: var(--secondary-dark);
+    font-size: 1.1rem;
+}
+
+.formula-card-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.formula-card-actions a {
+    color: var(--gray-color);
+    transition: var(--transition);
+}
+
+.formula-card-actions a:hover {
+    color: var(--primary-color);
+}
+
+.formula-card-actions .text-danger:hover {
+    color: var(--danger-color);
+}
+
+.formula-card-body {
+    padding: 15px;
+    font-size: 1.1rem;
+}
+
+/* Formula Details */
+.formula-detail-card {
+    background-color: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    margin-bottom: 30px;
+    overflow: hidden;
+}
+
+.formula-detail-header {
+    padding: 20px;
+    background-color: var(--secondary-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.formula-detail-header h2 {
+    color: var(--secondary-dark);
+}
+
+.formula-detail-body {
+    padding: 20px;
+}
+
+.formula-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--border-radius);
+    margin-bottom: 20px;
+}
+
+.formula-representation {
+    background-color: var(--primary-light);
+    padding: 15px;
+    border-radius: var(--border-radius);
+    margin-bottom: 20px;
+}
+
+.formula-rep-header h5 {
+    color: var(--secondary-dark);
+    margin-bottom: 10px;
+}
+
+.formula-rep-body h4 {
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.variables-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.variables-table th, 
+.variables-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--gray-light);
+}
+
+.variables-table th {
+    background-color: var(--secondary-light);
+    color: var(--secondary-dark);
+    font-weight: 600;
+}
+
+.variables-table tr:hover {
+    background-color: var(--primary-light);
+}
+
+.table-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.table-actions a {
+    color: var(--gray-color);
+    transition: var(--transition);
+}
+
+.table-actions a:hover {
+    color: var(--primary-color);
+}
+
+.table-actions .text-danger:hover {
+    color: var(--danger-color);
+}
+
+.formula-description {
+    margin-top: 20px;
+}
+
+/* Theme Description */
+.theme-description {
+    background-color: white;
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    margin-bottom: 30px;
+}
+
+.theme-description h1 {
+    color: var(--secondary-dark);
+    margin-bottom: 15px;
+}
+
+.slogan {
+    font-style: italic;
+    color: var(--primary-color);
+    margin: 15px 0;
+}
+
+.detalle {
+    margin-top: 20px;
+    color: var(--gray-dark);
+}
+
+.theme-image {
+    max-width: 100%;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+/* Social Banner */
+.social-banner {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 30px 0;
+    margin: 30px 0;
+}
+
+.social-banner.mini {
+    padding: 20px 0;
+}
+
+.social-content {
+    text-align: center;
+}
+
+.social-content h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 8px 15px;
+    border-radius: var(--border-radius);
+    color: white;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.social-link.tiktok {
+    background-color: #000;
+}
+
+.social-link.facebook {
+    background-color: #1877f2;
+}
+
+.social-link.youtube {
+    background-color: #ff0000;
+}
+
+.social-link:hover {
+    transform: translateY(-3px);
+    opacity: 0.9;
+}
+
+/* Related Resources */
+.related-resources {
+    margin: 40px 0;
+}
+
+.related-resources h2 {
+    text-align: center;
+    color: var(--secondary-dark);
+    margin-bottom: 20px;
+}
+
+.resources-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.resource-card {
+    background-color: white;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+    transition: var(--transition);
+}
+
+.resource-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--box-shadow-lg);
+}
+
+.resource-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.resource-content {
+    padding: 20px;
+}
+
+.resource-content h3 {
+    color: var(--secondary-dark);
+    margin-bottom: 10px;
+}
+
+.resource-content p {
+    color: var(--gray-color);
+    margin-bottom: 15px;
+}
+
+.btn-link {
+    color: var(--primary-color);
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: var(--transition);
+}
+
+.btn-link:hover {
+    color: var(--primary-dark);
+}
+
+.btn-link i {
+    transition: var(--transition);
+}
+
+.btn-link:hover i {
+    transform: translateX(5px);
+}
+
+/* Footer */
+.main-footer {
+    background-color: var(--darker-color);
+    color: white;
+    padding: 40px 0 20px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.footer-about h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: white;
+}
+
+.footer-about p {
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 20px;
+}
+
+.footer-social {
+    display: flex;
+    gap: 15px;
+}
+
+.footer-social a {
+    color: white;
+    font-size: 1.2rem;
+    transition: var(--transition);
+}
+
+.footer-social a:hover {
+    color: var(--primary-color);
+}
+
+.footer-links h4 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: white;
+}
+
+.footer-links ul {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.7);
+    transition: var(--transition);
+}
+
+.footer-links a:hover {
+    color: white;
+    padding-left: 5px;
+}
+
+.footer-contact h4 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: white;
+}
+
+.footer-contact p {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 10px;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+}
+
+.footer-legal {
+    display: flex;
+    gap: 15px;
+}
+
+.footer-legal a {
+    color: rgba(255, 255, 255, 0.7);
+    transition: var(--transition);
+}
+
+.footer-legal a:hover {
+    color: white;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: var(--border-radius);
+    font-weight: 500;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition);
+    border: none;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+    color: white;
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: var(--secondary-dark);
+    color: white;
+}
+
+.btn-outline-secondary {
+    background-color: transparent;
+    border: 1px solid var(--secondary-color);
+    color: var(--secondary-color);
+}
+
+.btn-outline-secondary:hover {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.float-right {
+    float: right;
+}
+
+.text-white {
+    color: white;
+}
+
+.text-secondary {
+    color: var(--secondary-color);
+}
+
+.text-danger {
+    color: var(--danger-color);
+}
+
+.bg-secondary {
+    background-color: var(--secondary-color);
+}
+
+.d-flex {
+    display: flex;
+}
+
+.justify-content-end {
+    justify-content: flex-end;
+}
+
+.justify-content-between {
+    justify-content: space-between;
+}
+
+.align-items-center {
+    align-items: center;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+    
+    .main-nav .nav-links {
+        position: fixed;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        flex-direction: column;
+        padding: 20px;
+        box-shadow: var(--box-shadow);
+        transform: translateY(-150%);
+        transition: var(--transition);
+        z-index: 999;
+    }
+    
+    .main-nav .nav-links.active {
+        transform: translateY(0);
+    }
+    
+    .formula-card-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .formula-card-actions {
+        align-self: flex-end;
+    }
+    
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+    
+    .footer-legal {
+        justify-content: center;
+    }
+}
