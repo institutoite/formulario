@@ -71,7 +71,7 @@
                         <div class="stat-item">
                             <i class="fas fa-calculator"></i>
                             <div>
-                                <span class="stat-number">{{ $formulas_count ?? 0 }}</span>
+                                <span class="stat-number">{{ $cantidad_formulas ?? 0 }}</span>
                                 <span class="stat-label">Fórmulas</span>
                             </div>
                         </div>

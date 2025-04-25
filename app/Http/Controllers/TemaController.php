@@ -23,8 +23,12 @@ class TemaController extends Controller
      */
     public function index(Materia $materia)
     {
-        $temas = $materia->temas;
-        return response()->view('tema.index', compact('temas','materia'));
+        $temas = $materia->temas()->withCount('formulas')->get();
+        
+        // Calcular el total sumando los conteos de cada tema
+        $cantidad_formulas = $temas->sum('formulas_count');
+        
+        return view('tema.index', compact('temas', 'materia', 'cantidad_formulas'));
     }
 
     /**

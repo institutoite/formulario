@@ -13,29 +13,517 @@ class FormulaSeeder extends Seeder
      */
     public function run(): void
     {
-        Formula::create([
-            'nombre'=>'Fórmula cuadrática',
-            'formula'=>'$$ x_1=\frac{-b+\pm\sqrt[2]{b^2-4ac}}{2a} $$',
-            'detalle'=>'La fórmula cuadrática es una herramienta matemática utilizada para encontrar las soluciones de una ecuación cuadrática de la forma ax^2 + bx + c = 0, donde a, b y c son coeficientes conocidos. La fórmula utiliza la raíz cuadrada para encontrar las dos posibles soluciones de la ecuación. La fórmula es ampliamente utilizada en álgebra y cálculo, así como en aplicaciones prácticas en ciencias y tecnología.',
-            'indice'=>0,
-            'tema_id'=>3,
+        $formulas = [
+            [
+                'id' => 1,
+                'nombre' => 'Fórmula cuadrática',
+                'formula' => '$$x=\\frac{-b\\pm\\sqrt[2]{b^2-4ac}}{2a} \\\\\\Delta=b^2-4ac\\\\Si:\\:\\Delta >0\\:\\exists\\:dos \\:sol.\\:reales\\:y\\:diferentes\\\\Si:\\:\\Delta=0\\:\\exists\\:dos\\:sol.\\:reales\\:e\\:iguales\\\\Si:\\Delta<0\\:\\nexists\\:sol.reales\\:sino\\:complejas$$',
+                'detalle' => 'Solución general para ecuaciones de segundo grado. El discriminante (Δ) determina el tipo de raíces.',
+                'indice' => 0,
+                'tema_id' => 3,
+                'created_at' => '2023-04-17 01:24:39',
+                'updated_at' => '2023-06-14 19:05:48'
+            ],
+            [
+                'id' => 2,
+                'nombre' => 'Suma de raices',
+                'formula' => '$$ x_1+x_2=\\frac{-b}{a} $$',
+                'detalle' => 'Relación entre coeficientes y suma de soluciones en ecuaciones cuadráticas.',
+                'indice' => 0,
+                'tema_id' => 3,
+                'created_at' => '2023-04-17 01:24:39',
+                'updated_at' => '2023-04-17 01:24:39'
+            ],
+            [
+                'id' => 3,
+                'nombre' => 'Producto de raices',
+                'formula' => '$$ x_1 \\cdot x_2=\\frac{c}{a} $$',
+                'detalle' => 'Relación entre coeficientes y producto de soluciones en ecuaciones cuadráticas.',
+                'indice' => 0,
+                'tema_id' => 3,
+                'created_at' => '2023-04-17 01:24:39',
+                'updated_at' => '2023-04-17 01:24:39'
+            ],
+            [
+                'id' => 4,
+                'nombre' => 'Resta de raices',
+                'formula' => '$$x_1 - x_2 = \\frac{-b - \\sqrt{b^2 - 4ac}}{2a} - \\frac{-b + \\sqrt{b^2 - 4ac}}{2a}$$',
+                'detalle' => 'Diferencia entre las soluciones de una ecuación cuadrática.',
+                'indice' => 0,
+                'tema_id' => 20,
+                'created_at' => '2023-04-03 20:18:52',
+                'updated_at' => '2023-04-03 20:18:52'
+            ],
+            [
+                'id' => 5,
+                'nombre' => 'Potencia',
+                'formula' => '$$a^n =c\\:\\:\\:;\\:\\:\\:\\:\\forall\\:a\\in\\Re\\:\\wedge\\:n\\in{N}\\\\a=base\\:\\:;n=exponente$$',
+                'detalle' => 'Definición básica de potenciación con base real y exponente natural.',
+                'indice' => 0,
+                'tema_id' => 1,
+                'created_at' => '2023-04-03 22:11:18',
+                'updated_at' => '2023-11-25 19:21:49'
+            ],
+            [
+                'id' => 6,
+                'nombre' => 'Producto de potencias de la misma base',
+                'formula' => '$$a^m \\cdot a^n=a^{n+m}$$',
+                'detalle' => 'Al multiplicar potencias con igual base, se suman los exponentes.',
+                'indice' => 0,
+                'tema_id' => 1,
+                'created_at' => '2023-04-03 22:11:58',
+                'updated_at' => '2023-04-04 02:28:10'
+            ],
+            [
+                'id' => 7,
+                'nombre' => 'Raiz enésima de un producto',
+                'formula' => '$$\\sqrt[n]{a\\cdot b}=\\sqrt[n]{a}\\cdot\\sqrt[n]{b}$$',
+                'detalle' => 'La raíz de un producto es igual al producto de las raíces.',
+                'indice' => 0,
+                'tema_id' => 2,
+                'created_at' => '2023-04-03 22:59:34',
+                'updated_at' => '2023-04-06 21:42:47'
+            ],
+            [
+                'id' => 8,
+                'nombre' => 'Potencia de una potencia',
+                'formula' => '$${(a^n)^m}=a^{n \\cdot m}$$',
+                'detalle' => 'Para elevar una potencia a otra potencia, se multiplican los exponentes.',
+                'indice' => 0,
+                'tema_id' => 1,
+                'created_at' => '2023-04-04 06:06:51',
+                'updated_at' => '2023-04-05 20:05:32'
+            ],
+            [
+                'id' => 9,
+                'nombre' => 'Identidades Pitagóricas 1',
+                'formula' => '$$sin^2x+cos^2x=1$$',
+                'detalle' => 'Identidad fundamental que relaciona el seno y coseno de un ángulo.',
+                'indice' => 0,
+                'tema_id' => 13,
+                'created_at' => '2023-04-04 06:25:36',
+                'updated_at' => '2023-04-04 22:47:32'
+            ],
+            [
+                'id' => 10,
+                'nombre' => 'Identidades Pitagóricas 2',
+                'formula' => '$$1+tan^2x=csc^2x$$',
+                'detalle' => 'Identidad que relaciona tangente y cosecante.',
+                'indice' => 0,
+                'tema_id' => 13,
+                'created_at' => '2023-04-04 06:28:43',
+                'updated_at' => '2023-04-04 22:47:59'
+            ],
+            [
+                'id' => 11,
+                'nombre' => 'Identidad de la suma y diferencia de ángulos de Seno',
+                'formula' => '$$\\sin(x\\pm{y})=\\sin{x}\\cdot\\cos{y}\\pm\\cos{x}\\cdot\\sin{y}$$',
+                'detalle' => 'Fórmula para el seno de la suma o diferencia de dos ángulos.',
+                'indice' => 0,
+                'tema_id' => 13,
+                'created_at' => '2023-04-04 06:40:36',
+                'updated_at' => '2023-04-05 21:27:46'
+            ],
+            [
+                'id' => 12,
+                'nombre' => 'Identidad de la suma y diferencia de ángulos de Coseno',
+                'formula' => '$$\\cos(x\\pm{y})=\\cos{x}\\cdot\\cos{y}\\mp\\ sinx\\cdot\\cos{x}$$',
+                'detalle' => 'Fórmula para el coseno de la suma o diferencia de dos ángulos.',
+                'indice' => 0,
+                'tema_id' => 13,
+                'created_at' => '2023-04-04 06:53:17',
+                'updated_at' => '2023-04-05 21:29:08'
+            ],
+            [
+                'id' => 13,
+                'nombre' => 'Potencia con exponente 0',
+                'formula' => '$$\\ a^0=1\\:\\:\\:\\:\\:a\\ne 0$$',
+                'detalle' => 'Cualquier número (excepto cero) elevado a 0 es igual a 1.',
+                'indice' => 0,
+                'tema_id' => 1,
+                'created_at' => '2023-04-04 19:55:24',
+                'updated_at' => '2023-04-04 20:00:40'
+            ],
+            [
+                'id' => 14,
+                'nombre' => 'División o cociente de potencias de la misma base',
+                'formula' => '$$\\frac{a^m}{a^n}=a^{n-m}$$',
+                'detalle' => 'Al dividir potencias con igual base, se restan los exponentes.',
+                'indice' => 0,
+                'tema_id' => 1,
+                'created_at' => '2023-04-04 20:10:32',
+                'updated_at' => '2023-04-05 20:04:47'
+            ],
+            [
+                'id' => 15,
+                'nombre' => 'Resta o diferencia de sus raices',
+                'formula' => '$$x_1 - x_2 =\\frac{\\sqrt{b^2 - 4ac}}{a}$$',
+                'detalle' => 'Diferencia entre las raíces de una ecuación cuadrática.',
+                'indice' => 0,
+                'tema_id' => 3,
+                'created_at' => '2023-04-04 20:23:01',
+                'updated_at' => '2023-06-14 19:09:55'
+            ],
+            [
+                'id' => 16,
+                'nombre' => 'Identidad de la suma y diferencia de ángulos de Tangente',
+                'formula' => '$$\\tan(x\\pm y) = \\frac{\\tan{x}\\pm\\tan{y}}{1\\mp\\tan{x}\\cdot\\tan{y}}$$',
+                'detalle' => 'Fórmula para la tangente de la suma o diferencia de ángulos.',
+                'indice' => 0,
+                'tema_id' => 13,
+                'created_at' => '2023-04-04 22:46:01',
+                'updated_at' => '2023-04-05 21:30:01'
+            ],
+            [
+                'id' => 17,
+                'nombre' => 'Identidad del cociente de Tangente',
+                'formula' => '$$\\tan{x} = \\frac{\\sin{x}}{\\cos{x}}$$',
+                'detalle' => 'Definición de tangente como cociente de seno y coseno.',
+                'indice' => 0,
+                'tema_id' => 13,
+                'created_at' => '2023-04-04 22:54:20',
+                'updated_at' => '2023-04-05 21:30:47'
+            ],
+            [
+                'id' => 18,
+                'nombre' => 'Identidad del cociente de Cotangente',
+                'formula' => '$$\\cot{x}=\\frac{\\cos{x}}{\\sin{x}}$$',
+                'detalle' => 'Definición de cotangente como cociente de coseno y seno.',
+                'indice' => 0,
+                'tema_id' => 13,
+                'created_at' => '2023-04-04 22:57:04',
+                'updated_at' => '2023-04-05 21:31:34'
+            ],
+            [
+                'id' => 19,
+                'nombre' => 'Identidad recíproca de Seno',
+                'formula' => '$$\\csc{x} =\\frac{1}{\\sin{x}}$$',
+                'detalle' => 'Cosecante como inverso del seno.',
+                'indice' => 0,
+                'tema_id' => 13,
+                'created_at' => '2023-04-04 23:01:34',
+                'updated_at' => '2023-04-05 21:33:12'
+            ],
+            [
+                'id' => 20,
+                'nombre' => 'Identidad recíproca de Coseno',
+                'formula' => '$$\\sec{x} = \\frac{1}{\\cos{x}}$$',
+                'detalle' => 'Secante como inverso del coseno.',
+                'indice' => 0,
+                'tema_id' => 13,
+                'created_at' => '2023-04-04 23:03:34',
+                'updated_at' => '2023-04-05 21:32:44'
+            ],
+            [
+                'id' => 21,
+                'nombre' => 'Identidad recíproca de Tangente',
+                'formula' => '$$\\cot{x}=\\frac{1}{\\tan{x}}$$',
+                'detalle' => 'Cotangente como inverso de la tangente.',
+                'indice' => 0,
+                'tema_id' => 13,
+                'created_at' => '2023-04-04 23:07:44',
+                'updated_at' => '2023-04-05 21:34:03'
+            ],
+            [
+                'id' => 22,
+                'nombre' => 'Identidad del ángulo doble Seno',
+                'formula' => '$$\\sin(2x) =2\\cdot\\sin{x}\\cdot\\cos{x}$$',
+                'detalle' => 'Fórmula para el seno del doble de un ángulo.',
+                'indice' => 0,
+                'tema_id' => 13,
+                'created_at' => '2023-04-04 23:17:50',
+                'updated_at' => '2023-04-05 21:34:46'
+            ],
+            [
+                'id' => 23,
+                'nombre' => 'Identidad del ángulo doble de Coseno 1',
+                'formula' => '$$\\cos(2x)=\\cos^2{x} - \\sin^2{x}$$',
+                'detalle' => 'Primera versión para el coseno de ángulo doble.',
+                'indice' => 0,
+                'tema_id' => 13,
+                'created_at' => '2023-04-04 23:20:39',
+                'updated_at' => '2023-04-05 21:35:47'
+            ],
+            [
+                'id' => 24,
+                'nombre' => 'Identidad del ángulo doble Coseno 2',
+                'formula' => '$$\\cos(2x) = 1- 2\\cdot\\sin^2{x}$$',
+                'detalle' => 'Segunda versión para el coseno de ángulo doble.',
+                'indice' => 0,
+                'tema_id' => 13,
+                'created_at' => '2023-04-04 23:23:28',
+                'updated_at' => '2023-04-05 21:36:21'
+            ],
+            [
+                'id' => 25,
+                'nombre' => 'Identidad del ángulo doble de Coseno 3',
+                'formula' => '$$\\cos(2x) =  2\\cdot\\cos^2{x}-1$$',
+                'detalle' => 'Tercera versión para el coseno de ángulo doble.',
+                'indice' => 0,
+                'tema_id' => 13,
+                'created_at' => '2023-04-04 23:26:33',
+                'updated_at' => '2023-04-05 21:36:57'
+            ],
+            [
+                'id' => 26,
+                'nombre' => 'Potencia con exponente 1',
+                'formula' => '$$\\ a^1=a$$',
+                'detalle' => 'Todo número elevado a la potencia 1 es igual a sí mismo.',
+                'indice' => 0,
+                'tema_id' => 1,
+                'created_at' => '2023-04-04 23:31:41',
+                'updated_at' => '2023-04-04 23:31:41'
+            ],
+            [
+                'id' => 27,
+                'nombre' => 'Identidad del ángulo doble de Tangente',
+                'formula' => '$$\\tan(2x) =\\frac{2\\cdot\\tan{x}}{1-\\tan^2{x}}$$',
+                'detalle' => 'Fórmula para la tangente del doble de un ángulo.',
+                'indice' => 0,
+                'tema_id' => 13,
+                'created_at' => '2023-04-04 23:33:06',
+                'updated_at' => '2023-04-05 21:38:07'
+            ],
+            [
+                'id' => 28,
+                'nombre' => 'Producto de potencias con base diferente y exponentes iguales',
+                'formula' => '$$a^m\\cdot \\:b^m=\\left(a\\cdot \\:b\\right)^m$$',
+                'detalle' => 'Producto de potencias con mismo exponente se convierte en potencia del producto.',
+                'indice' => 0,
+                'tema_id' => 1,
+                'created_at' => '2023-04-04 23:34:10',
+                'updated_at' => '2023-04-05 20:06:08'
+            ],
+            [
+                'id' => 29,
+                'nombre' => 'Identidad del ángulo doble de Seno 2',
+                'formula' => '$$\\sin(2x) =\\frac{2\\cdot\\tan{x}}{1+\\tan^2{x}}$$',
+                'detalle' => 'Versión alternativa para seno de ángulo doble usando tangente.',
+                'indice' => 0,
+                'tema_id' => 13,
+                'created_at' => '2023-04-04 23:36:58',
+                'updated_at' => '2023-04-05 21:39:06'
+            ],
+            [
+                'id' => 30,
+                'nombre' => 'Identidad del ángulo doble de Coseno 4',
+                'formula' => '$$\\cos(2x)=\\frac{1-\\tan^2{x}}{1+\\tan^2{x}}$$',
+                'detalle' => 'Versión alternativa para coseno de ángulo doble usando tangente.',
+                'indice' => 0,
+                'tema_id' => 13,
+                'created_at' => '2023-04-04 23:41:54',
+                'updated_at' => '2023-04-05 21:39:45'
+            ],
 
-        ]);
-        Formula::create([
-            'nombre'=>'Suma de raices',
-            'formula'=>'$$ x_1+x_2=\frac{-b}{a} $$',
-            'detalle'=>'Esta fórmula es útil en situaciones en las que se necesita encontrar la suma de las raíces de una ecuación cuadrática, por ejemplo, para resolver un problema de aplicación que requiere conocer la suma de las soluciones.',
-            'indice'=>0,
-            'tema_id'=>3,
+             [
+        'id' => 31,
+        'nombre' => 'Raíz de un cociente',
+        'formula' => '$$\\sqrt[n]{\\frac{a}{b}}=\\frac{\\sqrt[n]{a}}{\\sqrt[n]{b}}$$',
+        'detalle' => 'La raíz de un cociente es igual al cociente de las raíces.',
+        'indice' => 0,
+        'tema_id' => 2,
+        'created_at' => '2023-04-04 23:49:01',
+        'updated_at' => '2023-04-06 21:09:43'
+    ],
+    [
+        'id' => 32,
+        'nombre' => 'Identidad del ángulo triple de Seno 1',
+        'formula' => '$$\\sin(3x)= 3\\sin{x} -4\\cdot\\sin^3{x}$$',
+        'detalle' => 'Primera versión para el seno del triple de un ángulo.',
+        'indice' => 0,
+        'tema_id' => 13,
+        'created_at' => '2023-04-04 23:49:13',
+        'updated_at' => '2023-04-05 21:40:32'
+    ],
+    [
+        'id' => 33,
+        'nombre' => 'Identidad del ángulo triple de Seno 2',
+        'formula' => '$$\\sin(3x)=3\\cdot\\cos^2{x}\\cdot\\sin{x}-\\sin^3{x}$$',
+        'detalle' => 'Segunda versión para el seno del triple de un ángulo.',
+        'indice' => 0,
+        'tema_id' => 13,
+        'created_at' => '2023-04-04 23:52:37',
+        'updated_at' => '2023-04-05 21:41:17'
+    ],
+    [
+        'id' => 34,
+        'nombre' => 'Raíz con exponente negativo',
+        'formula' => '$$\\sqrt[n]{\\frac{a}{b^{-1}}}=\\sqrt[n]{ab}$$',
+        'detalle' => 'Propiedad de raíces con exponentes negativos en denominador.',
+        'indice' => 0,
+        'tema_id' => 2,
+        'created_at' => '2023-04-04 23:55:45',
+        'updated_at' => '2023-04-06 21:38:47'
+    ],
+    [
+        'id' => 35,
+        'nombre' => 'Identidad del ángulo triple de Coseno 1',
+        'formula' => '$$\\cos(3x)=4\\cdot\\cos^3{x}-3\\cdot\\cos{x}$$',
+        'detalle' => 'Primera versión para el coseno del triple de un ángulo.',
+        'indice' => 0,
+        'tema_id' => 13,
+        'created_at' => '2023-04-04 23:56:31',
+        'updated_at' => '2023-04-05 21:42:41'
+    ],
+    [
+        'id' => 36,
+        'nombre' => 'Identidad del ángulo triple de Coseno 2',
+        'formula' => '$$\\cos(3x)=\\cos^3{x} -3\\cdot\\sin^2{x}\\cdot\\cos{x}$$',
+        'detalle' => 'Segunda versión para el coseno del triple de un ángulo.',
+        'indice' => 0,
+        'tema_id' => 13,
+        'created_at' => '2023-04-05 02:13:50',
+        'updated_at' => '2023-04-05 21:43:43'
+    ],
+    [
+        'id' => 37,
+        'nombre' => 'Cociente de potencias con igual exponente',
+        'formula' => '$$\\frac{a^n}{b^n}\\:=\\left(\\frac{a}{b}\\right)^n$$',
+        'detalle' => 'El cociente de potencias con mismo exponente es la potencia del cociente.',
+        'indice' => 0,
+        'tema_id' => 1,
+        'created_at' => '2023-04-05 02:17:57',
+        'updated_at' => '2023-04-05 02:20:33'
+    ],
+    [
+        'id' => 38,
+        'nombre' => 'Teorema de Pitágoras',
+        'formula' => '$$c^2=a^2+b^2$$',
+        'detalle' => 'En triángulos rectángulos: hipotenusa² = suma de catetos².',
+        'indice' => 0,
+        'tema_id' => 12,
+        'created_at' => '2023-04-05 02:24:05',
+        'updated_at' => '2023-04-05 02:28:05'
+    ],
+    [
+        'id' => 39,
+        'nombre' => 'Teorema de Pitágoras (alternativo)',
+        'formula' => '$$c^2=a^2+b^2$$',
+        'detalle' => 'Relación fundamental en triángulos rectángulos.',
+        'indice' => 0,
+        'tema_id' => 12,
+        'created_at' => '2023-04-05 02:33:46',
+        'updated_at' => '2023-04-05 02:33:46'
+    ],
+    [
+        'id' => 40,
+        'nombre' => 'Área de triángulo rectángulo',
+        'formula' => '$$A=\\frac{b\\cdot h}{2}$$',
+        'detalle' => 'Área = (base × altura)/2 para triángulos rectángulos.',
+        'indice' => 0,
+        'tema_id' => 12,
+        'created_at' => '2023-04-05 02:37:46',
+        'updated_at' => '2023-04-05 03:37:28'
+    ],
+    [
+        'id' => 41,
+        'nombre' => 'Perímetro de triángulo rectángulo',
+        'formula' => '$$P=a+b+c$$',
+        'detalle' => 'Suma de las longitudes de los tres lados.',
+        'indice' => 0,
+        'tema_id' => 12,
+        'created_at' => '2023-04-05 02:41:26',
+        'updated_at' => '2023-04-05 03:37:42'
+    ],
+    [
+        'id' => 42,
+        'nombre' => 'Suma de ángulos internos',
+        'formula' => '$$A+B+C=180º$$',
+        'detalle' => 'En cualquier triángulo, los ángulos internos suman 180°.',
+        'indice' => 0,
+        'tema_id' => 12,
+        'created_at' => '2023-04-05 02:46:46',
+        'updated_at' => '2023-04-05 03:47:43'
+    ],
+    [
+        'id' => 43,
+        'nombre' => 'Cálculo de un cateto (versión a)',
+        'formula' => '$$a=\\sqrt{c^2-b^2}$$',
+        'detalle' => 'Calcula un cateto conocidos la hipotenusa y el otro cateto.',
+        'indice' => 0,
+        'tema_id' => 12,
+        'created_at' => '2023-04-05 02:52:20',
+        'updated_at' => '2023-04-05 03:37:56'
+    ],
+    [
+        'id' => 44,
+        'nombre' => 'Cálculo de un cateto (versión b)',
+        'formula' => '$$b=\\sqrt{c^2-a^2}$$',
+        'detalle' => 'Calcula un cateto conocidos la hipotenusa y el otro cateto.',
+        'indice' => 0,
+        'tema_id' => 12,
+        'created_at' => '2023-04-05 02:56:21',
+        'updated_at' => '2023-04-05 03:38:09'
+    ],
+    [
+        'id' => 45,
+        'nombre' => 'Seno de un ángulo',
+        'formula' => '$$\\sin \\left(α\\right)=\\frac{Cateto\\:Opuesto}{Hipotenusa}$$',
+        'detalle' => 'Razón trigonométrica: opuesto/hipotenusa.',
+        'indice' => 0,
+        'tema_id' => 11,
+        'created_at' => '2023-04-05 03:02:23',
+        'updated_at' => '2023-04-05 04:07:28'
+    ],
+    [
+        'id' => 46,
+        'nombre' => 'Coseno de un ángulo',
+        'formula' => '$$\\cos \\left(α\\right)=\\frac{Cateto\\:Adyacente\\:}{Hipotenusa}$$',
+        'detalle' => 'Razón trigonométrica: adyacente/hipotenusa.',
+        'indice' => 0,
+        'tema_id' => 11,
+        'created_at' => '2023-04-05 03:07:42',
+        'updated_at' => '2023-04-05 04:07:41'
+    ],
+    [
+        'id' => 47,
+        'nombre' => 'Tangente de un ángulo',
+        'formula' => '$$\\tan \\left(α\\right)=\\frac{Cateto\\:Opuesto}{Cateto\\:Adyacente}$$',
+        'detalle' => 'Razón trigonométrica: opuesto/adyacente.',
+        'indice' => 0,
+        'tema_id' => 11,
+        'created_at' => '2023-04-05 03:13:47',
+        'updated_at' => '2023-04-05 04:07:51'
+    ],
+    [
+        'id' => 48,
+        'nombre' => 'Cosecante de un ángulo',
+        'formula' => '$$\\csc \\left(α\\right)=\\frac{Hipotenusa}{Cateto\\:Opuesto}$$',
+        'detalle' => 'Razón trigonométrica inversa al seno.',
+        'indice' => 0,
+        'tema_id' => 11,
+        'created_at' => '2023-04-05 03:21:09',
+        'updated_at' => '2023-04-05 04:08:02'
+    ],
+    [
+        'id' => 49,
+        'nombre' => 'Secante de un ángulo',
+        'formula' => '$$\\sec \\left(α\\right)=\\frac{Hipotenusa\\:}{Cateto\\:Adyacente}$$',
+        'detalle' => 'Razón trigonométrica inversa al coseno.',
+        'indice' => 0,
+        'tema_id' => 11,
+        'created_at' => '2023-04-05 03:25:51',
+        'updated_at' => '2023-04-05 04:08:15'
+    ],
+    [
+        'id' => 50,
+        'nombre' => 'Cotangente de un ángulo',
+        'formula' => '$$\\cot \\left(α\\right)=\\frac{Cateto\\:Adyacente\\:}{Cateto\\:Opuesto}$$',
+        'detalle' => 'Razón trigonométrica inversa a la tangente.',
+        'indice' => 0,
+        'tema_id' => 11,
+        'created_at' => '2023-04-05 03:30:24',
+        'updated_at' => '2023-04-05 04:08:26'
+    ]
+        ];
 
-        ]);
-        Formula::create([
-            'nombre'=>'Producto de raices',
-            'formula'=>'$$ x_1 \cdot x_2=\frac{c}{a} $$',
-            'detalle'=>'La fórmula de producto de las raíces de una ecuación cuadrática es una expresión matemática que nos permite calcular el producto de las dos soluciones de una ecuación cuadrática. Esta fórmula se utiliza comúnmente en matemáticas y en ciencias aplicadas para resolver problemas que involucran ecuaciones cuadráticas.',
-            'indice'=>0,
-            'tema_id'=>3,
-        ]);
+        foreach ($formulas as $formula) {
+            Formula::updateOrCreate(
+                ['id' => $formula['id']],
+                $formula
+            );
+        }
+
 //         Formula::create([
 //         'Fórmula cuadrática', '$$x_1=\\frac{-b\\pm\\sqrt[2]{b^2-4ac}}{2a}$$', '<p>La fórmula cuadrática es una herramienta matemática utilizada para encontrar las soluciones de una ecuación cuadrática de la forma $$ax^2 + bx + c = 0$$, donde a, b y c son coeficientes conocidos. La fórmula utiliza la raíz cuadrada para encontrar las dos posibles soluciones de la ecuación. La fórmula es ampliamente utilizada en álgebra y cálculo, así como en aplicaciones prácticas en ciencias y tecnología.</p>', 0, 3, '2023-04-03 16:18:07', '2023-04-04 22:19:15'
 //         'Suma de raices', '$$ x_1+x_2=\\frac{-b}{a} $$ ', 'Esta fórmula es útil en situaciones en las que se necesita encontrar la suma de las raíces de una ecuación cuadrática, por ejemplo, para resolver un problema de aplicación que requiere conocer la suma de las soluciones.', 0, 3, '2023-04-03 16:18:07', '2023-04-03 16:18:07'

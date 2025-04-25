@@ -9,8 +9,12 @@
     <!-- Styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     {{-- <link rel="stylesheet" href="{{ asset('css/styles.css') }}"> --}}
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/formulas.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/tema.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/sweetalert2/sweetalert2.min.css') }}">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
 </head>
 <body>
     <!-- Header with Navigation -->
@@ -95,8 +99,13 @@
                     <div class="formula-detail-header">
                         <div class="d-flex justify-content-between align-items-center">
                             <h2>{{ $formula->nombre }}</h2>
-                            <a href="{{ route('ejemplos.view', $formula->id) }}" class="btn btn-primary btn-outline-secondary text-white">
+                            {{-- <a href="{{ route('ejemplos.view', $formula->id) }}" class="btn btn-primary btn-outline-secondary text-white">
                                 <i class="fa fa-plus"></i>&nbsp;Detallar
+                            </a> --}}
+                            <a href="https://wa.me/?text={{ urlencode('Consulta sobre la fórmula: ' . $formula->expresion . ' del tema: ' . $tema->nombre) }}" 
+                                class="btn btn-secondary btn-block" 
+                                target="_blank">
+                                Consultar <i class="fas fa-arrow-right"></i>
                             </a>
                         </div>
                     </div>
@@ -294,5 +303,8 @@
     <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('vendor/sweetalert2/sweetalert2.all.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
 </body>
 </html>
