@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Tema;
 use App\Models\Imagen;
+use Illuminate\Support\Facades\DB;
 
 class TemaSeeder extends Seeder
 {
@@ -997,102 +998,133 @@ class TemaSeeder extends Seeder
             ],
 
         ]);
-        Imagen::create(["imageable_id"=>5,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>6,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>7,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>8,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>9,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+
+        function getRandomImageUrl($width = 800, $height = 600) {
+            $services = [
+                // Picsum (permite especificar tamaño)
+                "https://picsum.photos/{$width}/{$height}?random=".rand(1,1000),
+                
+                // Unsplash (imágenes más profesionales)
+                
+                // Placeholder (genérico)
+                "https://picsum.photos/800/600?random=436",
+            ];
+            
+            return $services[array_rand($services)];
+        }
         
-        Imagen::create(["imageable_id"=>10,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>11,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>12,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>13,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>14,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>15,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>16,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>17,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>18,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>19,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Ejemplo de creación de imágenes para temas
+        $imageRecords = [];
+        for ($i = 1; $i <= 101; $i++) {
+            $imageRecords[] = [
+                'imageable_id' => $i,
+                'imageable_type' => 'App\Models\Tema',
+                'url' => getRandomImageUrl()
+            ];
+        }
+        
+        // Para usar en tu seeder:
+        foreach ($imageRecords as $record) {
+            Imagen::create($record);
+        }
+        
+
+        // Imagen::create(["imageable_id"=>5,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>6,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>7,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>8,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>9,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        
+        // Imagen::create(["imageable_id"=>10,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>11,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>12,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>13,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>14,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>15,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>16,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>17,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>18,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>19,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
   
-        Imagen::create(["imageable_id"=>20,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>21,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>22,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>23,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>24,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>25,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>26,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>27,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>28,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>29,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>20,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>21,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>22,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>23,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>24,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>25,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>26,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>27,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>28,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>29,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
   
-        Imagen::create(["imageable_id"=>30,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>31,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>32,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>33,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>34,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>35,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>36,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>37,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>38,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>39,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>30,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>31,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>32,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>33,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>34,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>35,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>36,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>37,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>38,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>39,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
   
-        Imagen::create(["imageable_id"=>40,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>41,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>42,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>43,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>44,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>45,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>46,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>47,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>48,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>49,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>40,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>41,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>42,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>43,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>44,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>45,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>46,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>47,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>48,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>49,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
   
-        Imagen::create(["imageable_id"=>50,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>51,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>52,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>53,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>54,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>55,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>56,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>57,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>58,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>59,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>50,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>51,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>52,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>53,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>54,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>55,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>56,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>57,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>58,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>59,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
   
-        Imagen::create(["imageable_id"=>60,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>61,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>62,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>63,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>64,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>65,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>66,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>67,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>68,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>69,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>60,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>61,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>62,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>63,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>64,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>65,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>66,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>67,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>68,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>69,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
   
-        Imagen::create(["imageable_id"=>70,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>71,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>72,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>73,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>74,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>75,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>76,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>77,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>78,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>79,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>70,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>71,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>72,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>73,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>74,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>75,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>76,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>77,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>78,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>79,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
   
-        Imagen::create(["imageable_id"=>80,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>81,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>82,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>83,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>84,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>85,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>86,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>87,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>88,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>89,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>80,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>81,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>82,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>83,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>84,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>85,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>86,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>87,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>88,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>89,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
   
-        Imagen::create(["imageable_id"=>90,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
-        Imagen::create(["imageable_id"=>91,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>90,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
+        // Imagen::create(["imageable_id"=>91,"imageable_type"=>"App\Models\Tema","url"=>"temas/imagen.jpg"]);
         
     }
 }

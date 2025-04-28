@@ -25,7 +25,7 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', function () {
     $materias=Materia::all();
     return view('welcome',compact("materias"));
-});
+})->name("inicio");
 
 
 Auth::routes();

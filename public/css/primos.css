@@ -1,0 +1,161 @@
+/* Modo Oscuro */
+@media (prefers-color-scheme: dark) {
+    :root {
+        /* Colores base corporativos */
+        --primary: rgb(38,186,165);
+        --primary-light: rgb(48,206,185);
+        --primary-dark: rgb(28,166,145);
+        
+        --secondary: rgb(55,95,122);
+        --secondary-light: rgb(65,115,142);
+        --secondary-dark: rgb(45,75,102);
+
+        /* Fondos */
+        --bg: rgb(26, 36, 47);          /* Azul muy oscuro basado en secondary */
+        --bg-elevated: rgb(33, 45, 58);  /* Un poco más claro que bg */
+        
+        /* Grises personalizados */
+        --gray-darkest: rgb(22, 31, 40);
+        --gray-dark: rgb(38, 52, 65);
+        --gray: rgb(45, 62, 77);
+        --gray-light: rgb(67, 89, 113);  /* Basado en secondary */
+        --gray-lighter: rgb(89, 116, 145);
+
+        /* Texto */
+        --text: rgb(236, 242, 248);      /* Casi blanco con toque azulado */
+        --text-muted: rgb(176, 190, 205);
+        --text-dim: rgb(130, 150, 170);
+
+        /* Acentos */
+        --accent: var(--primary);
+        --accent-hover: var(--primary-light);
+
+        /* Efectos */
+        --shadow: 0 2px 4px rgba(0,0,0,0.2);
+        --shadow-strong: 0 4px 6px rgba(0,0,0,0.3);
+        
+        /* Bordes */
+        --border-color: rgb(45, 62, 77);
+        
+        /* Estados */
+        --hover-bg: rgb(38, 52, 65);
+        --active-bg: rgb(45, 62, 77);
+
+        /* Superposiciones */
+        --overlay: rgba(26, 36, 47, 0.8);
+    }
+
+    /* Ajustes específicos para elementos en modo oscuro */
+    body {
+        background: var(--bg);
+        color: var(--text);
+    }
+
+    .card, 
+    .prime-fact, 
+    .social-card, 
+    .result-display {
+        background: var(--bg-elevated);
+        border: 1px solid var(--border-color);
+    }
+
+    input[type="number"],
+    select,
+    textarea {
+        background: var(--gray-dark);
+        border-color: var(--border-color);
+        color: var(--text);
+    }
+
+    input[type="number"]:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 2px rgba(38,186,165,0.2);
+    }
+
+    .prime-number {
+        background: var(--gray-dark);
+        color: var(--text);
+        border: 1px solid var(--border-color);
+    }
+
+    .action-btn {
+        background: var(--gray-dark);
+        border-color: var(--primary);
+        color: var(--primary);
+    }
+
+    .action-btn:hover {
+        background: var(--primary);
+        color: var(--bg);
+    }
+
+    .nav-link {
+        color: var(--text-muted);
+    }
+
+    .nav-link:hover {
+        color: var(--primary);
+    }
+
+    .hero-section {
+        background: var(--bg-elevated);
+    }
+
+    .animate-title {
+        color: var(--primary);
+    }
+
+    .hero-description {
+        color: var(--text-muted);
+    }
+
+    .section-title {
+        color: var(--primary);
+    }
+
+    .tool-btn {
+        color: var(--text-muted);
+    }
+
+    .tool-btn:hover {
+        color: var(--primary);
+        background: var(--hover-bg);
+    }
+
+    .social-card {
+        background: var(--bg-elevated);
+        border: 1px solid var(--border-color);
+    }
+
+    .social-card:hover {
+        background: var(--hover-bg);
+        border-color: var(--primary);
+    }
+
+    /* Efectos de hover mejorados */
+    .card:hover,
+    .prime-fact:hover,
+    .result-display:hover {
+        border-color: var(--primary);
+        box-shadow: var(--shadow-strong);
+    }
+
+    /* Scrollbar personalizada */
+    ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: var(--bg);
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: var(--gray);
+        border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: var(--gray-light);
+    }
+}

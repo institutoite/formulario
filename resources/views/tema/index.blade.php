@@ -78,7 +78,8 @@
                     </div>
                 </div>
                 <div class="materia-image">
-                    <img src="{{ URL::to('/').Storage::url('public/'.$materia->imagen->url) }}" alt="Imagen de {{ $materia->materia }}">
+                    {{-- <img src="{{ URL::to('/').Storage::url('public/'.$materia->imagen->url) }}" alt="Imagen de {{ $materia->materia }}"> --}}
+                    <img src="{{  $materia->imagen->url }}" alt="Imagen de {{ $materia->materia }}">
                 </div>
             </div>
         </div>
@@ -146,7 +147,8 @@
                     <div class="tema-content">
                         @if ($tema->imagen)
                         <div class="tema-image">
-                            <img src="{{ URL::to('/').Storage::url('public/'.$tema->imagen->url) }}" alt="Imagen de {{ $tema->tema }}">
+                            {{-- <img src="{{ URL::to('/').Storage::url('public/'.$tema->imagen->url) }}" alt="Imagen de {{ $tema->tema }}"> --}}
+                            <img src="{{$tema->imagen->url }}" alt="Imagen de {{ $tema->tema }}">
                         </div>
                         @endif
                         

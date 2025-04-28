@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ITE - Números Primos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+      :root {
+        --primary: rgb(38,186,165);
+        --secondary: rgb(55,95,122);
+        --white: #ffffff;
+        --gray-light: #f8f9fa;
+        --gray: #e9ecef;
+        --text: #2c3e50;
+        --shadow: 0 2px 8px rgba(0,0,0,0.1);
+        --radius: 5px;
+        --transition: all 0.3s ease;
+    }
+    
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    body {
+        font-family: 'Segoe UI', system-ui, sans-serif;
+        line-height: 1.6;
+        color: var(--text);
+        background: var(--white);
+    }
+    
+    .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1rem;
+    }
+    
+    /* Header */
+    .main-header {
+        background: var(--primary);
+        padding: 1.5rem 0;
+        text-align: center;
+    }
+    
+    .nav-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 2rem;
+    }
+    
+    .logo {
+        text-align: center;
+    }
+    
+    .logo h1 {
+        color: var(--white);
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .tagline {
+        color: var(--white);
+        opacity: 0.9;
+    }
+    
+    .nav-links {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+    }
+    
+    .nav-link {
+        color: var(--white);
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        border-radius: var(--radius);
+        transition: var(--transition);
+    }
+    
+    .nav-link:hover {
+        background: rgba(255,255,255,0.1);
+    }
+    
+    /* Hero Section */
+    .hero-section {
+        padding: 4rem 0;
+        text-align: center;
+        background: var(--gray-light);
+    }
+    
+    .hero-content {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 1rem;
+    }
+    
+    .animate-title {
+        font-size: 2.5rem;
+        color: var(--secondary);
+        margin-bottom: 1.5rem;
+    }
+    
+    .hero-description {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+    }
+    
+    /* Generator Section */
+    .generator-section {
+        padding: 4rem 0;
+        text-align: center;
+    }
+    
+    .controls-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem 1rem;
+    }
+    
+    .quick-buttons {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+    
+    .action-btn {
+        background: var(--primary);
+        color: var(--white);
+        border: none;
+        padding: 0.8rem 1.5rem;
+        border-radius: var(--radius);
+        cursor: pointer;
+        transition: var(--transition);
+    }
+    
+    .action-btn:hover {
+        background: var(--secondary);
+        transform: translateY(-2px);
+    }
+    
+    .input-group {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin: 2rem 0;
+    }
+    
+    input[type="number"] {
+        padding: 0.8rem;
+        border: 2px solid var(--gray);
+        border-radius: var(--radius);
+        width: 200px;
+        font-size: 1rem;
+        text-align: center;
+    }
+    
+    input[type="number"]:focus {
+        border-color: var(--primary);
+        outline: none;
+    }
+    
+    /* Results Display */
+    .results-container {
+        max-width: 1000px;
+        margin: 2rem auto;
+        padding: 0 1rem;
+    }
+    
+    .prime-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+        gap: 0.3rem;
+        justify-items: center;
+        padding: 1rem;
+    }
+    
+    .prime-number {
+        background: rgb(255, 255, 255);
+        color: black;
+        padding: 0.4rem;
+        border-radius: var(--radius);
+        min-width: 60px;
+        text-align: center;
+        border: solid 1px var(--secondary);
+
+        /*box-shadow: var(--shadow);*/
+    }
+    .prime-number:hover{
+      border: solid 1px var(--secondary);
+      background:var(--secondary);
+      color: #e9ecef;
+      font-weight: bold;
+
+    }
+    
+    /* Tools Bar */
+    .tools-bar {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin: 2rem 0;
+        flex-wrap: wrap;
+    }
+    
+    .tool-btn {
+        background: var(--secondary);
+        color: var(--white);
+        border: none;
+        padding: 0.8rem 1.5rem;
+        border-radius: var(--radius);
+        cursor: pointer;
+        transition: var(--transition);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    .tool-btn:hover {
+        opacity: 0.9;
+        transform: translateY(-2px);
+    }
+    
+    /* Checker Section */
+    .checker-section {
+        padding: 4rem 0;
+        text-align: center;
+        background: var(--primary);
+    }
+    
+    .checker-container {
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 2rem 1rem;
+    }
+    
+    .result-display {
+        margin-top: 1.5rem;
+        padding: 1.5rem;
+        border-radius: var(--radius);
+        background: var(--white);
+        box-shadow: var(--shadow);
+    }
+    
+    /* About Section */
+    .about-section {
+        padding: 4rem 0;
+        text-align: center;
+    }
+    
+    .team-card {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 2rem 1rem;
+    }
+    
+    .team-photo {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        margin-bottom: 1.5rem;
+        object-fit: cover;
+    }
+    
+    /* Social Section */
+    .social-section {
+        padding: 4rem 0;
+        text-align: center;
+        background: var(--primary);
+    }
+    
+    .social-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        max-width: 1000px;
+        margin: 2rem auto;
+        padding: 0 1rem;
+    }
+    
+    .social-card {
+        background: var(--white);
+        padding: 2rem;
+        border-radius: var(--radius);
+        text-decoration: none;
+        color: var(--text);
+        transition: var(--transition);
+        box-shadow: var(--shadow);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+    .social-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    
+    .social-card i {
+        font-size: 2rem;
+        color: var(--primary);
+    }
+    
+    /* Footer */
+    footer {
+        background: var(--secondary);
+        color: var(--white);
+        text-align: center;
+        padding: 2rem 0;
+        margin-top: 4rem;
+    }
+    
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+        .nav-container {
+            flex-direction: column;
+            gap: 1rem;
+        }
+    
+        .nav-links {
+            flex-direction: column;
+            width: 100%;
+        }
+    
+        .nav-link {
+            width: 100%;
+            text-align: center;
+        }
+    
+        .animate-title {
+            font-size: 2rem;
+        }
+    
+        .input-group {
+            flex-direction: column;
+            width: 100%;
+        }
+    
+        input[type="number"] {
+            width: 100%;
+        }
+    
+        .quick-buttons {
+            flex-direction: column;
+        }
+    
+        .action-btn {
+            width: 100%;
+        }
+    
+        .tools-bar {
+            flex-direction: column;
+        }
+    
+        .tool-btn {
+            width: 100%;
+            justify-content: center;
+        }
+    
+        .social-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+    
+    /* Utilities */
+    .text-center {
+        text-align: center;
+    }
+    
+    .mt-2 {
+        margin-top: 2rem;
+    }
+    
+    .mb-2 {
+        margin-bottom: 2rem;
+    }
+    
+    .section-title {
+        color: var(--secondary);
+        font-size: 2rem;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+    
+    
+    </style>
+</head>
+<body class="light-mode">
+    <!-- Agregar después del body -->
+ 
+
+    <header class="main-header">
+        <nav class="nav-container">
+            <div class="logo">
+                <h1>ITE</h1>
+                <p class="tagline">Facilitamos tu Educación</p>
+            </div>
+            <div class="nav-links">
+                <a href="#primos" class="nav-link"><i class="fas fa-calculator"></i> Números Primos</a>
+                <a href="#esprimo" class="nav-link"><i class="fas fa-check-circle"></i> ¿Es Primo?</a>
+                <a href="#nosotros" class="nav-link"><i class="fas fa-users"></i> Sobre Nosotros</a>
+                <a href="#redes" class="nav-link"><i class="fas fa-share-alt"></i> Redes Sociales</a>
+            </div>
+          
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="hero-content">
+                <img id="logoITE" src="logo.png" style="" alt="Logo ITE">
+                <h2 class="animate-title">Explora el Mundo de los Números Primos</h2>
+                <p class="hero-description">Descubre la magia de los bloques fundamentales de las matemáticas</p>
+                <div class="prime-fact">
+                    <div class="fact-card">
+                        <span id="primeOfDay" class="prime-number">17</span>
+                        <p>Número Primo del Día</p>
+                    </div>
+                </div>
+            </div>
+           
+        </section>
+        
+        <section id="primos" class="generator-section">
+            <h2>Generador de Números Primos</h2>
+            <div class="controls-container">
+                <div class="quick-buttons">
+                    <button class="action-btn" onclick="mostrarPrimos(100)">
+                        <i class="fas fa-bolt"></i> Primeros 100
+                    </button>
+                    <button class="action-btn" onclick="mostrarPrimos(1000)">
+                        <i class="fas fa-rocket"></i> Primeros 1000
+                    </button>
+                    <button class="action-btn" onclick="mostrarPrimos(10000)">
+                        <i class="fas fa-star"></i> Primeros 10000
+                    </button>
+                </div>
+                <div class="custom-input">
+                    <div class="input-group">
+                        <label for="inputN">Encontrar primos menores a:</label>
+                        <input type="number" id="inputN" min="1" max="100000" placeholder="Ingresa un número">
+                        <button onclick="primosMenoresA()" class="search-btn action-btn">
+                            <i class="fas fa-search"></i> Buscar
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="results-container">
+                <div id="resultadoPrimos" class="prime-grid"></div>
+                <div class="tools-bar">
+                    <button onclick="copiarResultados()" class="tool-btn">
+                        <i class="fas fa-copy"></i> Copiar
+                    </button>
+                    <button onclick="descargarPDF()" class="tool-btn">
+                        <i class="fas fa-file-pdf"></i> Descargar PDF
+                    </button>
+                  
+                </div>
+            </div>
+        </section>
+
+        <section id="esprimo" class="checker-section">
+            <h2>Verificador de Números Primos</h2>
+            <div class="checker-container">
+                <div class="input-group">
+                    <input type="number" id="checkNumero" placeholder="Ingresa un número para verificar">
+                    <button onclick="verificarPrimo()" class="tool-btn">
+                        <i class="fas fa-check"></i> Verificar
+                    </button>
+                </div>
+                <div id="resultadoCheck" class="result-display"></div>
+            </div>
+        </section>
+
+        <section id="nosotros" class="about-section">
+            <div class="about-content">
+                <h2>Sobre Nosotros</h2>
+                <div class="team-card">
+                    <img src="david.png" alt="Foto del fundador" class="team-photo">
+                    <div class="team-info">
+                        <h3>Fundador de ITE</h3>
+                        <p class="team-description">
+                            Educador apasionado por las matemáticas y la tecnología. 
+                            Comprometido con hacer el aprendizaje más accesible y divertido.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="redes" class="social-section">
+            <h2>Conéctate con Nosotros</h2>
+            <div class="social-grid">
+                <a href="https://www.tiktok.com/@ite_educabol" class="social-card"  target="_blank" >
+                    <i class="fab fa-tiktok"></i>
+                    <span>TikTok</span>
+                    <p>Trucos matemáticos diarios</p>
+                </a>
+                <a href="https://www.youtube.com/@ite_educabol" class="social-card"  target="_blank" >
+                    <i class="fab fa-youtube"></i>
+                    <span>YouTube</span>
+                    <p>Tutoriales y explicaciones</p>
+                </a>
+                <a href="https://www.facebook.com/ite.educabol" class="social-card"  target="_blank" >
+                    <i class="fab fa-facebook"></i>
+                    <span>Facebook</span>
+                    <p>Comunidad matemática</p>
+                </a>
+                <a href="https://wa.me/59160902299?text=Vengo%20de%20su%20página%20de%20números%20primos" 
+                  class="social-card" 
+                  target="_blank" 
+                  rel="noopener noreferrer">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>Whatsapp</span>
+                    <p>Escríbenos estamos a un click</p>
+                </a>
+
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 ITE - Educación que transforma</p>
+        </div>
+    </footer>
+    <script>
+      // Inicialización
+document.addEventListener('DOMContentLoaded', () => {
+  initThemeToggle();
+  initAnimatedGrid();
+  updatePrimeOfDay();
+});
+
+// Control del tema oscuro/claro
+function initThemeToggle() {
+  const themeToggle = document.getElementById('themeToggle');
+  const icon = themeToggle.querySelector('i');
+
+  themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      icon.classList.toggle('fa-moon');
+      icon.classList.toggle('fa-sun');
+  });
+}
+
+// Animación de la cuadrícula de números
+function initAnimatedGrid() {
+  const grid = document.getElementById('animatedGrid');
+  const numbers = Array.from({length: 100}, (_, i) => i + 1);
+  
+  numbers.forEach(num => {
+      const cell = document.createElement('div');
+      cell.className = 'grid-cell';
+      cell.textContent = num;
+      if (esPrimo(num)) {
+          cell.classList.add('prime');
+      }
+      grid.appendChild(cell);
+  });
+}
+
+// Actualizar el número primo del día
+function updatePrimeOfDay() {
+  const primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47];
+  const today = new Date();
+  const index = today.getDate() % primes.length;
+  document.getElementById('primeOfDay').textContent = primes[index];
+}
+
+// Funciones principales de números primos
+function esPrimo(n) {
+  if (n <= 1) return false;
+  if (n <= 3) return true;
+  if (n % 2 === 0 || n % 3 === 0) return false;
+
+  for (let i = 5; i * i <= n; i += 6) {
+      if (n % i === 0 || n % (i + 2) === 0) return false;
+  }
+  return true;
+}
+
+function mostrarPrimos(cantidad) {
+  const resultados = document.getElementById('resultadoPrimos');
+  resultados.innerHTML = '';
+  let count = 0;
+  let num = 2;
+  
+  while (count < cantidad) {
+      if (esPrimo(num)) {
+          const primeElement = document.createElement('div');
+          primeElement.className = 'prime-number';
+          primeElement.textContent = num;
+          resultados.appendChild(primeElement);
+          count++;
+      }
+      num++;
+  }
+}
+
+function primosMenoresA() {
+  const N = parseInt(document.getElementById('inputN').value);
+  if (isNaN(N) || N < 2) {
+      alert('Por favor, ingresa un número válido mayor a 1');
+      return;
+  }
+
+  const resultados = document.getElementById('resultadoPrimos');
+  resultados.innerHTML = '';
+
+  for (let i = 2; i < N; i++) {
+      if (esPrimo(i)) {
+          const primeElement = document.createElement('div');
+          primeElement.className = 'prime-number';
+          primeElement.textContent = i;
+          resultados.appendChild(primeElement);
+      }
+  }
+}
+
+function verificarPrimo() {
+  const num = parseInt(document.getElementById('checkNumero').value);
+  const resultadoElement = document.getElementById('resultadoCheck');
+  
+  if (isNaN(num) || num < 1) {
+      resultadoElement.innerHTML = `<div class="error">Por favor, ingresa un número válido</div>`;
+      return;
+  }
+
+  const esPrimoResult = esPrimo(num);
+  resultadoElement.innerHTML = `
+     <div class="result ${esPrimoResult ? 'success' : 'error'}">
+      ${esPrimoResult 
+        ? `<i class="fas fa-check-circle fa-2x" style="color: green;"></i> ¡${num} es un número primo!` 
+        : `<i class="fas fa-times-circle fa-2x" style="color: red;"></i> ${num} no es un número primo`}
+    </div>
+
+  `;
+}
+
+// Funciones de utilidad
+function copiarResultados() {
+  const primos = Array.from(document.querySelectorAll('.prime-number'))
+      .map(el => el.textContent)
+      .join(', ');
+  
+  navigator.clipboard.writeText(primos)
+      .then(() => {
+          mostrarNotificacion('¡Números copiados al portapapeles!');
+      })
+      .catch(err => {
+          console.error('Error al copiar:', err);
+          mostrarNotificacion('Error al copiar los números', 'error');
+      });
+}
+
+function mostrarNotificacion(mensaje, tipo = 'success') {
+  const notification = document.createElement('div');
+  notification.className = `notification ${tipo}`;
+  notification.textContent = mensaje;
+  document.body.appendChild(notification);
+  
+  setTimeout(() => {
+      notification.remove();
+  }, 3000);
+}
+
+// Función para descargar PDF (requiere librería jsPDF)
+function descargarPDF() {
+  // Importar jsPDF
+  
+
+
+  const { jsPDF } = window.jspdf;
+
+  // Crear nuevo documento PDF
+  const doc = new jsPDF();
+  
+  // Configurar fuente y tamaño
+  doc.setFont("helvetica");
+  doc.setFontSize(16);
+  
+  // Título
+  doc.text("NUMEROS PRIMOS GENERADOS",20,20);
+  doc.setFontSize(15);
+  
+  // Obtener los números primos del grid
+  const primos = Array.from(document.querySelectorAll('.prime-number'))
+      .map(el => el.textContent);
+  
+  // Configuración de la página
+  const pageWidth = doc.internal.pageSize.getWidth();
+  const margin = 20;
+  const lineHeight = 10;
+  let currentY = 30;
+  let currentX = margin;
+  
+ 
+
+  // Agregar números primos al PDF
+  doc.setFontSize(10);
+  doc.text("Descargado de www://primos.ite.com.bo", margin, currentY);
+  currentY += lineHeight;
+
+  // Calcular cuántos números caben por línea
+  const numberWidth = 15; // Espacio aproximado para cada número
+  const numbersPerLine = Math.floor((pageWidth - 2 * margin) / numberWidth);
+  doc.setFontSize(14);
+  // Agregar números en filas
+  for (let i = 0; i < primos.length; i++) {
+      // Si llegamos al final de la página, crear nueva página
+      if (currentY > doc.internal.pageSize.getHeight() - margin) {
+          doc.addPage();
+          currentY = margin + lineHeight;
+      }
+      
+      // Si llegamos al final de la línea, nueva línea
+      if (currentX > pageWidth - margin) {
+          currentX = margin;
+          currentY += lineHeight;
+      }
+      
+      doc.text(primos[i].toString(), currentX, currentY);
+      currentX += numberWidth;
+      
+      // Nueva línea después de numbersPerLine números
+      if ((i + 1) % numbersPerLine === 0) {
+          currentX = margin;
+          currentY += lineHeight;
+      }
+  }
+  
+  // Agregar pie de página
+  const totalPages = doc.internal.getNumberOfPages();
+  for (let i = 1; i <= totalPages; i++) {
+      doc.setPage(i);
+      doc.setFontSize(10);
+      doc.text(
+          `Página ${i} de ${totalPages}`,
+          doc.internal.pageSize.getWidth() / 2,
+          doc.internal.pageSize.getHeight() - 10,
+          { align: 'center' }
+      );
+  }
+  
+  try {
+      // Guardar el PDF
+      const fileName = `numeros_primos_.pdf`;
+      doc.save(fileName);
+      
+      // Mostrar notificación de éxito
+      mostrarNotificacion('PDF descargado correctamente');
+  } catch (error) {
+      console.error('Error al generar el PDF:', error);
+      mostrarNotificacion('Error al generar el PDF', 'error');
+  }
+}
+
+// Función auxiliar para mostrar notificaciones
+function mostrarNotificacion(mensaje, tipo = 'success') {
+  const notification = document.createElement('div');
+  notification.className = `notification ${tipo}`;
+  notification.style.cssText = `
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 15px 25px;
+      background: ${tipo === 'success' ? 'var(--primary)' : '#dc3545'};
+      color: white;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      z-index: 1000;
+      animation: slideIn 0.3s ease-out;
+  `;
+  
+  notification.textContent = mensaje;
+  document.body.appendChild(notification);
+  
+  // Agregar animación CSS
+  const style = document.createElement('style');
+  style.textContent = `
+      @keyframes slideIn {
+          from {
+              transform: translateX(100%);
+              opacity: 0;
+          }
+          to {
+              transform: translateX(0);
+              opacity: 1;
+          }
+      }
+      @keyframes fadeOut {
+          to {
+              opacity: 0;
+          }
+      }
+  `;
+  document.head.appendChild(style);
+  
+  // Remover la notificación después de 3 segundos
+  setTimeout(() => {
+      notification.style.animation = 'fadeOut 0.3s ease-out';
+      setTimeout(() => {
+          notification.remove();
+          style.remove();
+      }, 300);
+  }, 3000);
+}
+
+    </script>
+  <!-- Agregar antes de cerrar el </head> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+</body>
+</html>

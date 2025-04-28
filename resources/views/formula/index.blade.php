@@ -9,12 +9,14 @@
     <!-- Styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     {{-- <link rel="stylesheet" href="{{ asset('css/styles.css') }}"> --}}
+    <link rel="stylesheet" href="{{ asset('css/tema.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/sweetalert2/sweetalert2.min.css') }}"> 
+    
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/formulas.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/tema.css') }}">
-    <link rel="stylesheet" href="{{ asset('vendor/sweetalert2/sweetalert2.min.css') }}">
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 </head>
 <body>
     <!-- Header with Navigation -->
@@ -25,9 +27,13 @@
                 <p class="tagline">Tu recurso educativo completo</p>
             </div>
             <nav class="main-nav">
-                <button class="menu-toggle" aria-label="Abrir menú">
+                {{-- <button class="menu-toggle" aria-label="Abrir menú">
                     <i class="fas fa-bars"></i>
+                </button> --}}
+                <button class="menu-toggle" aria-label="Abrir menú">
+                    <span class="hamburger"></span>
                 </button>
+                
                 <ul class="nav-links">
                     <li><a href="{{ route('home') }}">Inicio</a></li>
                     <li><a href="#" class="active">Fórmulas</a></li>
@@ -45,7 +51,7 @@
         <div class="container">
             <ul class="breadcrumb">
                 <li><a href="{{ route('home') }}">Inicio</a></li>
-                <li><a href="{{ route('materias.index') }}">Materias</a></li>
+                <li><a href="{{ route('inicio') }}">Materias</a></li>
                 <li>{{ $tema->tema }}</li>
             </ul>
         </div>
@@ -65,32 +71,30 @@
                 <div class="card-body">
                     <div class="row formulas-grid">
                         @foreach ($formulas as $formula)
-                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                                <div class="formula-card">
-                                    <div class="formula-card-header">
+                                
+                                <div class="resource-card">
+                                    <div class="resource-content">
                                         <h3>{{ $formula->nombre }}</h3>
-                                        {{-- <div id="form{{ $formula->id }}" class="formula-card-actions">
-                                            <a class="editar" href="{{ route('formulas.edit', $formula) }}">
-                                                <i class="fas fa-edit text-secondary"></i>
-                                            </a>
-                                            <a class="eliminarformula">
-                                                <i class="fas fa-trash-alt text-danger"></i>
-                                            </a>
-                                        </div> --}}
-                                    </div>
-                                    <div class="formula-card-body">
-                                        {{ $formula->formula }}
+                                        <p>{{ $formula->formula }}</p>
+                                        <a href="https://wa.me/59160902299?text=Vengo%20de%20su%20página%20de%20fórmulas" 
+                                            class="btn btn-primary" 
+                                            target="_blank" 
+                                            rel="noopener noreferrer">
+                                            <i class="fab fa-whatsapp"></i>
+                                        </a>
                                     </div>
                                 </div>
-                            </div>
+                                
                         @endforeach
                     </div>
                 </div>
+      
+</div>
             </div>
         </section>
 
         <!-- Formula Details Sections -->
-        <section class="formula-details-section">
+        {{-- <section class="formula-details-section">
             @foreach ($formulas as $formula)
                 @php
                     $variables = $formula->variables;
@@ -99,9 +103,6 @@
                     <div class="formula-detail-header">
                         <div class="d-flex justify-content-between align-items-center">
                             <h2>{{ $formula->nombre }}</h2>
-                            {{-- <a href="{{ route('ejemplos.view', $formula->id) }}" class="btn btn-primary btn-outline-secondary text-white">
-                                <i class="fa fa-plus"></i>&nbsp;Detallar
-                            </a> --}}
                             <a href="https://wa.me/?text={{ urlencode('Consulta sobre la fórmula: ' . $formula->expresion . ' del tema: ' . $tema->nombre) }}" 
                                 class="btn btn-secondary btn-block" 
                                 target="_blank">
@@ -173,7 +174,7 @@
                     </div>
                 </div>
             @endforeach
-        </section>
+        </section> --}}
 
         <!-- Theme Description Section -->
         <section class="theme-description">
