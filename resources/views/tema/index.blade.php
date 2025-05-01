@@ -79,7 +79,8 @@
                 </div>
                 <div class="materia-image">
                     {{-- <img src="{{ URL::to('/').Storage::url('public/'.$materia->imagen->url) }}" alt="Imagen de {{ $materia->materia }}"> --}}
-                    <img src="{{  $materia->imagen->url }}" alt="Imagen de {{ $materia->materia }}">
+                    {{-- <img src="{{  $materia->imagen->url }}" alt="Imagen de {{ $materia->materia }}"> --}}
+                    <img src="{{ asset('images/david.png') }}" alt="Fórmulas educativas">
                 </div>
             </div>
         </div>

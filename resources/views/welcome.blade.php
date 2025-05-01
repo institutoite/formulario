@@ -49,7 +49,7 @@
                 </div>
             </div>
             <div class="hero-image">
-                <img src="{{ asset('images/hero-formulas.png') }}" alt="Fórmulas educativas">
+                <img src="{{ asset('images/david.png') }}" alt="Fórmulas educativas">
             </div>
         </div>
     </section>
@@ -66,7 +66,9 @@
                 @foreach ($materias as $materia)
                     <div class="card">
                         <div class="card-image">
-                            <img src="{{ asset('images/' . strtolower($materia->materia) . '.jpg') }}" alt="{{ $materia->materia }}">
+                            @isset($materia->imagen->url)
+                                <img src="{{ asset('images/' . strtolower($materia->imagen->url)) }}" alt="{{ $materia->materia }}" width="80%">
+                            @endisset
                         </div>
                         <div class="card-content">
                             <h3>{{ $materia->materia }}</h3>
