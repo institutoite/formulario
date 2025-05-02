@@ -469,7 +469,7 @@
                     <h4>Enlaces rápidos</h4>
                     <ul>
                         <li><a href="https://ite.com.bo">Inicio</a></li>
-                        <li><a href="https://formulas.ite.com.bo">Fórmulas</a></li>
+                        <li><a href="https://formula.ite.com.bo">Fórmulas</a></li>
                         <li><a href="https://services.ite.com.bo">Cursos</a></li>
                     </ul>
                 </div>
@@ -535,7 +535,7 @@
             const mensaje = document.getElementById('mensaje').value;
             
             // Formatea el mensaje para URL
-            const texto = `*Nombre:* ${nombre}%0A*Teléfono:* ${telefono}%0A*Mensaje:* ${mensaje} Mensaje enviado desde https://formulas.ite.com.bo`;
+            const texto = `*Nombre:* ${nombre}%0A*Teléfono:* ${telefono}%0A*Mensaje:* ${mensaje} Mensaje enviado desde https://formula.ite.com.bo`;
             
             // Redirige a WhatsApp (cambia el número al destino)
             window.open(`https://wa.me/59160902299?text=${texto}`, '_blank');
