@@ -459,18 +459,18 @@
                     <h3>ITE Fórmulas</h3>
                     <p>Somos una institución educativa dedicada a proporcionar recursos de calidad para estudiantes de todos los niveles.</p>
                     <div class="footer-social">
-                        <a href="https://www.tiktok.com/@ite_educabol"><i class="fab fa-tiktok"></i></a>
-                        <a href="https://www.facebook.com/ite.educabol"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.youtube.com/@ite_educabol"><i class="fab fa-youtube"></i></a>
+                        <a target="_blank" href="https://www.tiktok.com/@ite_educabol"><i class="fab fa-tiktok"></i></a>
+                        <a target="_blank" href="https://www.facebook.com/ite.educabol"><i class="fab fa-facebook-f"></i></a>
+                        <a target="_blank" href="https://www.youtube.com/@ite_educabol"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
                 
                 <div class="footer-links">
                     <h4>Enlaces rápidos</h4>
                     <ul>
-                        <li><a href="https://ite.com.bo">Inicio</a></li>
-                        <li><a href="https://formula.ite.com.bo">Fórmulas</a></li>
-                        <li><a href="https://services.ite.com.bo">Cursos</a></li>
+                        <li><a target="_blank" href="https://ite.com.bo">Inicio</a></li>
+                        <li><a target="_blank" href="https://formula.ite.com.bo">Fórmulas</a></li>
+                        <li><a target="_blank" href="https://services.ite.com.bo">Cursos</a></li>
                     </ul>
                 </div>
                 
