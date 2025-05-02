@@ -43,7 +43,6 @@
 
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css" integrity="sha256-x5TVfS1Xb9d7XdHvDrcj+gO8ZMQGJHmzOrjv3egfIg8=" crossorigin="anonymous" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.js" integrity="sha256-riEobt1CgYPnICe8nCZd1KQfJGZlW7hJGj92yReFY+g=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.js"></script>
     
     {{-- @isset($formula->imagen)
         
@@ -51,29 +50,39 @@
 
     <script>
         ClassicEditor.create(document.querySelector('#detalle'));
-        
-        
-        var currentImageUrl = "{{URL::to('/').Storage::url('public/'.$formula->imagen->url)}}";
-        console.log("{{ $formula->imagen->url }}");
+
+        // Configuración de fileinput (sin lógica JS para la imagen)
         $('.file-input').fileinput({
             deleteUrl: "/site/file-delete",
             overwriteInitial: true,
             maxFileSize: 2000,
-            initialCaption: "click aqui para subir fotos",
-            language:'es',
-            theme:'fas',
-            initialPreview: '<img src="' + currentImageUrl + '" class="file-preview-image" alt="Sin Imagen">',
-            initialPreviewConfig: [{caption: 'Current Image', size: null, width: "120px", url: currentImageUrl, key: 1}],
+            initialCaption: "click aquí para subir fotos",
+            language: 'es',
+            theme: 'fas',
+            @isset($formula->imagen)
+                initialPreview: '<img src="{{ URL::to('/').Storage::url('public/'.$formula->imagen->url) }}" class="file-preview-image" alt="Imagen actual">',
+                initialPreviewConfig: [{
+                    caption: 'Imagen actual',
+                    size: null,
+                    width: "120px",
+                    url: "{{ URL::to('/').Storage::url('public/'.$formula->imagen->url) }}",
+                    key: 1
+                }],
+            @else
+                initialPreview: '',
+                initialPreviewConfig: [],
+            @endisset
             initialPreviewAsData: false
         });
 
+        // Renderizado de KaTeX (sin cambios)
         $(document).ready(function(){
             const input = document.getElementById('formula');
             const previsualizar = document.getElementById('previsualizar');
             input.addEventListener('input', (event) => {
                 katex.render(input.value, previsualizar);
             });
-           
         });
+
     </script>
 @stop

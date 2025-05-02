@@ -4,20 +4,20 @@
     <link rel="stylesheet" href="{{asset('css/card.css')}}">
     <link href="{{ asset('vendor/fileinput/css/fileinput.css') }}" rel="stylesheet">
 @stop
-@section('title', 'Materias')
+@section('title', 'Edit Temas')
 
 
 @section('content')
     <div class="card mt-3">
         <div class="card">
             <div class="card-header">
-                FORMULARIO CREAR MATERIA
+                FORMULARIO EDITAR TEMA: {{ $tema->tema }}
             </div>
             <div class="card-body">
-                <form method="POST" action="{{ route('materias.update', $materia->id) }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('temas.update', $tema->id) }}" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
-                    @include('materia.form')
+                    @include('tema.form')
                     @include('include.update')
                 </form>
             </div>

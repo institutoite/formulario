@@ -90,8 +90,12 @@ class TemaController extends Controller
 
    public function edit(Tema $tema)
     {
-        $materia=$tema->materia;   
+        $materia= Materia::findOrFail($tema->materia_id);
         return view("tema.edit",compact("tema","materia"));
+    }
+
+    function eliminarAcentos($string) {
+        return iconv('UTF-8', 'ASCII//TRANSLIT', $string);
     }
 
     /**
@@ -99,7 +103,6 @@ class TemaController extends Controller
      */
     public function update(UpdateTemaRequest $request, Tema $tema)
     {
-       
         $tema->tema = $request->tema;
         $tema->slogan = $request->slogan;
         $tema->detalle = $request->detalle;
@@ -115,13 +118,13 @@ class TemaController extends Controller
             }
 
             $foto=$request->file('url');
-            $nombreImagen='temas/'.$tema->tema.Str::random(5).'.jpg';
+            $nombreImagen='temas/'.($this->eliminarAcentos($tema->tema)).Str::random(5).'.jpg';
             $imagen= Image::make($foto);
             $imagen->resize(300,300,function($constraint){
                 $constraint->upsize();
             });
             $fotito = Storage::disk('public')->put($nombreImagen, $imagen->stream());
-            $imagencita = $formula->imagen;
+            $imagencita = $tema->imagen;
             $imagencita->url=$nombreImagen;
             $imagencita->save(); 
         }

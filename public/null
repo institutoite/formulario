@@ -1,52 +1,25 @@
-use App\Models\Formula;
-$f= Formula::find(1);
-$f->imagen
-  
-
-use App\Models\Formula;
-$f= Formula::find(1);
-
-  
-
-use App\Models\Formula;
-$f= Formula::find(1);
-Imagen::create([
-  'url'=>$nombreImagen,
-  'imageable_id'=>$tema->id,
-  'imageable_type'=>'App\Models\Tema',
-]);
-
-  
-
-use App\Models\Formula;
-$f= Formula::find(1);
-Imagen::create([
-  'url'=>"temas/imagen.jpg",
-  'imageable_id'=>1,
-  'imageable_type'=>'App\Models\Tema',
-]);
-
-  
-
-use App\Models\Formula;
-$f= Formula::find(1);
-
-$f->imagen
-  
-
-use App\Models\Formula;
-$f= Tema::find(1);
-
-$f->imagen
-  
-
-use App\Models\Formula;
-$f= Tema::find(1);
-Imagen::create([
-  'url'=>"formulas/imagen.jpg",
-  'imageable_id'=>1,
-  'imageable_type'=>'App\Models\Formula',
-]);
-$f->imagen
-  
-
+use App\Models\Materia;
+$materia->formulas->count()
+use App\Models\Materia;
+$materia->formulas->count()
+use App\Models\Materia;
+$materia=Materia::find(2);
+$materia->formulas->count()
+use App\Models\Materia;
+$materia=Materia::find(2);
+count($materia->formulas)
+use App\Models\Materia;
+$materia=Materia::find(2);
+count($materia->temas->)
+use App\Models\Materia;
+$materia=Materia::find(2);
+count($materia->tema->)
+use App\Models\Materia;
+$materia=Materia::find(2);
+count($materia->tema)
+use App\Models\Materia;
+$materia=Materia::find(2);
+count($materia->temas)
+use App\Models\Materia;
+$materia=Materia::find(4);
+count($materia->temas)

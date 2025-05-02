@@ -49,7 +49,7 @@ Route::get('temas/crear/{materia}', [TemaController::class,'crear'])->name('tema
 Route::post('temas', [TemaController::class,'store'])->name('temas.store');
 Route::get('temas/show/{tema}', [TemaController::class,'show'])->name('temas.show');
 Route::get('temas/{tema}/edit', [TemaController::class,'edit'])->name('temas.edit');
-Route::put('temas/{tema}', [TemaController::class,'update'])->name('temas.update');
+Route::put('temas/actualizar/{tema}', [TemaController::class,'update'])->name('temas.update');
 Route::delete('eliminar/tema/{tema}', [TemaController::class,'destroy'])->name('temas.eliminar');
 
 Route::get('formulas/{tema}', [FormulaController::class,'index'])->name('formulas.index');

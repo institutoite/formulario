@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Fórmulas de física, química, matemáticas y más para estudiantes">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/materias.css') }}">
     <!-- Font Awesome para iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- CSS de Slick -->
@@ -49,7 +50,10 @@
                 </div>
             </div>
             <div class="hero-image">
-                <img src="{{ asset('images/david.png') }}" alt="Fórmulas educativas">
+                <a href="https://www.tiktok.com/@davidflores.ite">
+                    <img src="{{ asset('images/david.png') }}" alt="Fórmulas educativas">
+                </a>
+
             </div>
         </div>
     </section>
@@ -62,24 +66,50 @@
                 <p>Encuentra todas las fórmulas que necesitas organizadas por asignaturas</p>
             </div>
             
-            <div class="card-container">
-                @foreach ($materias as $materia)
-                    <div class="card">
-                        <div class="card-image">
-                            @isset($materia->imagen->url)
-                                <img src="{{ asset('images/' . strtolower($materia->imagen->url)) }}" alt="{{ $materia->materia }}" width="80%">
-                            @endisset
-                        </div>
-                        <div class="card-content">
-                            <h3>{{ $materia->materia }}</h3>
-                            <p>{{ $materia->slogan }}</p>
-                            <a href="{{ route('temas.index', $materia) }}" class="btn btn-card">Ver fórmulas</a>
-                        </div>
-                    </div>    
-                @endforeach
+        
+
+                <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%     Recursos Section %%%%%%%%%%%%%%%%-->
+    <div class="cards-container">
+        @foreach ($materias as $materia)
+        <div class="card">
+            <div class="card-image">
+                @isset($materia->imagen->url)
+                    <img src="{{URL::to('/').Storage::url('public/'.$materia->imagen->url)}}" alt="{{ $materia->materia }}" height="50%">
+                @endisset
             </div>
+            <div class="card-content">
+                <h3>{{ $materia->materia }}</h3>
+                <p>{{ $materia->slogan }}</p>
+                @if(count($materia->temas) > 0)
+                    <a href="{{ route('temas.index', $materia) }}" class="btn btn-card">Ver fórmulas</a>
+                @else
+                    <a href="#" class="btn btn-card" onclick="showNoFormulasModal('{{ $materia->materia }}'); return false;">Ver fórmulas</a>
+                @endif
+            </div>
+        </div>    
+        @endforeach
+    </div>
+    
+    <!-- Modal para materias sin fórmulas -->
+    <div id="noFormulasModal" class="modal">
+        <div class="modal-content">
+            <h4 class="modal-title">¡Próximamente!</h4>
+            <p class="modal-text">La materia <span id="materiaName"></span> aún no tiene fórmulas disponibles. Comenta en el video para que lo agreguemos lo antes posible.</p>
+            <button class="modal-close" onclick="closeModal()">Entendido</button>
         </div>
+    </div>
+    
+    
+    <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%     Recursos Section %%%%%%%%%%%%%%%%-->
+
+        </div>
+
+
+        
     </section>
+
+
+
 
     <!-- Cursos Section -->
     <section id="cursos" class="cursos-section">
@@ -145,7 +175,7 @@
         </div>
     </section>
 
-    <!-- Novedades Section -->
+    {{-- <!-- Novedades Section -->
     <section id="novedades" class="novedades-section">
         <div class="container">
             <div class="section-header">
@@ -191,7 +221,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 
     <!-- Colaboradores Section -->
     <section class="profesores-destacados">
@@ -205,11 +235,11 @@
                 <div class="slider">
                     <div class="profesor-slide">
                         <div class="profesor-img">
-                            <img src="{{ asset('images/profesor1.jpg') }}" alt="Profesor 1">
+                            <img src="{{ asset('images/david.png') }}" alt="Profesor 1">
                         </div>
                         <h3>David Flores</h3>
-                        <p class="profesor-especialidad">Matemáticas Avanzadas</p>
-                        <p>Soy un colaborador en este proyecto, especializado en matemáticas y con más de 10 años de experiencia docente.</p>
+                        <p class="profesor-especialidad">Informático</p>
+                        <p>Soy Fundador de ITE y creador de esta plataforma de fórmulas, enfocado en impulsar eficiencia mediante herramientas innovadoras.</p>
                     </div>
                     
                     <div class="profesor-slide">
@@ -251,29 +281,26 @@
                 <p>Mantente al día con nuestras últimas actualizaciones, recursos gratuitos y consejos de estudio</p>
                 
                 <div class="social-links">
-                    <a href="#" class="social-link tiktok">
+                    <a href="https://www.tiktok.com/@ite_educabol" target="_blank" class="social-link tiktok">
                         <i class="fab fa-tiktok"></i>
                         <span>TikTok</span>
                     </a>
-                    <a href="#" class="social-link facebook">
+                    <a href="https://www.facebook.com/ite.educabol" class="social-link facebook">
                         <i class="fab fa-facebook-f"></i>
                         <span>Facebook</span>
                     </a>
-                    <a href="#" class="social-link youtube">
+                    <a href="https://www.youtube.com/@ite_educabol" class="social-link youtube">
                         <i class="fab fa-youtube"></i>
                         <span>YouTube</span>
                     </a>
-                    <a href="#" class="social-link instagram">
-                        <i class="fab fa-instagram"></i>
-                        <span>Instagram</span>
-                    </a>
+                   
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Testimonios Section -->
-    <section class="testimonios-section">
+    {{-- <section class="testimonios-section">
         <div class="container">
             <div class="section-header">
                 <h2>Lo que dicen nuestros estudiantes</h2>
@@ -321,7 +348,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 
     <!-- Contacto Section -->
     <section id="contacto" class="contacto-section">
@@ -338,7 +365,7 @@
                             <i class="fas fa-map-marker-alt"></i>
                             <div>
                                 <h4>Dirección</h4>
-                                <p>Av. Principal 123, Ciudad</p>
+                                <p>Villa 1 de mayo, calle 16 oeste #9</p>
                             </div>
                         </div>
                         
@@ -346,7 +373,7 @@
                             <i class="fas fa-phone"></i>
                             <div>
                                 <h4>Teléfono</h4>
-                                <p>+123 456 7890</p>
+                                <p>+59160902299</p>
                             </div>
                         </div>
                         
@@ -354,7 +381,7 @@
                             <i class="fas fa-envelope"></i>
                             <div>
                                 <h4>Email</h4>
-                                <p>info@iteformulas.com</p>
+                                <p>formulas@ite.com.bo</p>
                             </div>
                         </div>
                         
@@ -362,36 +389,28 @@
                             <i class="fas fa-clock"></i>
                             <div>
                                 <h4>Horario</h4>
-                                <p>Lunes a Viernes: 9am - 6pm</p>
+                                <p>Lunes a Sábado: 7:30 am - 06:30pm</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 
                 <div class="contacto-form">
-                    <form action="{{ route('contacto.enviar') }}" method="POST">
+                    <form onsubmit="enviarWhatsApp(event)" method="POST">
                         @csrf
                         <div class="form-group">
-                            <label for="nombre">Nombre completo</label>
+                            <label for="nombre">Nombre</label>
                             <input type="text" id="nombre" name="nombre" required>
                         </div>
-                        
                         <div class="form-group">
-                            <label for="email">Correo electrónico</label>
-                            <input type="email" id="email" name="email" required>
+                            <label for="telefono">Teléfono</label>
+                            <input type="tel" id="telefono" name="telefono" required>
                         </div>
-                        
-                        <div class="form-group">
-                            <label for="asunto">Asunto</label>
-                            <input type="text" id="asunto" name="asunto" required>
-                        </div>
-                        
                         <div class="form-group">
                             <label for="mensaje">Mensaje</label>
                             <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
                         </div>
-                        
-                        <button type="submit" class="btn btn-primary">Enviar mensaje</button>
+                        <button type="submit" class="btn btn-primary">Enviar a WhatsApp</button>
                     </form>
                 </div>
             </div>
@@ -421,54 +440,51 @@
                 <div class="footer-about">
                     <h3>ITE Fórmulas</h3>
                     <p>Somos una institución educativa dedicada a proporcionar recursos de calidad para estudiantes de todos los niveles.</p>
-                    
                     <div class="footer-social">
-                        <a href="#"><i class="fab fa-tiktok"></i></a>
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@ite_educabol"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://www.facebook.com/ite.educabol"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.youtube.com/@ite_educabol"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
                 
                 <div class="footer-links">
                     <h4>Enlaces rápidos</h4>
                     <ul>
-                        <li><a href="#">Inicio</a></li>
-                        <li><a href="#">Fórmulas</a></li>
-                        <li><a href="#">Cursos</a></li>
-                        <li><a href="#">Recursos</a></li>
-                        <li><a href="#">Contacto</a></li>
+                        <li><a href="https://ite.com.bo">Inicio</a></li>
+                        <li><a href="https://formulas.ite.com.bo">Fórmulas</a></li>
+                        <li><a href="https://services.ite.com.bo">Cursos</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-links">
                     <h4>Materias</h4>
                     <ul>
-                        <li><a href="#">Matemáticas</a></li>
-                        <li><a href="#">Física</a></li>
-                        <li><a href="#">Química</a></li>
-                        <li><a href="#">Biología</a></li>
-                        <li><a href="#">Informática</a></li>
+                        <li><a href="#" class="whatsapp-link" data-msg="Me gustaría recibir clases de Matemáticas. Visite su página de fórmulas">Matemáticas</a></li>
+                        <li><a href="#" class="whatsapp-link" data-msg="Me gustaría recibir clases de Física. Visite su página de fórmulas">Física</a></li>
+                        <li><a href="#" class="whatsapp-link" data-msg="Me gustaría recibir clases de Química. Visite su página de fórmulas">Química</a></li>
+                        <li><a href="#" class="whatsapp-link" data-msg="Me gustaría recibir clases de Biología. Visite su página de fórmulas">Biología</a></li>
+                        <li><a href="#" class="whatsapp-link" data-msg="Me gustaría recibir clases de Informática. Visite su página de fórmulas">Informática</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-links">
                     <h4>Cursos</h4>
                     <ul>
-                        <li><a href="#">Computación</a></li>
-                        <li><a href="#">Robótica</a></li>
-                        <li><a href="#">Cubo Rubik</a></li>
-                        <li><a href="#">Programación</a></li>
-                        <li><a href="#">Apoyo escolar</a></li>
+                        <li><a href="#" class="whatsapp-link" data-msg="Me interesa el curso de Computación. Visite su Página de fórmulas">Computación</a></li>
+                        <li><a href="#" class="whatsapp-link" data-msg="Me interesa el curso de Robótica. Visite su Página de fórmulas">Robótica</a></li>
+                        <li><a href="#" class="whatsapp-link" data-msg="Me interesa el curso de Cubo Rubik. Visite su Página de fórmulas">Cubo Rubik</a></li>
+                        <li><a href="#" class="whatsapp-link" data-msg="Me interesa el curso de Programación. Visite su Página de fórmulas">Programación</a></li>
+                        <li><a href="#" class="whatsapp-link" data-msg="Necesito apoyo escolar. Visite su Página de fórmulas">Apoyo escolar</a></li>
                     </ul>
                 </div>
+                
             </div>
             
             <div class="footer-bottom">
                 <p>&copy; 2025 ITE Fórmulas. Todos los derechos reservados.</p>
                 <div class="footer-legal">
-                    <a href="#">Términos y condiciones</a>
-                    <a href="#">Política de privacidad</a>
+                    <a href="https://www.tiktok.com/@davidflores.ite" target="_blank">David Flores</a>
+                    <a href="https://www.ite.com.bo" target="_blank">ite educabol</a>
                 </div>
             </div>
         </div>
@@ -480,6 +496,33 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
     
     <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const whatsappLinks = document.querySelectorAll('.whatsapp-link');
+            const numeroWhatsApp = '59160902299'; // Número destino (sin +)
+          
+            whatsappLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const mensaje = encodeURIComponent(link.dataset.msg);
+                    window.open(`https://wa.me/${numeroWhatsApp}?text=${mensaje}`, '_blank');
+                });
+            });
+        });
+        
+        function enviarWhatsApp(event) {
+            event.preventDefault();
+            
+            const nombre = document.getElementById('nombre').value;
+            const telefono = document.getElementById('telefono').value;
+            const mensaje = document.getElementById('mensaje').value;
+            
+            // Formatea el mensaje para URL
+            const texto = `*Nombre:* ${nombre}%0A*Teléfono:* ${telefono}%0A*Mensaje:* ${mensaje} Mensaje enviado desde https://formulas.ite.com.bo`;
+            
+            // Redirige a WhatsApp (cambia el número al destino)
+            window.open(`https://wa.me/59160902299?text=${texto}`, '_blank');
+        }
+
         $(document).ready(function(){
             // Menú móvil
             $('.menu-toggle').click(function() {
@@ -520,6 +563,24 @@
                 dots: true
             });
         });
+        
+
+        function showNoFormulasModal(materiaName) {
+            document.getElementById('materiaName').textContent = materiaName;
+            document.getElementById('noFormulasModal').style.display = 'block';
+        }
+        
+        function closeModal() {
+            document.getElementById('noFormulasModal').style.display = 'none';
+        }
+        
+        // Cerrar modal al hacer clic fuera de él
+        window.onclick = function(event) {
+            var modal = document.getElementById('noFormulasModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
     </script>
 </body>
 </html>

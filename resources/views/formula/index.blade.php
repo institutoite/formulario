@@ -71,10 +71,23 @@
                 <div class="card-body">
                     <div class="row formulas-grid">
                         @foreach ($formulas as $formula)
-                                
+                     
                                 <div class="resource-card">
                                     <div class="resource-content">
                                         <h3>{{ $formula->nombre }}</h3>
+                                        @auth
+                                        <div class="tema-actions">
+                                            <a href="{{ route('formulas.edit', $formula) }}" class="action-btn edit" title="Editar">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                            <button class="action-btn delete eliminar" data-id="{{ $formula->id }}" title="Eliminar">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </button>
+                                            <a href="{{ route('formulas.create', $tema->id) }}" class="action-btn add" title="Añadir fórmula">
+                                                <i class="fas fa-plus-circle"></i>
+                                            </a>
+                                        </div>
+                                        @endauth
                                         <p>{{ $formula->formula }}</p>
                                         <a href="https://wa.me/59160902299?text=Vengo%20de%20su%20página%20de%20fórmulas" 
                                             class="btn btn-primary" 

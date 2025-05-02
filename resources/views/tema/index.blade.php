@@ -78,8 +78,6 @@
                     </div>
                 </div>
                 <div class="materia-image">
-                    {{-- <img src="{{ URL::to('/').Storage::url('public/'.$materia->imagen->url) }}" alt="Imagen de {{ $materia->materia }}"> --}}
-                    {{-- <img src="{{  $materia->imagen->url }}" alt="Imagen de {{ $materia->materia }}"> --}}
                     <img src="{{ asset('images/david.png') }}" alt="Fórmulas educativas">
                 </div>
             </div>
@@ -146,18 +144,17 @@
                     </div>
                     
                     <div class="tema-content">
-                        @if ($tema->imagen)
-                        <div class="tema-image">
-                            {{-- <img src="{{ URL::to('/').Storage::url('public/'.$tema->imagen->url) }}" alt="Imagen de {{ $tema->tema }}"> --}}
-                            <img src="{{$tema->imagen->url }}" alt="Imagen de {{ $tema->tema }}">
+                        <div class="tema-content">
+                            <div class="tema-image">
+                                <img src="{{ URL::to('/').Storage::url('public/sinimagen.jpg') }}" 
+                                     alt="Imagen de {{ $tema->tema }}"
+                                     class="default-image">
+                            </div>
+                            <p class="tema-slogan">{{ $tema->slogan }}</p>
+                            <a href="{{ route('formulas.index', $tema) }}" class="btn btn-secondary btn-block">
+                                Ver Fórmulas <i class="fas fa-arrow-right"></i>
+                            </a>
                         </div>
-                        @endif
-                        
-                        <p class="tema-slogan">{{ $tema->slogan }}</p>
-                        
-                        <a href="{{ route('formulas.index', $tema) }}" class="btn btn-secondary btn-block">
-                            Ver Fórmulas <i class="fas fa-arrow-right"></i>
-                        </a>
                     </div>
                 </div>
                 @endforeach

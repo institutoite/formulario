@@ -93,7 +93,7 @@ class FormulaController extends Controller
     public function edit(Formula $formula)
     {
     
-        $tema=$formula->tema;   
+        $tema=$formula->tema; 
         $formula->formula=str_replace("$","",$formula->formula);
         return view("formula.edit",compact("formula","tema"));
     }
@@ -103,32 +103,46 @@ class FormulaController extends Controller
      */
     public function update(UpdateFormulaRequest $request, Formula $formula)
     {
-        //dd($request->all());
+        // Actualizar datos básicos
         $formula->nombre = $request->nombre;
         $formula->formula = "$$".$request->formula."$$";
         $formula->detalle = $request->detalle;
         $formula->indice = 0;
         $formula->save();
+    
+        // Manejo de la imagen (solo si se sube un archivo)
         if ($request->hasFile('url')) {
-            
-            if (Storage::disk('public')->exists($formula->imagen->url)) {
-                Storage::disk('public')->delete($formula->imagen->url);
+            // Verificar si ya existe una imagen asociada
+            if ($formula->imagen) {
+                // Eliminar la imagen anterior si existe en storage
+                if (Storage::disk('public')->exists($formula->imagen->url)) {
+                    Storage::disk('public')->delete($formula->imagen->url);
+                }
+                // Actualizar la imagen existente
+                $imagencita = $formula->imagen;
+            } else {
+                // Crear una nueva imagen si no existe
+                $imagencita = new Imagen(); // Asume que tienes el modelo "Imagen"
+                $imagencita->imageable_id = $formula->id; // Ajusta según tu relación
+                $imagencita->imageable_type ='App\Models\Formula' ; // Ajusta según tu relación
             }
-            //dd(Storage::disk('public')->exists($materia->imagen->url));
+    
+            // Procesar y guardar la nueva imagen
             $foto = $request->file('url');
             $nombreImagen = 'formulas/' . $formula->nombre . Str::random(5) . '.jpg';
             $imagen = Image::make($foto);
-            $imagen->resize(300, 300, function($constraint){
+            $imagen->resize(300, 300, function($constraint) {
                 $constraint->upsize();
             });
-            $fotito = Storage::disk('public')->put($nombreImagen, $imagen->stream());
-            //$imagencita=$materia->imagen;
-            $imagencita = $formula->imagen;
-            $imagencita->url=$nombreImagen;
-            $imagencita->save(); 
+            Storage::disk('public')->put($nombreImagen, $imagen->stream());
+    
+            // Guardar la URL en la base de datos
+            $imagencita->url = $nombreImagen;
+            $imagencita->save();
         }
-        $tema=$formula->tema;
-        return redirect()->route("formulas.index",$tema)->with('success', 'Fórmula creada exitosamente.');
+    
+        return redirect()->route("formulas.index", $formula->tema)
+            ->with('success', 'Fórmula actualizada exitosamente.');
     }
 
     /**
