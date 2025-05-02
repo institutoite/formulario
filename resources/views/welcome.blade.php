@@ -418,17 +418,35 @@
     </section>
 
     <!-- Newsletter Section -->
-    <section class="newsletter-section">
+    <section class="cta-section" style="background-color: #f5f7fa; padding: 50px 0; text-align: center;">
         <div class="container">
-            <div class="newsletter-content">
-                <h2>Suscríbete a nuestro boletín</h2>
-                <p>Recibe las últimas actualizaciones, recursos y consejos directamente en tu correo</p>
+            <div class="cta-content" style="max-width: 600px; margin: 0 auto;">
+                <h2 style="color: #2c3e50; margin-bottom: 15px;">¿Quieres ser parte de este proyecto?</h2>
+                <p style="color: #7f8c8d; font-size: 1.1rem; margin-bottom: 25px;">
+                    Puedo colaborar en el desarrollo, diseño o difusión. ¡Hablemos!
+                </p>
                 
-                <form action="{{ route('newsletter.suscribir') }}" method="POST" class="newsletter-form">
-                    @csrf
-                    <input type="email" name="email" placeholder="Tu correo electrónico" required>
-                    <button type="submit" class="btn btn-primary">Suscribirse</button>
-                </form>
+                <a 
+                    href="https://wa.me/59160902299?text=¡Hola!%20Quiero%20ser%20parte%20de%20este%20proyecto.%20Puedo%20colaborar%20en:" 
+                    class="whatsapp-btn"
+                    style="display: inline-block;
+                           background-color: #25D366;
+                           color: white;
+                           padding: 12px 30px;
+                           border-radius: 4px;
+                           text-decoration: none;
+                           font-weight: 600;
+                           font-size: 1rem;
+                           transition: all 0.3s ease;"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <i class="fab fa-whatsapp" style="margin-right: 8px;"></i> Contactar por WhatsApp
+                </a>
+                
+                <p style="margin-top: 20px; font-size: 0.9rem; color: #95a5a6;">
+                    <i class="fas fa-handshake" style="margin-right: 5px;"></i> ¡Juntos podemos hacerlo mejor!
+                </p>
             </div>
         </div>
     </section>
