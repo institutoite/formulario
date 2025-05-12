@@ -82,3 +82,8 @@ Route::delete('eliminar/ejemplo/{ejemplo}', [EjemploController::class,'destroy']
 Route::get('get/dimensiones', [DimensionController::class,'getDimension'])->name('dimensiones.get');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/mostrarqr/{tema}', [App\Http\Controllers\FormulaController::class, 'mostrarQr'])->name('mostrar.qr');
+
+
+
+Route::get('/descargar-formulario/{materia_id}/{tema_id}', [FormulaController::class, 'descargarFormulario'])->name('formulario.descargar')->middleware('auth');

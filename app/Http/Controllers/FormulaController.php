@@ -17,7 +17,14 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert as Alert;
 use App\Models\Imagen;
+use App\Models\Materia;
 
+use Barryvdh\DomPDF\Facade\Pdf;
+
+use Illuminate\Support\Facades\Http;
+
+
+// use mikehaertl\wkhtmlto\Pdf;
 
 class FormulaController extends Controller
 {
@@ -148,8 +155,54 @@ class FormulaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Formula $formula): RedirectResponse
-    {
-        //
+    
+    public function mostrarQr(Tema $tema){
+        $materia=$tema->materia;
+        return view('formula.mostrarqr',compact('tema','materia'));
     }
+
+  
+
+    public function descargarFormulario($materia_id, $tema_id)
+    {
+        $tema = Tema::findOrFail($tema_id);
+        $materia = Materia::findOrFail($materia_id);
+        $formulas = Formula::where('tema_id', $tema_id)->get();
+
+        // Directorio temporal
+        $imagenes = [];
+
+        foreach ($formulas as $formula) {
+            $latex = trim(Str::replace('$$', '', $formula->formula));
+            $latexEncoded = rawurlencode($latex);
+
+            $url = "https://latex.codecogs.com/png.image?\dpi{150}&space;" . $latexEncoded;
+
+            // Nombre del archivo
+            $fileName = 'formula_' . $formula->id . '.png';
+            $filePath = storage_path('app/public/formulas_temp/' . $fileName);
+
+            // cURL para manejar imagen correctamente
+            $ch = curl_init($url);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+            curl_setopt($ch, CURLOPT_BINARYTRANSFER, 1);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); // Quitar si tienes certificados válidos
+            $imgData = curl_exec($ch);
+            curl_close($ch);
+
+            // Verificar que es una imagen válida (verifica si empieza con cabecera PNG)
+            if (substr($imgData, 0, 8) === "\x89PNG\x0D\x0A\x1A\x0A") {
+                file_put_contents($filePath, $imgData);
+                $imagenes[$formula->id] = asset('storage/formulas_temp/' . $fileName);
+            } else {
+                $imagenes[$formula->id] = asset('images/formula-invalida.png');
+            }
+        }
+
+
+        $pdf = Pdf::loadView('formula.pdf', compact('tema', 'materia', 'formulas', 'imagenes'));
+        return $pdf->download('formulario.pdf');
+    }
+
 }

@@ -16,7 +16,56 @@
     <link rel="stylesheet" href="{{ asset('css/formulas.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        #btn-imprimir {
+            background-color: #26baa5;
+            color: #fff;
+            padding: 12px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
 
+        #btn-imprimir:hover {
+            background-color: #333;
+        }
+
+        .resource-card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin: 10px;
+            transition: transform 0.2s ease;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .resource-content h3 {
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .action-btn {
+            margin-right: 5px;
+            font-size: 16px;
+            color: #444;
+            transition: color 0.3s ease;
+        }
+
+        .action-btn:hover {
+            color: #007bff;
+        }
+        .resource-content p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+    </style>
 </head>
 <body>
     <!-- Header with Navigation -->
@@ -71,7 +120,6 @@
                 <div class="card-body">
                     <div class="row formulas-grid">
                         @foreach ($formulas as $formula)
-                     
                                 <div class="resource-card">
                                     <div class="resource-content">
                                         <h3>{{ $formula->nombre }}</h3>
@@ -101,93 +149,14 @@
                         @endforeach
                     </div>
                 </div>
-      
-</div>
             </div>
         </section>
-
-        <!-- Formula Details Sections -->
-        {{-- <section class="formula-details-section">
-            @foreach ($formulas as $formula)
-                @php
-                    $variables = $formula->variables;
-                @endphp
-                <div class="formula-detail-card">
-                    <div class="formula-detail-header">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <h2>{{ $formula->nombre }}</h2>
-                            <a href="https://wa.me/?text={{ urlencode('Consulta sobre la fórmula: ' . $formula->expresion . ' del tema: ' . $tema->nombre) }}" 
-                                class="btn btn-secondary btn-block" 
-                                target="_blank">
-                                Consultar <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="formula-detail-body">
-                        <div class="row">
-                            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-4">
-                                @isset($formula->imagen->url)
-                                    <img width="250" alt="imagen de fórmula" src="{{ URL::to('/').Storage::url('public/'.$formula->imagen->url) }}" class="formula-image">
-                                @endisset
-                            </div>
-                            <div class="col-xs-12 col-sm-12 col-md-9 col-lg-8">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="formula-representation">
-                                            <div class="formula-rep-header">
-                                                <h5>Fórmula:</h5>
-                                            </div>
-                                            <div class="formula-rep-body">
-                                                <h4>{{ $formula->formula }}</h4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <table id="formula{{ $formula->id }}" class="variables-table">
-                                            <thead>
-                                                <tr>
-                                                    <th>Variable</th>
-                                                    <th>Descripción</th>
-                                                    <th>Acciones &nbsp; 
-                                                        <a class="crear" href="#">
-                                                            <i class="fas fa-plus-circle"></i>
-                                                        </a> &nbsp;
-                                                    </th>
-                                                </tr>
-                                            </thead>
-                                            <tbody id="variables">
-                                                @foreach ($variables as $variable)
-                                                    <tr id="{{ $variable->id }}">
-                                                        <td><strong>{{ $variable->variable }}</strong></td>
-                                                        <td>{{ $variable->detalle }}</td>
-                                                        <td class="table-actions">
-                                                            <a class="editar">
-                                                                <i class="fas fa-edit text-secondary"></i>
-                                                            </a>
-                                                            <a class="eliminar">
-                                                                <i class="fas fa-trash-alt text-danger"></i>
-                                                            </a>
-                                                        </td>
-                                                    </tr>
-                                                @endforeach
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <h5>Descripción</h5>
-                                        <div class="formula-description">
-                                            {!! $formula->detalle !!}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-        </section> --}}
+        <div style="text-align: center; margin: 40px 0;">
+            <a href="{{ route('mostrar.qr',$tema->id) }}" id="btn-imprimir" class="btn btn-secondary">
+                <i class="fas fa-print"></i> Imprimir esta página
+            </a>
+            
+        </div>
 
         <!-- Theme Description Section -->
         <section class="theme-description">
@@ -322,3 +291,87 @@
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
 </body>
 </html>
+
+
+        {{-- <!-- Formula Details Sections -->
+        <section class="formula-details-section">
+            @foreach ($formulas as $formula)
+                @php
+                    $variables = $formula->variables;
+                @endphp
+                <div class="formula-detail-card">
+                    <div class="formula-detail-header">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h2>{{ $formula->nombre }}</h2>
+                            <a href="https://wa.me/?text={{ urlencode('Consulta sobre la fórmula: ' . $formula->expresion . ' del tema: ' . $tema->nombre) }}" 
+                                class="btn btn-secondary btn-block" 
+                                target="_blank">
+                                Consultar <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="formula-detail-body">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-4">
+                                @isset($formula->imagen->url)
+                                    <img width="250" alt="imagen de fórmula" src="{{ URL::to('/').Storage::url('public/'.$formula->imagen->url) }}" class="formula-image">
+                                @endisset
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-9 col-lg-8">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="formula-representation">
+                                            <div class="formula-rep-header">
+                                                <h5>Fórmula:</h5>
+                                            </div>
+                                            <div class="formula-rep-body">
+                                                <h4>{{ $formula->formula }}</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <table id="formula{{ $formula->id }}" class="variables-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Variable</th>
+                                                    <th>Descripción</th>
+                                                    <th>Acciones &nbsp; 
+                                                        <a class="crear" href="#">
+                                                            <i class="fas fa-plus-circle"></i>
+                                                        </a> &nbsp;
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="variables">
+                                                @foreach ($variables as $variable)
+                                                    <tr id="{{ $variable->id }}">
+                                                        <td><strong>{{ $variable->variable }}</strong></td>
+                                                        <td>{{ $variable->detalle }}</td>
+                                                        <td class="table-actions">
+                                                            <a class="editar">
+                                                                <i class="fas fa-edit text-secondary"></i>
+                                                            </a>
+                                                            <a class="eliminar">
+                                                                <i class="fas fa-trash-alt text-danger"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h5>Descripción</h5>
+                                        <div class="formula-description">
+                                            {!! $formula->detalle !!}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </section> --}}
