@@ -169,6 +169,14 @@ class FormulaController extends Controller
         $materia = Materia::findOrFail($materia_id);
         $formulas = Formula::where('tema_id', $tema_id)->get();
 
+        $pdf = new Pdf([
+            'commandOptions' => [
+                'enable-local-file-access' => true, // Permite acceso a archivos locales
+                'no-stop-slow-scripts' => true,    // Evita que se interrumpan scripts largos
+                'javascript-delay' => 5000,       // Espera 5 segundos para renderizar JS
+            ],
+        ]);
+        
         // Directorio temporal
         $imagenes = [];
 
@@ -176,11 +184,11 @@ class FormulaController extends Controller
             $latex = trim(Str::replace('$$', '', $formula->formula));
             $latexEncoded = rawurlencode($latex);
 
-            $url = "https://latex.codecogs.com/png.image?\dpi{150}&space;" . $latexEncoded;
+            $url = "https://latex.codecogs.com/png.image?\dpi{200}&space;" . $latexEncoded;
 
             // Nombre del archivo
             $fileName = 'formula_' . $formula->id . '.png';
-            $filePath = storage_path('app/public/formulas_temp/' . $fileName);
+            $filePath = storage_path('app\\public\\formulas_temp\\' . $fileName);
 
             // cURL para manejar imagen correctamente
             $ch = curl_init($url);

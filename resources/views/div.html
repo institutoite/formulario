@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>División Larga Paso a Paso</title>
+  <style>
+    .division-container {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    .division-box {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      border: 1px solid #000;
+      text-align: center;
+      line-height: 40px;
+      margin: 2px;
+    }
+    .division-structure {
+      position: relative;
+      margin: 20px 0;
+    }
+    .division-l {
+      position: absolute;
+      border-left: 2px solid #000;
+      border-bottom: 2px solid #000;
+      height: 30px;
+      width: 20px;
+      left: -10px;
+      top: 40px;
+    }
+    .explanation {
+      margin-top: 20px;
+      padding: 10px;
+      background: #f0f0f0;
+    }
+  </style>
+</head>
+<body>
+  <div class="division-container">
+    <h1>División Larga</h1>
+    <input type="number" id="dividendo" placeholder="Dividendo">
+    <input type="number" id="divisor" placeholder="Divisor">
+    <button onclick="iniciarDivision()">Comenzar</button>
+    
+    <div id="divisionSteps"></div>
+    <div class="explanation" id="explicacion"></div>
+    
+    <button id="btnAnterior" disabled>Anterior</button>
+    <button id="btnSiguiente" disabled>Siguiente</button>
+    <button id="btnInicio" disabled>Inicio</button>
+    <button id="btnFin" disabled>Fin</button>
+  </div>
+
+  <script>
+    // Aquí iría la lógica para resolver la división paso a paso.
+    // Ejemplo simplificado:
+    let pasos = [];
+    let pasoActual = 0;
+
+    function iniciarDivision() {
+      const dividendo = parseInt(document.getElementById('dividendo').value);
+      const divisor = parseInt(document.getElementById('divisor').value);
+      
+      // Generar los pasos de la división (simulado).
+      pasos = generarPasosDivision(dividendo, divisor);
+      pasoActual = 0;
+      actualizarVista();
+    }
+
+    function generarPasosDivision(dividendo, divisor) {
+      // Lógica para calcular los pasos (implementar según algoritmo).
+      return [...]; // Array con cada paso y su explicación.
+    }
+
+    function actualizarVista() {
+      // Mostrar el paso actual en la interfaz.
+      document.getElementById('explicacion').textContent = pasos[pasoActual].explicacion;
+      // Dibujar la división en cuadritos.
+    }
+
+    // Event listeners para los botones.
+    document.getElementById('btnSiguiente').addEventListener('click', () => {
+      if (pasoActual < pasos.length - 1) pasoActual++;
+      actualizarVista();
+    });
+    // ... (similar para Anterior, Inicio, Fin).
+  </script>
+</body>
+</html>
