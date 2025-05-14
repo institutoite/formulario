@@ -55,10 +55,47 @@
             gap: 15px;
         }
 
-        .latex-img, .extra-img {
-            flex: 1;
-            text-align: center;
-        }
+       /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  imagen %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+    
+         .formula-table {
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        margin-bottom: 20px;
+        width: 100%;
+        border-collapse: collapse;
+        page-break-inside: avoid; /* Evita división entre páginas en PDF */
+    }
+    
+    .formula-header {
+        background-color: #f5f5f5;
+        padding: 10px 15px;
+        font-weight: bold;
+        border-bottom: 1px solid #ddd;
+        text-align: center;
+    }
+    
+    .formula-cell, .image-cell {
+        padding: 15px;
+        vertical-align: middle;
+        text-align: center;
+        border: none;
+    }
+    
+    .formula-image, .extra-image {
+        max-width: 100%;
+        max-height: 150px; /* Ajusta según necesidad */
+        height: auto;
+        display: block;
+        margin: 0 auto;
+    }
+    
+    /* Estilo para cuando no hay imagen asociada */
+    .image-cell:empty {
+        background-color: #f9f9f9;
+    }
+
+
+       /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  imagen %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
 
         .formula-image {
             max-width: 100%;
@@ -86,35 +123,50 @@
         <h1>Formulario de Fórmulas - {{ $tema->tema }}</h1>
     </header>
 
-    @foreach ($formulas as $formula)
-        @php
-            $latexImg = $imagenes[$formula->id] ?? null;
-            $extraImgPath = $formula->imagen_complementaria ?? null;
-            $showExtra = $extraImgPath && file_exists(public_path($extraImgPath));
-        @endphp
+   @foreach ($formulas as $formula)
+  @php
+    $latexImg = $imagenes[$formula->id] ?? null;
+    $extraImgPath = $formula->imagen->url ?? null;
+    
+    // Versión robusta para verificar la imagen
+    $showExtra = false;
+    if (!empty($extraImgPath)) {
+        $fullPath = public_path(ltrim($extraImgPath, '/'));
+        $showExtra = file_exists($fullPath);
+    }
+@endphp
 
-        <div class="formula-container">
-            <div class="formula-title">{{ $formula->nombre }}</div>
-            <div class="formula-content {{ $showExtra ? '' : 'single' }}">
-                <div class="latex-img">
-                    <img src="{{ public_path($latexImg) }}" class="formula-image" alt="Fórmula">
-                </div>
+    <table class="formula-table" width="100%" cellspacing="0" cellpadding="0" border="0">
+        <!-- Primera fila: Nombre de la fórmula (colspan 2) -->
+        <tr>
+            <td colspan="2" class="formula-header">
+                {{ $formula->nombre }}
+            </td>
+        </tr>
+        
+        <!-- Segunda fila: Dos columnas (fórmula e imagen) -->
+        <tr>
+            <!-- Primera columna: Imagen LaTeX -->
+            <td width="50%" class="formula-cell">
+                <img src="{{ public_path($latexImg) }}" class="formula-image" alt="Fórmula">
+            </td>
+            
+            <!-- Segunda columna: Imagen asociada (solo si existe) -->
+            <td width="50%" class="image-cell">
                 @if($formula->imagen)
-                    <div class="extra-img">
-                        @if($formula->imagen && $formula->imagen->url)
-                            @php
-                                $imagePath = storage_path('app\\public\\'.$formula->imagen->url);
-                                $imageData = base64_encode(file_get_contents($imagePath));
-                            @endphp
-                            <img src="data:image/jpeg;base64,{{ $imageData }}" 
-                                style="max-width: 100%;">
-                        @endif
-                        
-                    </div>
+                    @php
+                        $imagePath = storage_path('app\\public\\'.$formula->imagen->url);
+                        $imageData = base64_encode(file_get_contents($imagePath));
+                    @endphp
+                    <img src="data:image/jpeg;base64,{{ $imageData }}" class="extra-image">
                 @endif
-            </div>
-        </div>
-    @endforeach
+                {{-- {{ storage_path('app\\public\\'.$formula->imagen->url) }} --}}
+            </td>
+        </tr>
+    </table>
+@endforeach
+
+   
 
     <footer>
         <img src="{{ public_path('images/logo.png') }}" alt="ITE">

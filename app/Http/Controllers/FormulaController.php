@@ -207,8 +207,6 @@ class FormulaController extends Controller
                 $imagenes[$formula->id] = asset('images/formula-invalida.png');
             }
         }
-
-
         $pdf = Pdf::loadView('formula.pdf', compact('tema', 'materia', 'formulas', 'imagenes'));
         return $pdf->download('formulario.pdf');
     }
