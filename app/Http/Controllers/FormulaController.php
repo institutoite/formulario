@@ -189,7 +189,7 @@ class FormulaController extends Controller
             // Nombre del archivo
             $fileName = 'formula_' . $formula->id . '.png';
             $filePath = storage_path('app/public/formulas_temp/' . $fileName);
-
+            dd($filePath);
             // cURL para manejar imagen correctamente
             $ch = curl_init($url);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
