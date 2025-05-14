@@ -155,7 +155,7 @@
             <td width="50%" class="image-cell">
                 @if($formula->imagen)
                     @php
-                        $imagePath = storage_path('app\\public\\'.$formula->imagen->url);
+                        $imagePath = storage_path('app/public/'.$formula->imagen->url);
                         $imageData = base64_encode(file_get_contents($imagePath));
                     @endphp
                     <img src="data:image/jpeg;base64,{{ $imageData }}" class="extra-image">
