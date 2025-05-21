@@ -1,0 +1,117 @@
+/* Estilos para las tarjetas de fórmulas */
+.formula-card {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin: 15px;
+    background: white;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-width: 350px;
+    display: flex;
+    flex-direction: column;
+}
+
+.formula-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.formula-header {
+    padding: 5px;
+    background: #2c3e50;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5px 5px 0 0;
+}
+
+.formula-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.formula-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.action-btn {
+    color: white;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: color 0.2s;
+    padding: 5px;
+}
+
+.action-btn:hover {
+    color: #f1c40f;
+}
+
+.action-btn.edit:hover {
+    color: #2ecc71;
+}
+
+.action-btn.delete:hover {
+    color: #e74c3c;
+}
+
+.action-btn.add:hover {
+    color: #3498db;
+}
+
+.formula-body {
+    padding: 1px;
+    text-align: center;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+}
+
+.formula-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.formula-footer {
+    padding: 15px;
+    background: #ecf0f1;
+    text-align: center;
+}
+
+.formula-content {
+    font-family: 'Times New Roman', serif;
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    color: #2c3e50;
+}
+
+.whatsapp-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 15px;
+    background-color: #25D366;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.whatsapp-btn:hover {
+    background-color: #128C7E;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .formula-card {
+        max-width: 100%;
+    }
+}

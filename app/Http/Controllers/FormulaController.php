@@ -22,7 +22,7 @@ use App\Models\Materia;
 use Barryvdh\DomPDF\Facade\Pdf;
 
 use Illuminate\Support\Facades\Http;
-
+use Illuminate\Support\Facades\Log;
 
 // use mikehaertl\wkhtmlto\Pdf;
 
@@ -48,43 +48,90 @@ class FormulaController extends Controller
         return view('formula.create',compact("tema",'dimensiones'));
     }
 
+    public function store(StoreFormulaRequest $request)
+{
+    $formula = new Formula();
+    $formula->nombre = $request->nombre;
+    $formula->formula = "$$".$request->formula."$$";
+    $formula->detalle = $request->detalle;
+    $formula->tema_id = $request->tema_id;
+    $formula->indice = 0;
+    $formula->save();
+
+    $ObjetoVariable = new VariableController();
+    $ObjetoVariable->store($request->variables, $request->detalle, $formula, $request->dimensiones);
+
+    $tema = Tema::findOrFail($formula->tema_id);
+    
+    if ($request->hasFile('url')) {
+        $foto = $request->file('url');
+        $extension = $foto->getClientOriginalExtension(); // Mantener la extensión original
+        $nombreImagen = 'formulas/'.$formula->nombre.'_'.Str::random(5).'.'.$extension;
+        
+        // Opción 1: Guardar sin redimensionar (máxima calidad)
+        $foto->storeAs('public/formulas', $nombreImagen);
+        
+        // Opción 2: Si necesitas redimensionar pero mantener calidad
+        /*
+        $imagen = Image::make($foto);
+        $imagen->resize(800, 800, function($constraint) {
+            $constraint->aspectRatio(); // Mantiene relación de aspecto
+            $constraint->upsize(); // Evita aumentar imágenes pequeñas
+        })->encode($extension, 90); // Calidad al 90%
+        
+        Storage::disk('public')->put($nombreImagen, $imagen);
+        */
+    } else {
+        $nombreImagen = 'formulas/formula.jpg';
+    }
+
+    Imagen::create([
+        'url' => $nombreImagen,
+        'imageable_id' => $formula->id,
+        'imageable_type' => 'App\Models\Formula',
+    ]);
+
+    return redirect()->route("formulas.index", $tema)->with('success', 'Fórmula creada exitosamente.');
+}
+
+
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreFormulaRequest $request)
-    {
+    // public function store(StoreFormulaRequest $request)
+    // {
         
-        //dd($request->all());
-        $formula = new Formula();
-        $formula->nombre = $request->nombre;
-        $formula->formula = "$$".$request->formula."$$";
-        $formula->detalle = $request->detalle;
-        $formula->tema_id = $request->tema_id;
-        $formula->indice = 0;
-        $formula->save();
+    //     //dd($request->all());
+    //     $formula = new Formula();
+    //     $formula->nombre = $request->nombre;
+    //     $formula->formula = "$$".$request->formula."$$";
+    //     $formula->detalle = $request->detalle;
+    //     $formula->tema_id = $request->tema_id;
+    //     $formula->indice = 0;
+    //     $formula->save();
 
-        $ObjetoVariable= new VariableController();
-        $ObjetoVariable->store($request->variables,$request->detalle,$formula,$request->dimensiones);
+    //     $ObjetoVariable= new VariableController();
+    //     $ObjetoVariable->store($request->variables,$request->detalle,$formula,$request->dimensiones);
 
-        $tema= Tema::findOrFail($formula->tema_id);
-            if ($request->hasFile('url')){
-                $foto=$request->file('url');
-                $nombreImagen='formulas/'.$formula->nombre.Str::random(5).'.jpg';
-                $imagen= Image::make($foto);
-                $imagen->resize(300,300,function($constraint){
-                    $constraint->upsize();
-                });
-                $fotito = Storage::disk('public')->put($nombreImagen, $imagen->stream());
-        }else{
-            $nombreImagen='formulas/formula.jpg';
-        }
-        Imagen::create([
-            'url'=>$nombreImagen,
-            'imageable_id'=>$formula->id,
-            'imageable_type'=>'App\Models\Formula',
-        ]);
-        return redirect()->route("formulas.index",$tema)->with('success', 'Materia creada exitosamente.');
-    }
+    //     $tema= Tema::findOrFail($formula->tema_id);
+    //         if ($request->hasFile('url')){
+    //             $foto=$request->file('url');
+    //             $nombreImagen='formulas/'.$formula->nombre.Str::random(5).'.jpg';
+    //             $imagen= Image::make($foto);
+    //             $imagen->resize(300,300,function($constraint){
+    //                 $constraint->upsize();
+    //             });
+    //             $fotito = Storage::disk('public')->put($nombreImagen, $imagen->stream());
+    //         }else{
+    //             $nombreImagen='formulas/formula.jpg';
+    //         }
+    //     Imagen::create([
+    //         'url'=>$nombreImagen,
+    //         'imageable_id'=>$formula->id,
+    //         'imageable_type'=>'App\Models\Formula',
+    //     ]);
+    //     return redirect()->route("formulas.index",$tema)->with('success', 'Materia creada exitosamente.');
+    // }
 
     /**
      * Display the specified resource.
@@ -105,52 +152,111 @@ class FormulaController extends Controller
         return view("formula.edit",compact("formula","tema"));
     }
 
+public function update(UpdateFormulaRequest $request, Formula $formula)
+{
+    // Validación de la imagen
+    $request->validate([
+        'url' => 'sometimes|image|mimes:jpeg,png,jpg,gif,webp|max:5120', // 5MB máximo
+    ]);
+
+    // Actualizar datos básicos
+    $formula->nombre = $request->nombre;
+    $formula->formula = "$$".$request->formula."$$";
+    $formula->detalle = $request->detalle;
+    $formula->save();
+
+    // Manejo de la imagen
+    if ($request->hasFile('url')) {
+        try {
+            // Eliminar imagen anterior si existe
+            if ($formula->imagen) {
+                $oldImagePath = 'public/'.$formula->imagen->url;
+                if (Storage::exists($oldImagePath)) {
+                    Storage::delete($oldImagePath);
+                }
+            }
+
+            // Procesar nueva imagen
+            $foto = $request->file('url');
+            $extension = $foto->getClientOriginalExtension();
+            $fileName = 'formula_'.$formula->id.'_'.time().'.'.$extension;
+            $storagePath = 'formulas/'.$fileName;
+
+            // Opción 1: Guardar directamente (máxima calidad)
+            $path = $foto->storeAs('public/formulas', $fileName);
+
+            // Opción 2: Usar Intervention Image (si necesitas procesamiento)
+            /*
+            $image = Image::make($foto);
+            $image->resize(800, 800, function($constraint) {
+                $constraint->aspectRatio();
+                $constraint->upsize();
+            });
+            Storage::put('public/formulas/'.$fileName, $image->encode($extension, 90));
+            */
+
+            // Actualizar o crear registro de imagen
+            $formula->imagen()->updateOrCreate(
+                ['imageable_id' => $formula->id, 'imageable_type' => get_class($formula)],
+                ['url' => 'formulas/'.$fileName]
+            );
+
+        } catch (\Exception $e) {
+            Log::error('Error al guardar imagen: '.$e->getMessage());
+            return redirect()->back()->with('error', 'Error al guardar la imagen');
+        }
+    }
+
+    return redirect()->route("formulas.index", $formula->tema)
+        ->with('success', 'Fórmula actualizada exitosamente.');
+}
+
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateFormulaRequest $request, Formula $formula)
-    {
-        // Actualizar datos básicos
-        $formula->nombre = $request->nombre;
-        $formula->formula = "$$".$request->formula."$$";
-        $formula->detalle = $request->detalle;
-        $formula->indice = 0;
-        $formula->save();
+    // public function update(UpdateFormulaRequest $request, Formula $formula)
+    // {
+    //     // Actualizar datos básicos
+    //     $formula->nombre = $request->nombre;
+    //     $formula->formula = "$$".$request->formula."$$";
+    //     $formula->detalle = $request->detalle;
+    //     $formula->indice = 0;
+    //     $formula->save();
     
-        // Manejo de la imagen (solo si se sube un archivo)
-        if ($request->hasFile('url')) {
-            // Verificar si ya existe una imagen asociada
-            if ($formula->imagen) {
-                // Eliminar la imagen anterior si existe en storage
-                if (Storage::disk('public')->exists($formula->imagen->url)) {
-                    Storage::disk('public')->delete($formula->imagen->url);
-                }
-                // Actualizar la imagen existente
-                $imagencita = $formula->imagen;
-            } else {
-                // Crear una nueva imagen si no existe
-                $imagencita = new Imagen(); // Asume que tienes el modelo "Imagen"
-                $imagencita->imageable_id = $formula->id; // Ajusta según tu relación
-                $imagencita->imageable_type ='App\Models\Formula' ; // Ajusta según tu relación
-            }
+    //     // Manejo de la imagen (solo si se sube un archivo)
+    //     if ($request->hasFile('url')) {
+    //         // Verificar si ya existe una imagen asociada
+    //         if ($formula->imagen) {
+    //             // Eliminar la imagen anterior si existe en storage
+    //             if (Storage::disk('public')->exists($formula->imagen->url)) {
+    //                 Storage::disk('public')->delete($formula->imagen->url);
+    //             }
+    //             // Actualizar la imagen existente
+    //             $imagencita = $formula->imagen;
+    //         } else {
+    //             // Crear una nueva imagen si no existe
+    //             $imagencita = new Imagen(); // Asume que tienes el modelo "Imagen"
+    //             $imagencita->imageable_id = $formula->id; // Ajusta según tu relación
+    //             $imagencita->imageable_type ='App\Models\Formula' ; // Ajusta según tu relación
+    //         }
     
-            // Procesar y guardar la nueva imagen
-            $foto = $request->file('url');
-            $nombreImagen = 'formulas/' . $formula->nombre . Str::random(5) . '.jpg';
-            $imagen = Image::make($foto);
-            $imagen->resize(300, 300, function($constraint) {
-                $constraint->upsize();
-            });
-            Storage::disk('public')->put($nombreImagen, $imagen->stream());
+    //         // Procesar y guardar la nueva imagen
+    //         $foto = $request->file('url');
+    //         $nombreImagen = 'formulas/' . $formula->nombre . Str::random(5) . '.jpg';
+    //         $imagen = Image::make($foto);
+    //         $imagen->resize(300, 300, function($constraint) {
+    //             $constraint->upsize();
+    //         });
+    //         Storage::disk('public')->put($nombreImagen, $imagen->stream());
     
-            // Guardar la URL en la base de datos
-            $imagencita->url = $nombreImagen;
-            $imagencita->save();
-        }
+    //         // Guardar la URL en la base de datos
+    //         $imagencita->url = $nombreImagen;
+    //         $imagencita->save();
+    //     }
     
-        return redirect()->route("formulas.index", $formula->tema)
-            ->with('success', 'Fórmula actualizada exitosamente.');
-    }
+    //     return redirect()->route("formulas.index", $formula->tema)
+    //         ->with('success', 'Fórmula actualizada exitosamente.');
+    // }
 
     /**
      * Remove the specified resource from storage.

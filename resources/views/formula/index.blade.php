@@ -14,6 +14,7 @@
     
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/formulas.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/formula.css') }}">  {{-- css para el ciclo de las formulas --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -120,6 +121,53 @@
                 <div class="card-body">
                     <div class="row formulas-grid">
                         @foreach ($formulas as $formula)
+                            <div class="formula-card">
+                                <header class="formula-header">
+                                    <h3>{{ $formula->nombre }}</h3>
+                                  
+                                </header>
+                                
+                                    @if($formula->imagen)
+                                        {{-- @php
+                                            $imagePath = storage_path('app/public/'.$formula->imagen->url);
+                                            $imageData = base64_encode(file_get_contents($imagePath));
+                                        @endphp --}}
+                                        <div class="formula-body">
+                                            {{-- <img src="{{ storage_path('formulas\\'.$formula->imagen->url) }}" alt="Representación gráfica de {{ $formula->nombre }}" class="formula-image"> --}}
+                                            <img src="{{ URL::to('/').Storage::url($formula->imagen->url) }}" alt="Representación gráfica de {{ $formula->nombre }}" class="formula-image">
+                                        </div>
+                                        
+                                        {{-- <img src="data:image/jpeg;base64,{{ $imageData }}" class="extra-image"> --}}
+                                    @endif
+
+                                
+                                <footer class="formula-footer">
+                                    <div class="formula-content">{{ $formula->formula }}</div>
+                                    <a href="https://wa.me/59160902299?text=Vengo%20de%20su%20página%20de%20fórmulas" 
+                                        class="whatsapp-btn" 
+                                        target="_blank" 
+                                        rel="noopener noreferrer">
+                                        <i class="fab fa-whatsapp"></i> Consultar
+                                    </a>
+                                </footer>
+                                    @auth
+                                        <div class="formula-actions">
+                                            <a href="{{ route('formulas.edit', $formula) }}" class="action-btn edit" title="Editar">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                            <button class="action-btn delete eliminar" data-id="{{ $formula->id }}" title="Eliminar">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </button>
+                                            <a href="{{ route('formulas.create', $tema->id) }}" class="action-btn add" title="Añadir fórmula">
+                                                <i class="fas fa-plus-circle"></i>
+                                            </a>
+                                        </div>
+                                    @endauth
+
+                            </div>
+                        @endforeach
+
+                        {{-- @foreach ($formulas as $formula)
                                 <div class="resource-card">
                                     <div class="resource-content">
                                         <h3>{{ $formula->nombre }}</h3>
@@ -146,7 +194,7 @@
                                     </div>
                                 </div>
                                 
-                        @endforeach
+                        @endforeach --}}
                     </div>
                 </div>
             </div>
