@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/formulas.css') }}">
     <link rel="stylesheet" href="{{ asset('css/formula.css') }}">  {{-- css para el ciclo de las formulas --}}
+    <link rel="stylesheet" href="{{ asset('css/servicios.css') }}">  {{-- css para el ciclo de las formulas --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -128,26 +129,19 @@
                                 </header>
                                 
                                     @if($formula->imagen)
-                                        {{-- @php
-                                            $imagePath = storage_path('app/public/'.$formula->imagen->url);
-                                            $imageData = base64_encode(file_get_contents($imagePath));
-                                        @endphp --}}
                                         <div class="formula-body">
-                                            {{-- <img src="{{ storage_path('formulas\\'.$formula->imagen->url) }}" alt="Representación gráfica de {{ $formula->nombre }}" class="formula-image"> --}}
                                             <img src="{{ URL::to('/').Storage::url($formula->imagen->url) }}" alt="Representación gráfica de {{ $formula->nombre }}" class="formula-image">
                                         </div>
-                                        
-                                        {{-- <img src="data:image/jpeg;base64,{{ $imageData }}" class="extra-image"> --}}
                                     @endif
 
                                 
                                 <footer class="formula-footer">
                                     <div class="formula-content">{{ $formula->formula }}</div>
-                                    <a href="https://wa.me/59160902299?text=Vengo%20de%20su%20página%20de%20fórmulas" 
+                                    <a href="{{ route('mostrar.qr',$tema->id) }}" 
                                         class="whatsapp-btn" 
                                         target="_blank" 
                                         rel="noopener noreferrer">
-                                        <i class="fab fa-whatsapp"></i> Consultar
+                                        <i class="fa-solid fa-cloud-arrow-down fa-beat"></i> Dscargar
                                     </a>
                                 </footer>
                                     @auth
@@ -166,60 +160,70 @@
 
                             </div>
                         @endforeach
-
-                        {{-- @foreach ($formulas as $formula)
-                                <div class="resource-card">
-                                    <div class="resource-content">
-                                        <h3>{{ $formula->nombre }}</h3>
-                                        @auth
-                                        <div class="tema-actions">
-                                            <a href="{{ route('formulas.edit', $formula) }}" class="action-btn edit" title="Editar">
-                                                <i class="fas fa-edit"></i>
-                                            </a>
-                                            <button class="action-btn delete eliminar" data-id="{{ $formula->id }}" title="Eliminar">
-                                                <i class="fas fa-trash-alt"></i>
-                                            </button>
-                                            <a href="{{ route('formulas.create', $tema->id) }}" class="action-btn add" title="Añadir fórmula">
-                                                <i class="fas fa-plus-circle"></i>
-                                            </a>
-                                        </div>
-                                        @endauth
-                                        <p>{{ $formula->formula }}</p>
-                                        <a href="https://wa.me/59160902299?text=Vengo%20de%20su%20página%20de%20fórmulas" 
-                                            class="btn btn-primary" 
-                                            target="_blank" 
-                                            rel="noopener noreferrer">
-                                            <i class="fab fa-whatsapp"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                
-                        @endforeach --}}
                     </div>
                 </div>
             </div>
         </section>
         <div style="text-align: center; margin: 40px 0;">
             <a href="{{ route('mostrar.qr',$tema->id) }}" id="btn-imprimir" class="btn btn-secondary">
-                <i class="fas fa-print"></i> Imprimir esta página
+                <i class="fas fa-print"></i> Imprimir o Descargar PDF
             </a>
             
         </div>
 
-        <!-- Theme Description Section -->
-        <section class="theme-description">
-            <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
-                    <h1>Fórmulas de {{ $tema->tema }}</h1>
-                    <hr>
-                    <p class="slogan">{{ $tema->slogan }}</p>
-                    <hr>
-                    <p class="detalle">{{ $tema->detalle }}</p>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                    @if ($tema->imagen)
-                        <img src="{{ URL::to('/').Storage::url('public/'.$tema->imagen->url) }}" alt="Imagen del tema" class="theme-image">
-                    @endif
+        <section class="related-resources">
+                
+                <div class="servicios-container">
+                <h2 class="servicios-titulo">¿Cómo podemos ayudarte?</h2>
+                
+                <div class="servicios-grid">
+                    <!-- Card 1: Formulario específico -->
+                    <div class="servicio-card">
+                        <div class="servicio-icono">📝</div>
+                        <h3 class="servicio-nombre">Formulario</h3>
+                        <p class="servicio-descripcion">¿Necesitas un formulario específico?</p>
+                        <a href="https://wa.me/59171324941?text=Hola,%20necesito%20un%20formulario%20específico%20sobre:%20[Indica%20el%20tema]" 
+                        class="servicio-boton" 
+                        target="_blank">
+                        Solicitar
+                        </a>
+                    </div>
+                    
+                    <!-- Card 2: Clases de apoyo -->
+                    <div class="servicio-card">
+                        <div class="servicio-icono">👨‍🏫</div>
+                        <h3 class="servicio-nombre">Clases</h3>
+                        <p class="servicio-descripcion">¿Buscas clases de apoyo personalizadas?</p>
+                        <a href="https://wa.me/59171324941?text=Hola,%20estoy%20interesado/a%20en%20clases%20de%20apoyo%20de:%20[Materia%20o%20tema]" 
+                        class="servicio-boton" 
+                        target="_blank">
+                        Consultar
+                        </a>
+                    </div>
+                    
+                    <!-- Card 3: Resolución de prácticos -->
+                    <div class="servicio-card">
+                        <div class="servicio-icono">✅</div>
+                        <h3 class="servicio-nombre">Prácticos</h3>
+                        <p class="servicio-descripcion">¿Tienes un práctico que necesitas resolver?</p>
+                        <a href="https://wa.me/59171324941?text=Hola,%20necesito%20ayuda%20con%20un%20práctico%20de:%20[Describe%20el%20tema%20o%20adjunta%20foto]" 
+                        class="servicio-boton" 
+                        target="_blank">
+                        Resolver
+                        </a>
+                    </div>
+                    
+                    <!-- Card 4: Proyectos académicos -->
+                    <div class="servicio-card">
+                        <div class="servicio-icono">💡</div>
+                        <h3 class="servicio-nombre">Proyectos</h3>
+                        <p class="servicio-descripcion">¿Necesitas ayuda con un proyecto escolar/universitario?</p>
+                        <a href="https://wa.me/59171324941?text=Hola,%20requiero%20asistencia%20con%20un%20proyecto%20de:%20[Describe%20el%20proyecto]" 
+                        class="servicio-boton" 
+                        target="_blank">
+                        Asesoría
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -230,17 +234,21 @@
                 <div class="social-content">
                     <h2>¡Síguenos para más recursos educativos!</h2>
                     <div class="social-links">
-                        <a href="#" class="social-link tiktok">
+                        <a href="https://www.tiktok.com/@ite_educabol" target="_blank" class="social-link tiktok">
                             <i class="fab fa-tiktok"></i>
                             <span>TikTok</span>
                         </a>
-                        <a href="#" class="social-link facebook">
+                        <a href="https://www.facebook.com/ite.educabol" target="_blank" class="social-link facebook">
                             <i class="fab fa-facebook-f"></i>
                             <span>Facebook</span>
                         </a>
-                        <a href="#" class="social-link youtube">
+                        <a href="https://www.youtube.com/@ite_educabol" target="_blank" class="social-link youtube">
                             <i class="fab fa-youtube"></i>
                             <span>YouTube</span>
+                        </a>
+                        <a href="https://whatsapp.com/channel/0029VaAu3lwJJhzX5iSJBg44" target="_blank" class="social-link whatsapp">
+                            <i class="fab fa-whatsapp"></i>
+                            <span>Canal WhatsApp</span>
                         </a>
                     </div>
                 </div>
@@ -248,35 +256,7 @@
         </section>
 
         <!-- Related Resources Section -->
-        <section class="related-resources">
-            <h2>Recursos relacionados</h2>
-            <div class="resources-grid">
-                <div class="resource-card">
-                    <img src="{{ asset('images/ebook-matematicas.jpg') }}" alt="Ebook Matemáticas">
-                    <div class="resource-content">
-                        <h3>Guía Completa de Matemáticas</h3>
-                        <p>Todos los conceptos básicos en un solo lugar</p>
-                        <a href="#" class="btn-link">Descargar <i class="fas fa-arrow-down"></i></a>
-                    </div>
-                </div>
-                <div class="resource-card">
-                    <img src="{{ asset('images/video-curso.jpg') }}" alt="Curso en Video">
-                    <div class="resource-content">
-                        <h3>Curso en Video</h3>
-                        <p>Aprende con nuestras lecciones grabadas</p>
-                        <a href="#" class="btn-link">Ver ahora <i class="fas fa-play"></i></a>
-                    </div>
-                </div>
-                <div class="resource-card">
-                    <img src="{{ asset('images/app-movil.jpg') }}" alt="App Móvil">
-                    <div class="resource-content">
-                        <h3>App Móvil</h3>
-                        <p>Lleva las fórmulas contigo a todas partes</p>
-                        <a href="#" class="btn-link">Descargar <i class="fas fa-mobile-alt"></i></a>
-                    </div>
-                </div>
-            </div>
-        </section>
+        
     </main>
 
     <!-- Footer -->
@@ -287,11 +267,12 @@
                     <h3>ITE Fórmulas</h3>
                     <p>Somos una institución educativa dedicada a proporcionar recursos de calidad para estudiantes de todos los niveles.</p>
                     <div class="footer-social">
-                        <a href="#"><i class="fab fa-tiktok"></i></a>
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@ite_educabol"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://www.facebook.com/ite.educabol"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.youtube.com/@ite_educabol"><i class="fab fa-youtube"></i></a>
+                        <a href="https://whatsapp.com/channel/0029VaAu3lwJJhzX5iSJBg44"><i class="fab fa-whatsapp"></i></a>
                     </div>
+                    
                 </div>
                 <div class="footer-links">
                     <h4>Enlaces rápidos</h4>
@@ -314,8 +295,8 @@
                 </div>
                 <div class="footer-contact">
                     <h4>Contacto</h4>
-                    <p><i class="fas fa-envelope"></i> info@iteformulas.com</p>
-                    <p><i class="fas fa-phone"></i> +1 234 567 890</p>
+                    <p><i class="fas fa-envelope"></i> info@ite.com.bo</p>
+                    <p><i class="fas fa-phone"></i> +59171324941</p>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -340,86 +321,3 @@
 </body>
 </html>
 
-
-        {{-- <!-- Formula Details Sections -->
-        <section class="formula-details-section">
-            @foreach ($formulas as $formula)
-                @php
-                    $variables = $formula->variables;
-                @endphp
-                <div class="formula-detail-card">
-                    <div class="formula-detail-header">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <h2>{{ $formula->nombre }}</h2>
-                            <a href="https://wa.me/?text={{ urlencode('Consulta sobre la fórmula: ' . $formula->expresion . ' del tema: ' . $tema->nombre) }}" 
-                                class="btn btn-secondary btn-block" 
-                                target="_blank">
-                                Consultar <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="formula-detail-body">
-                        <div class="row">
-                            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-4">
-                                @isset($formula->imagen->url)
-                                    <img width="250" alt="imagen de fórmula" src="{{ URL::to('/').Storage::url('public/'.$formula->imagen->url) }}" class="formula-image">
-                                @endisset
-                            </div>
-                            <div class="col-xs-12 col-sm-12 col-md-9 col-lg-8">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="formula-representation">
-                                            <div class="formula-rep-header">
-                                                <h5>Fórmula:</h5>
-                                            </div>
-                                            <div class="formula-rep-body">
-                                                <h4>{{ $formula->formula }}</h4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <table id="formula{{ $formula->id }}" class="variables-table">
-                                            <thead>
-                                                <tr>
-                                                    <th>Variable</th>
-                                                    <th>Descripción</th>
-                                                    <th>Acciones &nbsp; 
-                                                        <a class="crear" href="#">
-                                                            <i class="fas fa-plus-circle"></i>
-                                                        </a> &nbsp;
-                                                    </th>
-                                                </tr>
-                                            </thead>
-                                            <tbody id="variables">
-                                                @foreach ($variables as $variable)
-                                                    <tr id="{{ $variable->id }}">
-                                                        <td><strong>{{ $variable->variable }}</strong></td>
-                                                        <td>{{ $variable->detalle }}</td>
-                                                        <td class="table-actions">
-                                                            <a class="editar">
-                                                                <i class="fas fa-edit text-secondary"></i>
-                                                            </a>
-                                                            <a class="eliminar">
-                                                                <i class="fas fa-trash-alt text-danger"></i>
-                                                            </a>
-                                                        </td>
-                                                    </tr>
-                                                @endforeach
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <h5>Descripción</h5>
-                                        <div class="formula-description">
-                                            {!! $formula->detalle !!}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-        </section> --}}
