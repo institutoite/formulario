@@ -31,9 +31,6 @@
                     <i class="fas fa-bars"></i>
                 </button>
                 <ul class="nav-links">
-                    <li><a href="#" class="active">Inicio</a></li>
-                    <li><a href="#">Fórmulas</a></li>
-                    <li><a href="#">Ejemplos</a></li>
                     <li><a href="#cursos">Cursos</a></li>
                     <li><a href="#materias">Materias</a></li>
                     <li><a href="{{ route('login') }}">login</a></li>
