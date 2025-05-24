@@ -92,13 +92,7 @@
     </div>
     
     <!-- Modal para materias sin fórmulas -->
-    <div id="noFormulasModal" class="modal">
-        <div class="modal-content">
-            <h4 class="modal-title">¡Próximamente!</h4>
-            <p class="modal-text">La materia <span id="materiaName"></span> aún no tiene fórmulas disponibles. Comenta en el video para que lo agreguemos lo antes posible.</p>
-            <button class="modal-close" onclick="closeModal()">Entendido</button>
-        </div>
-    </div>
+
     
     
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%     Recursos Section %%%%%%%%%%%%%%%%-->
@@ -744,22 +738,11 @@
         });
         
 
-        function showNoFormulasModal(materiaName) {
-            document.getElementById('materiaName').textContent = materiaName;
-            document.getElementById('noFormulasModal').style.display = 'block';
-        }
+     
         
-        function closeModal() {
-            document.getElementById('noFormulasModal').style.display = 'none';
-        }
-        
+      
         // Cerrar modal al hacer clic fuera de él
-        window.onclick = function(event) {
-            var modal = document.getElementById('noFormulasModal');
-            if (event.target == modal) {
-                modal.style.display = 'none';
-            }
-        }
+     
     </script>
 </body>
 </html>
