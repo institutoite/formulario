@@ -8,6 +8,9 @@
     <meta name="description" content="Fórmulas de física, química, matemáticas y más para estudiantes">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/materias.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/fundador.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/redes.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/unete.css') }}">
     <!-- Font Awesome para iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- CSS de Slick -->
@@ -20,7 +23,7 @@
     <header class="main-header">
         <div class="container header-container">
             <div class="logo-container">
-                <h1>ITE Fórmulas</h1>
+                <h1>Fórmulas</h1>
                 <p class="tagline">Tu recurso educativo completo</p>
             </div>
             <nav class="main-nav">
@@ -31,9 +34,9 @@
                     <li><a href="#" class="active">Inicio</a></li>
                     <li><a href="#">Fórmulas</a></li>
                     <li><a href="#">Ejemplos</a></li>
-                    <li><a href="#">Cursos</a></li>
-                    <li><a href="#">Recursos</a></li>
-                    <li><a href="#">login</a></li>
+                    <li><a href="#cursos">Cursos</a></li>
+                    <li><a href="#materias">Materias</a></li>
+                    <li><a href="{{ route('login') }}">login</a></li>
                 </ul>
             </nav>
         </div>
@@ -120,59 +123,139 @@
                 <p>Ofrecemos clases de apoyo escolar y cursos especializados</p>
             </div>
             
-            <div class="cursos-grid">
-                <div class="curso-item">
-                    <div class="curso-icon">
-                        <i class="fas fa-laptop-code"></i>
-                    </div>
-                    <h3>Computación</h3>
-                    <p>Aprende desde lo básico hasta habilidades avanzadas en informática</p>
-                </div>
-                
-                <div class="curso-item">
-                    <div class="curso-icon">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <h3>Robótica</h3>
-                    <p>Diseña, construye y programa robots con nuestros expertos</p>
-                </div>
-                
-                <div class="curso-item">
-                    <div class="curso-icon">
-                        <i class="fas fa-cube"></i>
-                    </div>
-                    <h3>Cubo Rubik</h3>
-                    <p>Aprende técnicas y algoritmos para resolver el cubo de Rubik</p>
-                </div>
-                
-                <div class="curso-item">
-                    <div class="curso-icon">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <h3>Programación</h3>
-                    <p>Desarrolla habilidades de programación con lenguajes modernos</p>
-                </div>
-                
-                <div class="curso-item">
-                    <div class="curso-icon">
-                        <i class="fas fa-square-root-alt"></i>
-                    </div>
-                    <h3>Apoyo en Matemáticas</h3>
-                    <p>Refuerza tus conocimientos con nuestras clases personalizadas</p>
-                </div>
-                
-                <div class="curso-item">
-                    <div class="curso-icon">
-                        <i class="fas fa-flask"></i>
-                    </div>
-                    <h3>Apoyo en Ciencias</h3>
-                    <p>Clases de física, química y biología para todos los niveles</p>
-                </div>
-            </div>
+           <div class="cursos-grid">
+    <!-- Curso de Computación -->
+    <div class="curso-item">
+        <div class="curso-icon">
+            <i class="fas fa-laptop-code"></i>
+        </div>
+        <h3>Computación</h3>
+        <p>Domina lo esencial de informática y herramientas digitales</p>
+        <a href="https://wa.me/1234567890?text=¡Hola!%20Quiero%20info%20del%20curso%20COMPUTACIÓN" class="whatsapp-btn">
+            <i class="fab fa-whatsapp"></i> Mas info
+        </a>
+    </div>
+    
+    <!-- Curso de Robótica -->
+    <div class="curso-item">
+        <div class="curso-icon">
+            <i class="fas fa-robot"></i>
+        </div>
+        <h3>Robótica</h3>
+        <p>Construye y programa robots desde cero</p>
+        <a href="https://wa.me/1234567890?text=¡Hola!%20Info%20curso%20ROBÓTICA%20por%20favor" class="whatsapp-btn">
+            <i class="fab fa-whatsapp"></i> Mas info
+        </a>
+    </div>
+    
+    <!-- Curso de Cubo Rubik -->
+    <div class="curso-item">
+        <div class="curso-icon">
+            <i class="fas fa-cube"></i>
+        </div>
+        <h3>Cubo Rubik</h3>
+        <p>Aprende métodos para resolver el cubo mágico</p>
+        <a href="https://wa.me/1234567890?text=Info%20curso%20CUBO%20RUBIK" class="whatsapp-btn">
+            <i class="fab fa-whatsapp"></i> Mas info
+        </a>
+    </div>
+    
+    <!-- Curso de Programación -->
+    <div class="curso-item">
+        <div class="curso-icon">
+            <i class="fas fa-code"></i>
+        </div>
+        <h3>Programación</h3>
+        <p>Aprende Python, JavaScript y desarrollo web</p>
+        <a href="https://wa.me/1234567890?text=Info%20curso%20PROGRAMACIÓN" class="whatsapp-btn">
+            <i class="fab fa-whatsapp"></i> Mas info
+        </a>
+    </div>
+    
+    <!-- Apoyo Escolar Primaria -->
+    <div class="curso-item">
+        <div class="curso-icon">
+            <i class="fas fa-child"></i>
+        </div>
+        <h3>Apoyo Escolar Primaria</h3>
+        <p>Refuerzo en matemáticas y comunicación</p>
+        <a href="https://wa.me/1234567890?text=Info%20APOYO%20PRIMARIA" class="whatsapp-btn">
+            <i class="fab fa-whatsapp"></i> Mas info
+        </a>
+    </div>
+    
+    <!-- Apoyo Escolar Secundaria -->
+    <div class="curso-item">
+        <div class="curso-icon">
+            <i class="fas fa-user-graduate"></i>
+        </div>
+        <h3>Apoyo Escolar Secundaria</h3>
+        <p>Clases de matemáticas y ciencias</p>
+        <a href="https://wa.me/1234567890?text=Info%20APOYO%20SECUNDARIA" class="whatsapp-btn">
+            <i class="fab fa-whatsapp"></i> Mas info
+        </a>
+    </div>
+    
+    <!-- Cursos Preuniversitarios -->
+    <div class="curso-item">
+        <div class="curso-icon">
+            <i class="fas fa-university"></i>
+        </div>
+        <h3>Cursos Preuniversitarios</h3>
+        <p>Preparación para exámenes de admisión</p>
+        <a href="https://wa.me/1234567890?text=Info%20CURSOS%20PREUNIVERSITARIOS" class="whatsapp-btn">
+            <i class="fab fa-whatsapp"></i> Mas info
+        </a>
+    </div>
+    
+    <!-- Cursos Universitarios -->
+    <div class="curso-item">
+        <div class="curso-icon">
+            <i class="fas fa-graduation-cap"></i>
+        </div>
+        <h3>Cursos Universitarios</h3>
+        <p>Asesoría en cálculo y física universitaria</p>
+        <a href="https://wa.me/1234567890?text=Info%20CURSOS%20UNIVERSITARIOS" class="whatsapp-btn">
+            <i class="fab fa-whatsapp"></i> Mas info
+        </a>
+    </div>
+    
+    <!-- Creación de Sistemas Web -->
+    <div class="curso-item">
+        <div class="curso-icon">
+            <i class="fas fa-globe"></i>
+        </div>
+        <h3>Creación de Sistemas Web</h3>
+        <p>Aprende desarrollo web completo</p>
+        <a href="https://wa.me/1234567890?text=Info%20SISTEMAS%20WEB" class="whatsapp-btn">
+            <i class="fab fa-whatsapp"></i> Mas info
+        </a>
+    </div>
+    
+    <!-- Aplicaciones Móviles -->
+    <div class="curso-item">
+        <div class="curso-icon">
+            <i class="fas fa-mobile-alt"></i>
+        </div>
+        <h3>Aplicaciones Móviles</h3>
+        <p>Desarrollo de apps para Android e iOS</p>
+        <a href="https://wa.me/1234567890?text=Info%20APPS%20MÓVILES" class="whatsapp-btn">
+            <i class="fab fa-whatsapp"></i> Mas info
+        </a>
+    </div>
+     <div class="curso-item">
+        <div class="curso-icon">
+            <i class="fas fa-book-open"></i>
+        </div>
+        <h3>Lectura y Escritura</h3>
+        <p>Desarrolla habilidades comunicativas esenciales</p>
+        <a href="https://wa.me/1234567890?text=Info%20curso%20LECTURA%20Y%20ESCRITURA" class="whatsapp-btn">
+            <i class="fab fa-whatsapp"></i> Info por WhatsApp
+        </a>
+    </div>
+</div>
             
-            <div class="cursos-cta">
-                <a href="#contacto" class="btn btn-primary">Inscríbete ahora</a>
-            </div>
+            
         </div>
     </section>
 
@@ -225,57 +308,92 @@
     </section> --}}
 
     <!-- Colaboradores Section -->
-    <section class="profesores-destacados">
-        <div class="container">
-            <div class="section-header">
-                <h2>Nuestros Colaboradores</h2>
-                <p>Conoce a nuestros mejores profesores y su experiencia en la enseñanza</p>
-            </div>
-            
-            <div class="slider-wrapper">
-                <div class="slider">
-                    <div class="profesor-slide">
-                        <div class="profesor-img">
-                            <img src="{{ asset('images/david.png') }}" alt="Profesor 1">
-                        </div>
-                        <h3>David Flores</h3>
-                        <p class="profesor-especialidad">Informático</p>
-                        <p>Soy Fundador de ITE y creador de esta plataforma de fórmulas, enfocado en impulsar eficiencia mediante herramientas innovadoras.</p>
-                    </div>
-                    
-                    <div class="profesor-slide">
-                        <div class="profesor-img">
-                            <img src="{{ asset('images/profesor2.jpg') }}" alt="Profesor 2">
-                        </div>
-                        <h3>Ana Martínez</h3>
-                        <p class="profesor-especialidad">Física y Química</p>
-                        <p>Doctora en Química con pasión por la enseñanza y la divulgación científica.</p>
-                    </div>
-                    
-                    <div class="profesor-slide">
-                        <div class="profesor-img">
-                            <img src="{{ asset('images/profesor3.jpg') }}" alt="Profesor 3">
-                        </div>
-                        <h3>Carlos Rodríguez</h3>
-                        <p class="profesor-especialidad">Programación</p>
-                        <p>Ingeniero informático con experiencia en desarrollo web y enseñanza de programación.</p>
-                    </div>
-                    
-                    <div class="profesor-slide">
-                        <div class="profesor-img">
-                            <img src="{{ asset('images/profesor4.jpg') }}" alt="Profesor 4">
-                        </div>
-                        <h3>Laura Sánchez</h3>
-                        <p class="profesor-especialidad">Robótica</p>
-                        <p>Especialista en robótica educativa y nuevas tecnologías aplicadas a la enseñanza.</p>
-                    </div>
+   
+
+    <section class="fundador-section">
+    <div class="fundador-container">
+        <div class="fundador-foto">
+            <!-- Reemplaza con tu foto -->
+            <div class="fundador-foto">
+                <div class="marco-foto">
+                    <img src="{{ asset('images/david.png') }}" alt="David Flores - Fundador" class="foto-perfil">
                 </div>
             </div>
+            
         </div>
-    </section>
+        <div class="fundador-info">
+            <h2 class="fundador-titulo">David Flores</h2>
+            <p class="fundador-descripcion">
+                Creador de proyectos informáticos y apasionado por la educación tecnológica. 
+                Especialista en robótica educativa, desarrollo de software y creación de contenido 
+                digital para redes sociales.
+            </p>
+            <a href="https://www.tiktok.com/@davidflores.ite" target="_blank" class="tiktok">
+                <div class="social-icon">
+                    <i class="fab fa-tiktok"></i>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+
+
+<section class="social-banner">
+    <div class="container">
+        <div class="social-content">
+            <h2>¡Conéctate con nuestra comunidad educativa!</h2>
+            <p class="subtitle">Contenido exclusivo, tips de estudio y novedades tecnológicas</p>
+            
+            <div class="social-links">
+                <a href="https://www.tiktok.com/@ite_educabol" target="_blank" class="social-link tiktok">
+                    <div class="social-icon">
+                        <i class="fab fa-tiktok"></i>
+                    </div>
+                    <span>TikTok</span>
+                </a>
+                
+                <a href="https://www.facebook.com/ite.educabol" target="_blank" class="social-link facebook">
+                    <div class="social-icon">
+                        <i class="fab fa-facebook-f"></i>
+                    </div>
+                    <span>Facebook</span>
+                </a>
+                
+                <a href="https://www.youtube.com/@ite_educabol" target="_blank" class="social-link youtube">
+                    <div class="social-icon">
+                        <i class="fab fa-youtube"></i>
+                    </div>
+                    <span>YouTube</span>
+                </a>
+                
+                <a href="https://whatsapp.com/channel/0029VaAu3lwJJhzX5iSJBg44" target="_blank" class="social-link whatsapp">
+                    <div class="social-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <span>WhatsApp</span>
+                </a>
+                
+                <a href="#" target="_blank" class="social-link instagram">
+                    <div class="social-icon">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <span>Instagram</span>
+                </a>
+                 <a href="https://ite.com.bo" target="_blank" class="social-link website">
+                    <div class="social-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <span>Sitio Web</span>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</section>
 
     <!-- Social Media Banner -->
-    <section class="social-banner">
+    {{-- <section class="social-banner">
         <div class="container">
             <div class="social-content">
                 <h2>¡Síguenos en redes sociales!</h2>
@@ -286,19 +404,23 @@
                         <i class="fab fa-tiktok"></i>
                         <span>TikTok</span>
                     </a>
-                    <a href="https://www.facebook.com/ite.educabol" class="social-link facebook">
+                    <a href="https://www.facebook.com/ite.educabol" target="_blank" class="social-link facebook">
                         <i class="fab fa-facebook-f"></i>
                         <span>Facebook</span>
                     </a>
-                    <a href="https://www.youtube.com/@ite_educabol" class="social-link youtube">
+                    <a href="https://www.youtube.com/@ite_educabol" target="_blank" class="social-link youtube">
                         <i class="fab fa-youtube"></i>
                         <span>YouTube</span>
+                    </a>
+                    <a href="https://whatsapp.com/channel/0029VaAu3lwJJhzX5iSJBg44" target="_blank" class="social-link youtube">
+                        <i class="fab fa-whatsapp"></i>
+                        <span>Canal Whatsapp</span>
                     </a>
                    
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 
     <!-- Testimonios Section -->
     {{-- <section class="testimonios-section">
@@ -419,57 +541,52 @@
     </section>
 
     <!-- Newsletter Section -->
-    <section class="cta-section" style="background-color: #f5f7fa; padding: 50px 0; text-align: center;">
-        <div class="container">
-            <div class="cta-content" style="max-width: 600px; margin: 0 auto;">
-                <h2 style="color: #2c3e50; margin-bottom: 15px;">¿Quieres ser parte de este proyecto?</h2>
-                <p style="color: #7f8c8d; font-size: 1.1rem; margin-bottom: 25px;">
-                    Puedo colaborar en el desarrollo, diseño o difusión. ¡Hablemos!
-                </p>
-                
-                <a 
-                    href="https://wa.me/59160902299?text=¡Hola!%20Quiero%20ser%20parte%20de%20este%20proyecto.%20Puedo%20colaborar%20en:" 
-                    class="whatsapp-btn"
-                    style="display: inline-block;
-                           background-color: #25D366;
-                           color: white;
-                           padding: 12px 30px;
-                           border-radius: 4px;
-                           text-decoration: none;
-                           font-weight: 600;
-                           font-size: 1rem;
-                           transition: all 0.3s ease;"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    <i class="fab fa-whatsapp" style="margin-right: 8px;"></i> Contactar por WhatsApp
+    <section class="cta-section">
+    <div class="container">
+        <div class="cta-content">
+            <h2>¿Listo para unirte a nuestro equipo innovador?</h2>
+            <p class="cta-subtitle">
+                Buscamos colaboradores apasionados por la educación tecnológica. 
+                ¡Tu experiencia es valiosa para nosotros!
+            </p>
+            
+            <div class="cta-actions">
+                <a href="https://wa.me/59160902299?text=¡Hola!%20Quiero%20ser%20parte%20de%20este%20proyecto.%20Puedo%20colaborar%20en:" 
+                   class="cta-button whatsapp-btn" 
+                   target="_blank" 
+                   rel="noopener noreferrer">
+                    <i class="fab fa-whatsapp"></i> ÚNETE AL EQUIPO
                 </a>
-                
-                <p style="margin-top: 20px; font-size: 0.9rem; color: #95a5a6;">
-                    <i class="fas fa-handshake" style="margin-right: 5px;"></i> ¡Juntos podemos hacerlo mejor!
-                </p>
             </div>
+            
+            <p class="cta-footer">
+                <i class="fas fa-lightbulb"></i> ¡Juntos crearemos el futuro de la educación tecnológica!
+            </p>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- Footer -->
     <footer class="main-footer">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-about">
-                    <h3>ITE Fórmulas</h3>
+                    <h3>Qué es ite?</h3>
                     <p>Somos una institución educativa dedicada a proporcionar recursos de calidad para estudiantes de todos los niveles.</p>
                     <div class="footer-social">
-                        <a target="_blank" href="https://www.tiktok.com/@ite_educabol"><i class="fab fa-tiktok"></i></a>
-                        <a target="_blank" href="https://www.facebook.com/ite.educabol"><i class="fab fa-facebook-f"></i></a>
-                        <a target="_blank" href="https://www.youtube.com/@ite_educabol"><i class="fab fa-youtube"></i></a>
+                        <a target="_blank" href="https://www.tiktok.com/@ite_educabol" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                        <a target="_blank" href="https://www.facebook.com/ite.educabol" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a target="_blank" href="https://www.youtube.com/@ite_educabol" class="social-icon"><i class="fab fa-youtube"></i></a>
+                        <a target="_blank" href="https://wa.me/59160902299" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a target="_blank" href="https://www.instagram.com/tu_usuario" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a target="_blank" href="https://ite.com.bo" class="social-icon"><i class="fas fa-globe"></i></a>
                     </div>
                 </div>
                 
                 <div class="footer-links">
                     <h4>Enlaces rápidos</h4>
                     <ul>
-                        <li><a target="_blank" href="https://ite.com.bo">Inicio</a></li>
+                        <li><a target="_blank" href="https://ite.com.bo">Qué es ite?</a></li>
                         <li><a target="_blank" href="https://formula.ite.com.bo">Fórmulas</a></li>
                         <li><a target="_blank" href="https://services.ite.com.bo">Cursos</a></li>
                     </ul>
@@ -477,23 +594,23 @@
                 
                 <div class="footer-links">
                     <h4>Materias</h4>
-                    <ul>
-                        <li><a href="#" class="whatsapp-link" data-msg="Me gustaría recibir clases de Matemáticas. Visite su página de fórmulas">Matemáticas</a></li>
-                        <li><a href="#" class="whatsapp-link" data-msg="Me gustaría recibir clases de Física. Visite su página de fórmulas">Física</a></li>
-                        <li><a href="#" class="whatsapp-link" data-msg="Me gustaría recibir clases de Química. Visite su página de fórmulas">Química</a></li>
-                        <li><a href="#" class="whatsapp-link" data-msg="Me gustaría recibir clases de Biología. Visite su página de fórmulas">Biología</a></li>
-                        <li><a href="#" class="whatsapp-link" data-msg="Me gustaría recibir clases de Informática. Visite su página de fórmulas">Informática</a></li>
+                    <ul class="materias-list">
+                        <li><a href="#" class="whatsapp-link" data-msg="Computación">Computación</a></li>
+                        <li><a href="#" class="whatsapp-link" data-msg="Robótica">Robótica</a></li>
+                        <li><a href="#" class="whatsapp-link" data-msg="Cubo Rubik">Cubo Rubik</a></li>
+                        <li><a href="#" class="whatsapp-link" data-msg="Programación">Programación</a></li>
+                        <li><a href="#" class="whatsapp-link" data-msg="Apoyo escolar">Apoyo escolar</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-links">
                     <h4>Cursos</h4>
-                    <ul>
-                        <li><a href="#" class="whatsapp-link" data-msg="Me interesa el curso de Computación. Visite su Página de fórmulas">Computación</a></li>
-                        <li><a href="#" class="whatsapp-link" data-msg="Me interesa el curso de Robótica. Visite su Página de fórmulas">Robótica</a></li>
-                        <li><a href="#" class="whatsapp-link" data-msg="Me interesa el curso de Cubo Rubik. Visite su Página de fórmulas">Cubo Rubik</a></li>
-                        <li><a href="#" class="whatsapp-link" data-msg="Me interesa el curso de Programación. Visite su Página de fórmulas">Programación</a></li>
-                        <li><a href="#" class="whatsapp-link" data-msg="Necesito apoyo escolar. Visite su Página de fórmulas">Apoyo escolar</a></li>
+                    <ul class="materias-list">
+                         <li><a href="#" class="whatsapp-link" data-msg="Matematicas">Matemáticas</a></li>
+                        <li><a href="#" class="whatsapp-link" data-msg="Fisica">Física</a></li>
+                        <li><a href="#" class="whatsapp-link" data-msg="Quimica">Química</a></li>
+                        <li><a href="#" class="whatsapp-link" data-msg="Programacion">Programación</a></li>
+                        <li><a href="#" class="whatsapp-link" data-msg="lenguaje">Escritura y Lectura</a></li>
                     </ul>
                 </div>
                 
@@ -515,18 +632,64 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
     
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const whatsappLinks = document.querySelectorAll('.whatsapp-link');
-            const numeroWhatsApp = '59160902299'; // Número destino (sin +)
-          
-            whatsappLinks.forEach(link => {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const mensaje = encodeURIComponent(link.dataset.msg);
-                    window.open(`https://wa.me/${numeroWhatsApp}?text=${mensaje}`, '_blank');
-                });
-            });
+
+        document.querySelectorAll('.whatsapp-link').forEach(link => {
+            const materia = link.getAttribute('data-msg');
+            console.log("materia",materia);
+            let mensaje = '';
+            
+            // Mensajes personalizados para cada materia
+            switch(materia) {
+                case 'Computación':
+                    mensaje = '¡Hola! Estoy interesado/a en el curso de *COMPUTACIÓN* Mensaje enviado desde https://formula.ite.com.bo';
+                    break;
+                case 'Robótica':
+                    mensaje = '¡Buenos días! Quisiera información sobre el curso de *ROBÓTICA.* Mensaje enviado desde https://formula.ite.com.bo';
+                    break;
+                case 'Cubo Rubik':
+                    mensaje = '¡Saludos! Me interesa el curso de *CUBO RUBIK.* Mensaje enviado desde https://formula.ite.com.bo';
+                    break;
+                case 'Programación':
+                    mensaje = '¡Hola! Busco información sobre el curso de *PROGRAMACIÓN.* Mensaje enviado desde https://formula.ite.com.bo';
+                    break;
+                case 'Apoyo escolar':
+                    mensaje = '¡Buenas tardes! Necesito *APOYO ESCOLAR.* Mensaje enviado desde https://formula.ite.com.bo';
+                    break;
+                case 'Matematicas':
+                    mensaje = '¡Hola! Estoy interesado/a en clases de *MATEMÁTICAS.* Mensaje enviado desde https://formula.ite.com.bo';
+                    break;
+                case 'Fisica':
+                    mensaje = '¡Buenos días! Necesito clases de *FÍSICA.* Mensaje enviado desde https://formula.ite.com.bo';
+                    break;
+                case 'Quimica':
+                    mensaje = '¡Saludos! Busco clases de *QUÍMICA.* Mensaje enviado desde https://formula.ite.com.bo';
+                    break;
+                case 'Programacion':
+                    mensaje = '¡Hola! Quiero aprender *PROGRAMACIÓN.* Mensaje enviado desde https://formula.ite.com.bo';
+                    break;
+                case 'lenguaje':
+                    mensaje = '¡Buenas tardes! Me interesa el curso de *Escritura y Lectura.* Mensaje enviado desde https://formula.ite.com.bo';
+                    break;
+               
+            }
+            console.log("mensaje",mensaje);
+            link.href = `https://wa.me/59171324941?text=${encodeURIComponent(mensaje)}`;
+            link.target = '_blank';
         });
+
+        
+        // document.addEventListener('DOMContentLoaded', () => {
+        //     const whatsappLinks = document.querySelectorAll('.whatsapp-link');
+        //     const numeroWhatsApp = '59160902299'; // Número destino (sin +)
+          
+        //     whatsappLinks.forEach(link => {
+        //         link.addEventListener('click', (e) => {
+        //             e.preventDefault();
+        //             const mensaje = encodeURIComponent(link.dataset.msg);
+        //             window.open(`https://wa.me/${numeroWhatsApp}?text=${mensaje}`, '_blank');
+        //         });
+        //     });
+        // });
         
         function enviarWhatsApp(event) {
             event.preventDefault();

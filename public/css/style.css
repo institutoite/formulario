@@ -370,6 +370,34 @@ ul {
     transform: translateY(-5px);
 }
 
+
+.curso-item h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    color: var(--dark-color);
+}
+
+.curso-item p {
+    color: var(--gray-color);
+} 
+.curso-item {
+    background-color: white;
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    text-align: center;
+    transition: var(--transition);
+    position: relative; /* Necesario para el posicionamiento del botón */
+    padding-bottom: 5rem; /* Espacio para el botón */
+    min-height: 300px; /* Altura mínima para consistencia */
+    display: flex;
+    flex-direction: column;
+}
+
+.curso-item:hover {
+    transform: translateY(-5px);
+}
+
 .curso-icon {
     font-size: 2.5rem;
     color: var(--primary-color);
@@ -384,8 +412,43 @@ ul {
 
 .curso-item p {
     color: var(--gray-color);
+    margin-bottom: 1.5rem;
+    flex-grow: 1; /* Empuja el botón hacia abajo */
 }
 
+/* Estilos para el botón de WhatsApp */
+.whatsapp-btn {
+    background-color: #25D366; /* Color verde de WhatsApp */
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: auto; /* Empuja el botón a la parte inferior */
+    transition: all 0.3s ease;
+    width: fit-content;
+    align-self: center; /* Centra horizontalmente */
+}
+
+.whatsapp-btn:hover {
+    background-color: #375f7a; /* Color más oscuro al hover */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    color: white;
+}
+
+.whatsapp-btn i {
+    margin-right: 8px;
+}
+
+
+.curso-icon {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
 .cursos-cta {
     text-align: center;
     margin-top: 3rem;
