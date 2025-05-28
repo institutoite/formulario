@@ -1,6 +1,7 @@
 @extends('adminlte::page')
 @section('css')
     <link rel="stylesheet" href="{{asset('bootstrap/css/bootstrap.css')}}">
+    <link rel="icon" href="{{ asset('image/ite.ico') }}" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-BTkxV7Ou8VVZTsLwZIn57c1gmiEUE2OxDxv7+PrKk8h/o7yXrzAa+YSrQe/T1OKKPz7mJrPZgA3qWd5ll5GtQw==" crossorigin="anonymous" />
     <link rel="stylesheet" href="{{asset('css/card.css')}}">
     <link rel="stylesheet" href="{{asset('vendor/sweetalert2/sweetalert2.min.css')}}">
@@ -50,32 +51,10 @@
 @stop
 
 @section('js')
-    <script> console.log('Hi!'); </script>
     <script src="{{asset('vendor/sweetalert2/sweetalert2.all.js')}}"></script>
     <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
     <script>
         $(document).ready(function() {
-          
-        // $('a[data-method]').click(function(event) {
-        //         event.preventDefault();
-        //         const method = $(this).data('method');
-        //         const url = $(this).data('url');
-        //         $.ajax({
-        //             url: url,
-        //             method: method,
-        //             headers: {
-        //             'X-CSRF-TOKEN': '{{ csrf_token() }}'
-        //             },
-        //             success: function(response) {
-                        
-        //             },
-        //             error: function(error) {
-        //             // Manejar errores de la solicitud
-        //             }
-        //         });
-        //     });
-
-
             $(".eliminar").on("click", function(e){
                 e.preventDefault();
                 id_materia=$(this).attr('id');

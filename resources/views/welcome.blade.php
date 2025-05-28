@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <title>ITE Fórmulas - Tu recurso educativo</title>
+    <title>ite fórmula</title>
     <meta charset="UTF-8">
     <link rel="icon" href="{{ asset('image/ite.ico') }}" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -69,38 +69,28 @@
             
         
 
-                <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%     Recursos Section %%%%%%%%%%%%%%%%-->
-    <div class="cards-container">
-        @foreach ($materias as $materia)
-        <div class="card">
-            <div class="card-image">
-                @isset($materia->imagen->url)
-                    <img src="{{URL::to('/').Storage::url('public/'.$materia->imagen->url)}}" alt="{{ $materia->materia }}" height="50%">
-                @endisset
+            <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%     Recursos Section %%%%%%%%%%%%%%%%-->
+            <div class="cards-container">
+                @foreach ($materias as $materia)
+                <div class="card">
+                    <div class="card-image">
+                        @isset($materia->imagen->url)
+                            <img src="{{URL::to('/').Storage::url('public/'.$materia->imagen->url)}}" alt="{{ $materia->materia }}" height="50%">
+                        @endisset
+                    </div>
+                    <div class="card-content">
+                        <h3>{{ $materia->materia }}</h3>
+                        <p>{{ $materia->slogan }}</p>
+                        @if(count($materia->temas) > 0)
+                            <a href="{{ route('temas.index', $materia) }}" class="btn btn-card">Ver fórmulas</a>
+                        @else
+                            <a href="#" class="btn btn-card" onclick="showNoFormulasModal('{{ $materia->materia }}'); return false;">Ver fórmulas</a>
+                        @endif
+                    </div>
+                </div>    
+                @endforeach
             </div>
-            <div class="card-content">
-                <h3>{{ $materia->materia }}</h3>
-                <p>{{ $materia->slogan }}</p>
-                @if(count($materia->temas) > 0)
-                    <a href="{{ route('temas.index', $materia) }}" class="btn btn-card">Ver fórmulas</a>
-                @else
-                    <a href="#" class="btn btn-card" onclick="showNoFormulasModal('{{ $materia->materia }}'); return false;">Ver fórmulas</a>
-                @endif
-            </div>
-        </div>    
-        @endforeach
-    </div>
-    
-    <!-- Modal para materias sin fórmulas -->
-
-    
-    
-    <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%     Recursos Section %%%%%%%%%%%%%%%%-->
-
         </div>
-
-
-        
     </section>
 
 
@@ -115,138 +105,136 @@
             </div>
             
            <div class="cursos-grid">
-    <!-- Curso de Computación -->
-    <div class="curso-item">
-        <div class="curso-icon">
-            <i class="fas fa-laptop-code"></i>
-        </div>
-        <h3>Computación</h3>
-        <p>Domina lo esencial de informática y herramientas digitales</p>
-        <a href="https://wa.me/1234567890?text=¡Hola!%20Quiero%20info%20del%20curso%20COMPUTACIÓN" class="whatsapp-btn">
-            <i class="fab fa-whatsapp"></i> Mas info
-        </a>
-    </div>
-    
-    <!-- Curso de Robótica -->
-    <div class="curso-item">
-        <div class="curso-icon">
-            <i class="fas fa-robot"></i>
-        </div>
-        <h3>Robótica</h3>
-        <p>Construye y programa robots desde cero</p>
-        <a href="https://wa.me/1234567890?text=¡Hola!%20Info%20curso%20ROBÓTICA%20por%20favor" class="whatsapp-btn">
-            <i class="fab fa-whatsapp"></i> Mas info
-        </a>
-    </div>
-    
-    <!-- Curso de Cubo Rubik -->
-    <div class="curso-item">
-        <div class="curso-icon">
-            <i class="fas fa-cube"></i>
-        </div>
-        <h3>Cubo Rubik</h3>
-        <p>Aprende métodos para resolver el cubo mágico</p>
-        <a href="https://wa.me/1234567890?text=Info%20curso%20CUBO%20RUBIK" class="whatsapp-btn">
-            <i class="fab fa-whatsapp"></i> Mas info
-        </a>
-    </div>
-    
-    <!-- Curso de Programación -->
-    <div class="curso-item">
-        <div class="curso-icon">
-            <i class="fas fa-code"></i>
-        </div>
-        <h3>Programación</h3>
-        <p>Aprende Python, JavaScript y desarrollo web</p>
-        <a href="https://wa.me/1234567890?text=Info%20curso%20PROGRAMACIÓN" class="whatsapp-btn">
-            <i class="fab fa-whatsapp"></i> Mas info
-        </a>
-    </div>
-    
-    <!-- Apoyo Escolar Primaria -->
-    <div class="curso-item">
-        <div class="curso-icon">
-            <i class="fas fa-child"></i>
-        </div>
-        <h3>Apoyo Escolar Primaria</h3>
-        <p>Refuerzo en matemáticas y comunicación</p>
-        <a href="https://wa.me/1234567890?text=Info%20APOYO%20PRIMARIA" class="whatsapp-btn">
-            <i class="fab fa-whatsapp"></i> Mas info
-        </a>
-    </div>
-    
-    <!-- Apoyo Escolar Secundaria -->
-    <div class="curso-item">
-        <div class="curso-icon">
-            <i class="fas fa-user-graduate"></i>
-        </div>
-        <h3>Apoyo Escolar Secundaria</h3>
-        <p>Clases de matemáticas y ciencias</p>
-        <a href="https://wa.me/1234567890?text=Info%20APOYO%20SECUNDARIA" class="whatsapp-btn">
-            <i class="fab fa-whatsapp"></i> Mas info
-        </a>
-    </div>
-    
-    <!-- Cursos Preuniversitarios -->
-    <div class="curso-item">
-        <div class="curso-icon">
-            <i class="fas fa-university"></i>
-        </div>
-        <h3>Cursos Preuniversitarios</h3>
-        <p>Preparación para exámenes de admisión</p>
-        <a href="https://wa.me/1234567890?text=Info%20CURSOS%20PREUNIVERSITARIOS" class="whatsapp-btn">
-            <i class="fab fa-whatsapp"></i> Mas info
-        </a>
-    </div>
-    
-    <!-- Cursos Universitarios -->
-    <div class="curso-item">
-        <div class="curso-icon">
-            <i class="fas fa-graduation-cap"></i>
-        </div>
-        <h3>Cursos Universitarios</h3>
-        <p>Asesoría en cálculo y física universitaria</p>
-        <a href="https://wa.me/1234567890?text=Info%20CURSOS%20UNIVERSITARIOS" class="whatsapp-btn">
-            <i class="fab fa-whatsapp"></i> Mas info
-        </a>
-    </div>
-    
-    <!-- Creación de Sistemas Web -->
-    <div class="curso-item">
-        <div class="curso-icon">
-            <i class="fas fa-globe"></i>
-        </div>
-        <h3>Creación de Sistemas Web</h3>
-        <p>Aprende desarrollo web completo</p>
-        <a href="https://wa.me/1234567890?text=Info%20SISTEMAS%20WEB" class="whatsapp-btn">
-            <i class="fab fa-whatsapp"></i> Mas info
-        </a>
-    </div>
-    
-    <!-- Aplicaciones Móviles -->
-    <div class="curso-item">
-        <div class="curso-icon">
-            <i class="fas fa-mobile-alt"></i>
-        </div>
-        <h3>Aplicaciones Móviles</h3>
-        <p>Desarrollo de apps para Android e iOS</p>
-        <a href="https://wa.me/1234567890?text=Info%20APPS%20MÓVILES" class="whatsapp-btn">
-            <i class="fab fa-whatsapp"></i> Mas info
-        </a>
-    </div>
-     <div class="curso-item">
-        <div class="curso-icon">
-            <i class="fas fa-book-open"></i>
-        </div>
-        <h3>Lectura y Escritura</h3>
-        <p>Desarrolla habilidades comunicativas esenciales</p>
-        <a href="https://wa.me/1234567890?text=Info%20curso%20LECTURA%20Y%20ESCRITURA" class="whatsapp-btn">
-            <i class="fab fa-whatsapp"></i> Info por WhatsApp
-        </a>
-    </div>
-</div>
-            
-            
+                <!-- Curso de Computación -->
+                <div class="curso-item">
+                    <div class="curso-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Computación</h3>
+                    <p>Domina lo esencial de informática y herramientas digitales</p>
+                    <a href="https://wa.me/59175553338?text=¡Hola!%20Quiero%20info%20del%20curso%20COMPUTACIÓN" target="_blank" class="whatsapp-btn">
+                        <i class="fab fa-whatsapp"></i> Mas info
+                    </a>
+                </div>
+                
+                <!-- Curso de Robótica -->
+                <div class="curso-item">
+                    <div class="curso-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>Robótica</h3>
+                    <p>Construye y programa robots desde cero</p>
+                    <a href="https://wa.me/59175553338?text=¡Hola!%20Info%20curso%20ROBÓTICA%20por%20favor" target="_blank" class="whatsapp-btn">
+                        <i class="fab fa-whatsapp"></i> Mas info
+                    </a>
+                </div>
+                
+                <!-- Curso de Cubo Rubik -->
+                <div class="curso-item">
+                    <div class="curso-icon">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <h3>Cubo Rubik</h3>
+                    <p>Aprende métodos para resolver el cubo mágico</p>
+                    <a href="https://wa.me/59175553338?text=Info%20curso%20CUBO%20RUBIK" target="_blank" class="whatsapp-btn">
+                        <i class="fab fa-whatsapp"></i> Mas info
+                    </a>
+                </div>
+                
+                <!-- Curso de Programación -->
+                <div class="curso-item">
+                    <div class="curso-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Programación</h3>
+                    <p>Aprende Python, JavaScript y desarrollo web</p>
+                    <a href="https://wa.me/59175553338?text=Info%20curso%20PROGRAMACIÓN" target="_blank" class="whatsapp-btn">
+                        <i class="fab fa-whatsapp"></i> Mas info
+                    </a>
+                </div>
+                
+                <!-- Apoyo Escolar Primaria -->
+                <div class="curso-item">
+                    <div class="curso-icon">
+                        <i class="fas fa-child"></i>
+                    </div>
+                    <h3>Apoyo Escolar Primaria</h3>
+                    <p>Refuerzo en matemáticas y comunicación</p>
+                    <a href="https://wa.me/59175553338?text=Info%20APOYO%20PRIMARIA" target="_blank" class="whatsapp-btn">
+                        <i class="fab fa-whatsapp"></i> Mas info
+                    </a>
+                </div>
+                
+                <!-- Apoyo Escolar Secundaria -->
+                <div class="curso-item">
+                    <div class="curso-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <h3>Apoyo Escolar Secundaria</h3>
+                    <p>Clases de matemáticas y ciencias</p>
+                    <a href="https://wa.me/59175553338?text=Info%20APOYO%20SECUNDARIA" target="_blank" class="whatsapp-btn">
+                        <i class="fab fa-whatsapp"></i> Mas info
+                    </a>
+                </div>
+                
+                <!-- Cursos Preuniversitarios -->
+                <div class="curso-item">
+                    <div class="curso-icon">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <h3>Cursos Preuniversitarios</h3>
+                    <p>Preparación para exámenes de admisión</p>
+                    <a href="https://wa.me/59175553338?text=Info%20CURSOS%20PREUNIVERSITARIOS" target="_blank" class="whatsapp-btn">
+                        <i class="fab fa-whatsapp"></i> Mas info
+                    </a>
+                </div>
+                
+                <!-- Cursos Universitarios -->
+                <div class="curso-item">
+                    <div class="curso-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Cursos Universitarios</h3>
+                    <p>Asesoría en cálculo y física universitaria</p>
+                    <a href="https://wa.me/59175553338?text=Info%20CURSOS%20UNIVERSITARIOS" target="_blank" class="whatsapp-btn">
+                        <i class="fab fa-whatsapp"></i> Mas info
+                    </a>
+                </div>
+                
+                <!-- Creación de Sistemas Web -->
+                <div class="curso-item">
+                    <div class="curso-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>Creación de Sistemas Web</h3>
+                    <p>Aprende desarrollo web completo</p>
+                    <a href="https://wa.me/59175553338?text=Info%20SISTEMAS%20WEB" target="_blank" class="whatsapp-btn">
+                        <i class="fab fa-whatsapp"></i> Mas info
+                    </a>
+                </div>
+                
+                <!-- Aplicaciones Móviles -->
+                <div class="curso-item">
+                    <div class="curso-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Aplicaciones Móviles</h3>
+                    <p>Desarrollo de apps para Android e iOS</p>
+                    <a href="https://wa.me/59175553338?text=Info%20APPS%20MÓVILES" target="_blank" class="whatsapp-btn">
+                        <i class="fab fa-whatsapp"></i> Mas info
+                    </a>
+                </div>
+                <div class="curso-item">
+                    <div class="curso-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h3>Lectura y Escritura</h3>
+                    <p>Desarrolla habilidades comunicativas esenciales</p>
+                    <a href="https://wa.me/59175553338?text=Info%20curso%20LECTURA%20Y%20ESCRITURA" target="_blank" class="whatsapp-btn">
+                        <i class="fab fa-whatsapp"></i> Mas info
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
 

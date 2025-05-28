@@ -1,45 +1,12 @@
-<div class="container">
-    <div class="header">
-        <div class="titulo">Con tu apoyo:</div>
-        <div class="subtitulo">📥 Recibirás el PDF completo al enviar tu comprobante</div>
-    </div>
-
-    
-    <div class="qr-section">
-        <div class="frase-impacto">
-            <p class="frase-principal">"Tu apoyo hoy mantiene vivo este proyecto para cuando tu hijo lo necesite"</p>
-            <p class="frase-secundaria">Cada donación, por pequeña que sea, siembra oportunidades para miles de estudiantes</p>
-        </div>
-        
-        <div class="qr-container">
-            <img src="{{ asset('storage/qr/qr.jpg') }}" alt="QR de donación" class="qr-img" id="qrImage">
-            
-            <div class="qr-actions">
-                <button id="descargarQr" class="btn-descargar">
-                    <i class="fas fa-download"></i> Descargar QR
-                </button>
-            </div>
-        </div>
-        
-        <div class="instrucciones">
-            <p>1. Escanea el QR con tu app bancaria</p>
-            <p>2. O descárgalo para escanearlo desde tu galería</p>
-            <p>3. Envía tu comprobante para recibir el PDF</p>
-        </div>
-    </div>
-
-    <a href="https://wa.me/59160902299?text={{ urlencode('Hola, realicé mi donación para el formulario de *' . $tema->tema . '* de *' . $materia->materia . '*.\n\nAdjunto comprobante. Por favor envíenme el PDF.\n\nEnlace del formulario: ' . route('formulario.descargar', ['materia_id' => $materia->id, 'tema_id' => $tema->id])) }}" 
-       class="whatsapp-btn" 
-       target="_blank">
-       <i class="fab fa-whatsapp"></i> Enviar comprobante
-    </a>
-
-    <div class="nota">
-        <p>¡Gracias por apoyar la educación! El PDF llegará a tu WhatsApp en minutos.</p>
-    </div>
-</div>
-
-<style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="{{ asset('image/ite.ico') }}" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Donación</title>
+    <style>
     :root {
         --color-primary: #10b981;
         --color-whatsapp: #25D366;
@@ -251,6 +218,48 @@
     }
 </style>
 
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="titulo">Con tu apoyo:</div>
+            <div class="subtitulo">📥 Recibirás el PDF completo al enviar tu comprobante</div>
+        </div>
+
+        
+        <div class="qr-section">
+            <div class="frase-impacto">
+                <p class="frase-principal">"Tu apoyo hoy mantiene vivo este proyecto para cuando tu hijo lo necesite"</p>
+                <p class="frase-secundaria">Cada donación, por pequeña que sea, siembra oportunidades para miles de estudiantes</p>
+            </div>
+            
+            <div class="qr-container">
+                <img src="{{ asset('storage/qr/qr.jpg') }}" alt="QR de donación" class="qr-img" id="qrImage">
+                
+                <div class="qr-actions">
+                    <button id="descargarQr" class="btn-descargar">
+                        <i class="fas fa-download"></i> Descargar QR
+                    </button>
+                </div>
+            </div>
+            
+            <div class="instrucciones">
+                <p>1. Escanea el QR con tu app bancaria</p>
+                <p>2. O descárgalo para escanearlo desde tu galería</p>
+                <p>3. Envía tu comprobante para recibir el PDF</p>
+            </div>
+        </div>
+
+        <a href="https://wa.me/59160902299?text={{ urlencode('Hola, realicé mi donación para el formulario de *' . $tema->tema . '* de *' . $materia->materia . '*.\n\nAdjunto comprobante. Por favor envíenme el PDF.\n\nEnlace del formulario: ' . route('formulario.descargar', ['materia_id' => $materia->id, 'tema_id' => $tema->id])) }}" 
+        class="whatsapp-btn" 
+        target="_blank">
+        <i class="fab fa-whatsapp"></i> Enviar comprobante
+        </a>
+
+        <div class="nota">
+            <p>¡Gracias por apoyar la educación! El PDF llegará a tu WhatsApp en minutos.</p>
+        </div>
+    </div>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     // Descargar QR
@@ -292,3 +301,9 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 </script>
+
+</body>
+</html>
+
+
+

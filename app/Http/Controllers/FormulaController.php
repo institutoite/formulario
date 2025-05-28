@@ -317,4 +317,12 @@ public function update(UpdateFormulaRequest $request, Formula $formula)
         return $pdf->download('formulario.pdf');
     }
 
+    public function destroy(Formula $formula)
+    {
+        // Alert::success('Mensaje exitoso', 'Datos guardados correctamente');
+        $formula->delete();
+        return response()->json(["mensaje" =>"Elinminado correctamente"]);
+        //return redirect()->route('materias.index')->with('success', 'Materia actualizada exitosamente.');
+    }
+
 }
