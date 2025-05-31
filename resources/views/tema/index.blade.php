@@ -130,6 +130,22 @@
                         </a>
                         <p class="tema-descripcion">{{ $tema->slogan }}</p>
                     </div>
+                    @auth
+                    <div class="tema-header">
+                        <h3>{{ $tema->tema }}</h3>
+                            <div class="tema-actions">
+                                <a href="{{ route('temas.edit', $tema) }}" class="action-btn edit" title="Editar">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <button class="action-btn delete eliminar" data-id="{{ $tema->id }}" title="Eliminar">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                                <a href="{{ route('formulas.create', $tema->id) }}" class="action-btn add" title="Añadir fórmula">
+                                    <i class="fas fa-plus-circle"></i>
+                                </a>
+                            </div>
+                        </div>  
+                    @endauth
                 @endforeach
             </div>
         </div>
