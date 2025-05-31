@@ -1,0 +1,49 @@
+.tema-item {
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.tema-nombre {
+    display: inline-block;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: rgb(38, 186, 165);
+    text-decoration: none;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.tema-nombre::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    left: 0;
+    bottom: -5px;
+    background-color: rgb(55, 95, 122);
+    transition: width 0.4s ease;
+    border-radius: 5px;
+}
+
+.tema-nombre:hover {
+    color: rgb(55, 95, 122);
+    transform: translateX(5px);
+}
+
+.tema-nombre:hover::after {
+    width: 100%;
+}
+
+.tema-descripcion {
+    font-size: 0.85rem;
+    color: #6c757d;
+    margin-top: 3px;
+    margin-left: 5px;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.tema-item:hover .tema-descripcion {
+    opacity: 1;
+    transform: translateX(5px);
+}

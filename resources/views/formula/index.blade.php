@@ -16,8 +16,8 @@
     <link rel="stylesheet" href="{{ asset('css/temas.css') }}">
     <link rel="stylesheet" href="{{ asset('css/redes.css') }}">
     <link rel="stylesheet" href="{{ asset('css/materias.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/formulas.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/formula.css') }}">  {{-- css para el ciclo de las formulas --}}
+    {{-- <link rel="stylesheet" href="{{ asset('css/formulas.css') }}"> --}}
+    <link rel="stylesheet" href="{{ asset('css/formula.css') }}">  
     <link rel="stylesheet" href="{{ asset('css/servicios.css') }}">  {{-- css para el ciclo de las formulas --}}
 
 
@@ -78,99 +78,85 @@
 </head>
 <body>
     <!-- Header with Navigation -->
-    <header class="main-header">
-        <div class="container header-container">
-            <div class="logo-container">
-                <h1>Fórmulas</h1>
-                <p class="tagline">Tu recurso educativo completo</p>
-            </div>
-            <nav class="main-nav">
-                {{-- <button class="menu-toggle" aria-label="Abrir menú">
-                    <i class="fas fa-bars"></i>
-                </button> --}}
-                <button class="menu-toggle" aria-label="Abrir menú">
-                    <span class="hamburger"></span>
-                </button>
-                
-                <ul class="nav-links">
-                    <li><a href="{{ route('inicio') }}">Inicio</a></li>
-                    
-                </ul>
-            </nav>
+        <header class="main-header">
+    <div class="container header-container">
+        <div class="logo-section">
+            <h1 class="logo-title">{{ $tema->tema }}</h1>
+            <p class="tagline">Tu recurso educativo completo</p>
         </div>
-    </header>
-
-    <!-- Breadcrumb -->
-    <div class="breadcrumb-container">
-        <div class="container">
-            <ul class="breadcrumb">
-                <li><a href="{{ route('home') }}">Inicio</a></li>
-                <li><a href="{{ route('inicio') }}">Materias</a></li>
-                <li>{{ $tema->tema }}</li>
+        <nav class="main-nav">
+            <button class="menu-toggle" aria-label="Abrir menú">
+                <span class="hamburger"></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="{{ route('inicio') }}">Inicio</a></li>
             </ul>
-        </div>
+        </nav>
     </div>
+</header>
 
-    <!-- Main Content -->
-    <main class="app-container">
-        <!-- Formula Cards Section -->
-        <section class="formula-header-section">
-            <div class="card">
-                <div class="card-header bg-secondary">
-                    <h1 class="text-white">FÓRMULAS DEL TEMA: {{ $tema->tema }}</h1> 
-                    {{-- <a href="{{ route('formulas.create', $tema) }}" class="btn btn-primary float-right">
-                        <i class="fa fa-plus"></i>&nbsp;Nuevo
-                    </a> --}}
+<!-- Breadcrumb -->
+<div class="breadcrumb-container">
+    <div class="container">
+        <ul class="breadcrumb">
+            <li><a href="{{ route('home') }}">Inicio</a></li>
+            <li><a href="{{ route('inicio') }}">Materias</a></li>
+            <li>{{ $tema->tema }}</li>
+        </ul>
+    </div>
+</div>
+
+<!-- Main Content -->
+
+
+
+        <div class="formula-grid">
+            @foreach ($formulas as $formula)
+                <div class="formula-card">
+                    <header class="formula-header">
+                        <h3>{{ $formula->nombre }}</h3>
+                    </header>
+
+                    @if($formula->imagen)
+                        <div class="formula-body">
+                            <img src="{{ URL::to('/').Storage::url($formula->imagen->url) }}" alt="Representación gráfica de {{ $formula->nombre }}" class="formula-image">
+                        </div>
+                    @endif
+
+                    <footer class="formula-footer">
+                        <div class="formula-content">{{ $formula->formula }}</div>
+                        <a href="{{ route('mostrar.qr',$tema->id) }}" 
+                            class="whatsapp-btn" 
+                            target="_blank" 
+                            rel="noopener noreferrer">
+                            <i class="fa-solid fa-cloud-arrow-down fa-beat"></i> Descargar
+                        </a>
+                    </footer>
+
+                    @auth
+                        <div class="formula-actions">
+                            <a href="{{ route('formulas.edit', $formula) }}" class="action-btn edit" title="Editar">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <a class="eliminar" id="{{$formula->id}}"><i class="fas fa-trash-alt text-danger"></i></a>
+                            <a href="{{ route('formulas.create', $tema->id) }}" class="action-btn add" title="Añadir fórmula">
+                                <i class="fas fa-plus-circle"></i>
+                            </a>
+                        </div>
+                    @endauth
                 </div>
-                <div class="card-body">
-                    <div class="row formulas-grid">
-                        @foreach ($formulas as $formula)
-                            <div class="formula-card">
-                                <header class="formula-header">
-                                    <h3>{{ $formula->nombre }}</h3>
-                                  
-                                </header>
-                                
-                                    @if($formula->imagen)
-                                        <div class="formula-body">
-                                            <img src="{{ URL::to('/').Storage::url($formula->imagen->url) }}" alt="Representación gráfica de {{ $formula->nombre }}" class="formula-image">
-                                        </div>
-                                    @endif
+            @endforeach
+        </div>
 
-                                
-                                <footer class="formula-footer">
-                                    <div class="formula-content">{{ $formula->formula }}</div>
-                                    <a href="{{ route('mostrar.qr',$tema->id) }}" 
-                                        class="whatsapp-btn" 
-                                        target="_blank" 
-                                        rel="noopener noreferrer">
-                                        <i class="fa-solid fa-cloud-arrow-down fa-beat"></i> Dscargar
-                                    </a>
-                                </footer>
-                                    @auth
-                                        <div class="formula-actions">
-                                            <a href="{{ route('formulas.edit', $formula) }}" class="action-btn edit" title="Editar">
-                                                <i class="fas fa-edit"></i>
-                                            </a>
-                                            <a class="eliminar" id="{{$formula->id}}"><i class="fas fa-trash-alt text-danger"></i></a>
-                                            <a href="{{ route('formulas.create', $tema->id) }}" class="action-btn add" title="Añadir fórmula">
-                                                <i class="fas fa-plus-circle"></i>
-                                            </a>
-                                        </div>
-                                    @endauth
-
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-        </section>
         <div style="text-align: center; margin: 40px 0;">
             <a href="{{ route('mostrar.qr',$tema->id) }}" id="btn-imprimir" class="btn btn-secondary">
                 <i class="fas fa-print"></i> Imprimir o Descargar PDF
             </a>
             
         </div>
+
+       
+
 
         <section class="related-resources">
                 
@@ -329,7 +315,7 @@
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
 
     <script>
-                document.querySelectorAll('.whatsapp-link').forEach(link => {
+            document.querySelectorAll('.whatsapp-link').forEach(link => {
             const materia = link.getAttribute('data-msg');
             console.log("materia",materia);
             let mensaje = '';

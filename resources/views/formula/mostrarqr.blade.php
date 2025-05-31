@@ -281,7 +281,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 document.body.removeChild(a);
                 
                 // Opcional: Mostrar mensaje de éxito
-                alert('QR descargado correctamente. Ahora puedes escanearlo desde tu galería.');
+                //alert('QR descargado correctamente. Ahora puedes escanearlo desde tu galería.');
             })
             .catch(error => {
                 console.error('Error al descargar QR:', error);

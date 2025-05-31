@@ -10,6 +10,7 @@
     <!-- Estilos -->
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/temas.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/temaciclo.css') }}">
     <link rel="stylesheet" href="{{ asset('css/redes.css') }}">
     <link rel="stylesheet" href="{{ asset('css/materias.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -123,38 +124,12 @@
             
             <div class="temas-grid">
                 @foreach ($temas as $tema)
-                <div class="tema-card" id="tema-card-{{ $tema->id }}">
-                    <div class="tema-header">
-                        <h3>{{ $tema->tema }}</h3>
-                        @auth
-                        <div class="tema-actions">
-                            <a href="{{ route('temas.edit', $tema) }}" class="action-btn edit" title="Editar">
-                                <i class="fas fa-edit"></i>
-                            </a>
-                            <button class="action-btn delete eliminar" data-id="{{ $tema->id }}" title="Eliminar">
-                                <i class="fas fa-trash-alt"></i>
-                            </button>
-                            <a href="{{ route('formulas.create', $tema->id) }}" class="action-btn add" title="Añadir fórmula">
-                                <i class="fas fa-plus-circle"></i>
-                            </a>
-                        </div>
-                        @endauth
+                    <div class="tema-item">
+                        <a href="{{ route('formulas.index', $tema) }}" class="tema-nombre">
+                            {{ $tema->tema }}
+                        </a>
+                        <p class="tema-descripcion">{{ $tema->slogan }}</p>
                     </div>
-                    
-                    <div class="tema-content">
-                        <div class="tema-content">
-                            <div class="tema-image">
-                                <img src="{{ URL::to('/').Storage::url('public/sinimagen.jpg') }}" 
-                                     alt="Imagen de {{ $tema->tema }}"
-                                     class="default-image">
-                            </div>
-                            <p class="tema-slogan">{{ $tema->slogan }}</p>
-                            <a href="{{ route('formulas.index', $tema) }}" class="btn btn-secondary btn-block">
-                                Ver Fórmulas <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
                 @endforeach
             </div>
         </div>

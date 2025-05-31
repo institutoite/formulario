@@ -31,7 +31,7 @@
         }
 
         .formula-container {
-            border: 1px solid rgb(55,95,122);
+            /*border: 1px solid rgb(55,95,122);*/
             border-left: 5px solid rgb(38,186,165);
             border-radius: 6px;
             padding: 15px;
@@ -57,8 +57,8 @@
 
        /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  imagen %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
     
-         .formula-table {
-        border: 1px solid #ddd;
+    .formula-table {
+        border: 1px solid #26baa5;
         border-radius: 4px;
         margin-bottom: 20px;
         width: 100%;
@@ -67,11 +67,12 @@
     }
     
     .formula-header {
-        background-color: #f5f5f5;
+        background-color: #26baa5;
         padding: 10px 15px;
         font-weight: bold;
         border-bottom: 1px solid #ddd;
         text-align: center;
+        color: white;
     }
     
     .formula-cell, .image-cell {
@@ -91,7 +92,7 @@
     
     /* Estilo para cuando no hay imagen asociada */
     .image-cell:empty {
-        background-color: #f9f9f9;
+        background-color: white;
     }
 
 
@@ -100,7 +101,7 @@
         .formula-image {
             max-width: 100%;
             max-height: 100px;
-            border: 1px solid #ccc;
+            /*border: 8px solid #790909;*/
             padding: 4px;
             background-color: #fff;
             border-radius: 4px;
@@ -114,14 +115,36 @@
             font-size: 10px;
             color: #666;
         }
+
+        /*encabezado de pdf*/
+      
+
     </style>
 </head>
 <body>
 
-    <header>
-        <img src="{{ public_path('images/logo.png') }}" alt="ITE Educabol">
-        <h1>Formulario de Fórmulas - {{ $tema->tema }}</h1>
-    </header>
+<header style="border-bottom: 2px solid #333; padding-bottom: 10px; margin-bottom: 20px;">
+    <table width="100%">
+        <tr>
+            <td width="">
+                <img src="{{ public_path('images/logo.png') }}" alt="ITE Educabol">
+            </td>
+            <td width="60%" style="text-align: center;">
+                <h2 style="margin: 0; font-size: 20px;">Tema:{{ $tema->tema }}</h2>
+                <p style="margin: 0; font-size: 13px;">Tel: +591 75553338 | www.ite.com.bo</p>
+                <p style="margin: 0; font-size: 13px;">Correo: formula@ite.com.bo</p>
+            </td>
+            <td width="20%" style="text-align: right; font-size: 12px;">
+                <p>Fecha: {{ \Carbon\Carbon::now()->format('d/m/Y') }}</p>
+                
+            </td>
+        </tr>
+    </table>
+
+    
+    
+</header>
+
 
    @foreach ($formulas as $formula)
   @php
@@ -168,10 +191,22 @@
 
    
 
-    <footer>
-        <img src="{{ public_path('images/logo.png') }}" alt="ITE">
-        <p>ITE Educabol - Formación que transforma | Contacto: 760902299 | Santa Cruz, Bolivia</p>
-    </footer>
+   <footer style="position: fixed; bottom: -60px; left: 0; right: 0; height: 60px; font-size: 11px; color: #555;">
+        <hr style="border: none; height: 2px; background-color: #ccc; margin-bottom: 5px;">
 
+        <table width="100%">
+            <tr>
+                <td width="15%" style="text-align: left;">
+                    <img src="{{ public_path('images/logo.png') }}" alt="ITE" style="height: 45px;">
+                </td>
+                <td width="70%" style="text-align: center;">
+                    <p style="margin: 0;">ITE Educabol</p>
+                    <p style="margin: 0;">Tel:+59175553338 | www.ite.com.bo | contacto@ite.com.bo</p>
+                    <p style="margin: 0;">Santa Cruz, Bolivia</p>
+                </td>
+                
+            </tr>
+        </table>
+    </footer>
 </body>
 </html>

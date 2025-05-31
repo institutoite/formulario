@@ -66,9 +66,6 @@
                 <h2>Explora por Materias</h2>
                 <p>Encuentra todas las fórmulas que necesitas organizadas por asignaturas</p>
             </div>
-            
-        
-
             <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%     Recursos Section %%%%%%%%%%%%%%%%-->
             <div class="cards-container">
                 @foreach ($materias as $materia)

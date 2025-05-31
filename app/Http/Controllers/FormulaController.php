@@ -18,7 +18,6 @@ use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert as Alert;
 use App\Models\Imagen;
 use App\Models\Materia;
-
 use Barryvdh\DomPDF\Facade\Pdf;
 
 use Illuminate\Support\Facades\Http;
