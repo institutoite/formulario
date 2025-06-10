@@ -30,6 +30,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('temas/{materia}', [TemaController::class,'index'])->name('temas.index');
 Route::middleware(['auth'])->group(function () {
 
     Route::post('enviar', [MateriaController::class,'enviar'])->name('contacto.enviar')->middleware('auth');
@@ -47,7 +48,6 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('eliminar/materia/{materia}', [MateriaController::class,'destroy'])->name('materias.eliminar');
 
 
-    Route::get('temas/{materia}', [TemaController::class,'index'])->name('temas.index');
     Route::get('temas/crear/{materia}', [TemaController::class,'crear'])->name('temas.crear');
     Route::post('temas', [TemaController::class,'store'])->name('temas.store');
     Route::get('temas/show/{tema}', [TemaController::class,'show'])->name('temas.show');
