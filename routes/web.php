@@ -31,6 +31,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('temas/{materia}', [TemaController::class,'index'])->name('temas.index');
+Route::get('formulas/{tema}', [FormulaController::class,'index'])->name('formulas.index');
 Route::middleware(['auth'])->group(function () {
 
     Route::post('enviar', [MateriaController::class,'enviar'])->name('contacto.enviar')->middleware('auth');
@@ -55,7 +56,6 @@ Route::middleware(['auth'])->group(function () {
     Route::put('temas/actualizar/{tema}', [TemaController::class,'update'])->name('temas.update');
     Route::delete('eliminar/tema/{tema}', [TemaController::class,'destroy'])->name('temas.eliminar');
 
-    Route::get('formulas/{tema}', [FormulaController::class,'index'])->name('formulas.index');
     Route::get('formulas/create/{tema}', [FormulaController::class,'create'])->name('formulas.create');
     Route::post('formulas', [FormulaController::class,'store'])->name('formulas.store');
     Route::get('formulas/show/{formula}', [FormulaController::class,'show'])->name('formulas.show');
