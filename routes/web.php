@@ -32,6 +32,7 @@ Auth::routes();
 
 Route::get('temas/{materia}', [TemaController::class,'index'])->name('temas.index');
 Route::get('formulas/{tema}', [FormulaController::class,'index'])->name('formulas.index');
+Route::get('/mostrarqr/{tema}', [App\Http\Controllers\FormulaController::class, 'mostrarQr'])->name('mostrar.qr');
 Route::middleware(['auth'])->group(function () {
 
     Route::post('enviar', [MateriaController::class,'enviar'])->name('contacto.enviar')->middleware('auth');
@@ -85,7 +86,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('get/dimensiones', [DimensionController::class,'getDimension'])->name('dimensiones.get');
 
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-    Route::get('/mostrarqr/{tema}', [App\Http\Controllers\FormulaController::class, 'mostrarQr'])->name('mostrar.qr');
 
 
 
