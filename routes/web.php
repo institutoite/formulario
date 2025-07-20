@@ -89,5 +89,5 @@ Route::middleware(['auth'])->group(function () {
 
 
 
-    Route::get('/descargar-formulario/{materia_id}/{tema_id}', [FormulaController::class, 'descargarFormulario'])->name('formulario.descargar')->middleware('auth');
 });
+Route::get('/descargar-formulario/{materia_id}/{tema_id}', [FormulaController::class, 'descargarFormulario'])->name('formulario.descargar');

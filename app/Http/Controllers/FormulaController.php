@@ -313,7 +313,7 @@ public function update(UpdateFormulaRequest $request, Formula $formula)
             }
         }
         $pdf = Pdf::loadView('formula.pdf', compact('tema', 'materia', 'formulas', 'imagenes'));
-        return $pdf->download('formulario.pdf');
+        return $pdf->download('formulario_'.$materia->materia."_".$tema->tema.".pdf");
     }
 
     public function destroy(Formula $formula)

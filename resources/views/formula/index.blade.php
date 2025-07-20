@@ -125,7 +125,7 @@
 
                     <footer class="formula-footer">
                         <div class="formula-content">{{ $formula->formula }}</div>
-                        <a href="{{ route('mostrar.qr',$tema->id) }}" 
+                        <a href="{{ route('formulario.descargar',["materia_id"=>$tema->materia, "tema_id"=>$tema->id]) }}" 
                             class="whatsapp-btn" 
                             target="_blank" 
                             rel="noopener noreferrer">
@@ -149,7 +149,7 @@
         </div>
 
         <div style="text-align: center; margin: 40px 0;">
-            <a href="{{ route('mostrar.qr',$tema->id) }}" id="btn-imprimir" class="btn btn-secondary">
+            <a href="{{ route('formulario.descargar',["materia_id"=>$tema->materia, "tema_id"=>$tema->id]) }}" id="btn-imprimir" class="btn btn-secondary">
                 <i class="fas fa-print"></i> Imprimir o Descargar PDF
             </a>
             
