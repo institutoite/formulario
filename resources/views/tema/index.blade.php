@@ -121,10 +121,28 @@
                 </a>
                 @endauth
             </div>
+
+            <div class="temas-toolbar">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="temaSearch" placeholder="Buscar tema o palabra clave">
+                </div>
+                <div class="view-toggle" role="group" aria-label="Cambiar vista">
+                    <button type="button" class="toggle-btn active" data-view="cards">
+                        <i class="fas fa-th-large"></i>
+                        <span>Cards</span>
+                    </button>
+                    <button type="button" class="toggle-btn" data-view="list">
+                        <i class="fas fa-list"></i>
+                        <span>Lista</span>
+                    </button>
+                </div>
+            </div>
+            <p id="temasCount" class="temas-count"></p>
             
-            <div class="temas-grid">
+            <div class="temas-grid" id="temasGrid">
                 @foreach ($temas as $tema)
-                    <div class="tema-item">
+                    <div class="tema-item" id="tema-card-{{ $tema->id }}" data-name="{{ $tema->tema }}" data-slogan="{{ $tema->slogan }}">
                         <a href="{{ route('formulas.index', $tema) }}" class="tema-nombre">
                             {{ $tema->tema }}
                         </a>
@@ -148,6 +166,10 @@
                     </div>
                     
                 @endforeach
+            </div>
+            <div id="temasEmpty" class="temas-empty" hidden>
+                <i class="fas fa-search"></i>
+                <p>No se encontraron temas con ese criterio.</p>
             </div>
         </div>
     </section>
@@ -549,6 +571,59 @@
             $('.menu-toggle').click(function() {
                 $('.nav-links').toggleClass('active');
             });
+
+            // Buscador y vistas
+            const $grid = $('#temasGrid');
+            const $items = $grid.find('.tema-item');
+            const $search = $('#temaSearch');
+            const $count = $('#temasCount');
+            const $empty = $('#temasEmpty');
+            const $toggleButtons = $('.view-toggle .toggle-btn');
+
+            const updateCount = (visible) => {
+                const total = $items.length;
+                if (visible === total) {
+                    $count.text(`${total} tema${total !== 1 ? 's' : ''}`);
+                } else {
+                    $count.text(`${visible} de ${total} tema${total !== 1 ? 's' : ''}`);
+                }
+            };
+
+            const applyFilter = () => {
+                const query = ($search.val() || '').toString().toLowerCase().trim();
+                let visible = 0;
+
+                $items.each(function() {
+                    const name = ($(this).data('name') || '').toString().toLowerCase();
+                    const slogan = ($(this).data('slogan') || '').toString().toLowerCase();
+                    const match = name.includes(query) || slogan.includes(query);
+                    $(this).toggleClass('is-hidden', !match);
+                    if (match) {
+                        visible += 1;
+                    }
+                });
+
+                updateCount(visible);
+                $empty.prop('hidden', visible !== 0);
+            };
+
+            const setView = (view) => {
+                $toggleButtons.removeClass('active');
+                $toggleButtons.filter(`[data-view="${view}"]`).addClass('active');
+                $grid.toggleClass('list-view', view === 'list');
+                localStorage.setItem('temasView', view);
+            };
+
+            $toggleButtons.on('click', function() {
+                const view = $(this).data('view');
+                setView(view);
+            });
+
+            $search.on('input', applyFilter);
+
+            const savedView = localStorage.getItem('temasView') || 'cards';
+            setView(savedView);
+            applyFilter();
             
             // Eliminar tema
             $(".eliminar").on("click", function(e) {

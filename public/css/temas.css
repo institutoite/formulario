@@ -41,8 +41,8 @@
 
 /* Materia Info Section */
 .materia-info-section {
-    padding: 3rem 0;
-    background-color: white;
+    padding: 3.5rem 0;
+    background: linear-gradient(180deg, #ffffff 0%, #f6f8fb 100%);
 }
 
 .materia-info-grid {
@@ -53,22 +53,24 @@
 }
 
 .materia-content h1 {
-    font-size: 2.5rem;
-    color: var(--dark-color);
+    font-size: 2.6rem;
+    color: var(--secondary-color);
     margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
 }
 
 .divider {
-    height: 2px;
-    background-color: var(--gray-light);
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
     margin: 1rem 0;
-    width: 100%;
+    width: 120px;
 }
 
 .slogan {
-    font-size: 1.3rem;
+    font-size: 1.25rem;
     color: var(--primary-color);
-    font-weight: 500;
+    font-weight: 600;
     margin-bottom: 1rem;
 }
 
@@ -92,12 +94,12 @@
 
 .stat-item i {
     font-size: 2rem;
-    color: var(--primary-color);
+    color: var(--secondary-color);
 }
 
 .stat-number {
     display: block;
-    font-size: 1.8rem;
+    font-size: 1.9rem;
     font-weight: 700;
     color: var(--dark-color);
     line-height: 1.2;
@@ -111,7 +113,8 @@
 .materia-image {
     border-radius: var(--border-radius);
     overflow: hidden;
-    box-shadow: var(--box-shadow);
+    box-shadow: 0 16px 34px rgba(15, 23, 42, 0.12);
+    border: 6px solid rgba(255, 255, 255, 0.9);
 }
 
 .materia-image img {
@@ -132,8 +135,8 @@
 
 /* Temas Section */
 .temas-section {
-    padding: 4rem 0;
-    background-color: #f8fafc;
+    padding: 4rem 0 5rem;
+    background-color: #f6f8fb;
 }
 
 .section-header.with-action {
@@ -141,16 +144,126 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 3rem;
+    gap: 1.5rem;
 }
 
 .section-header.with-action h2 {
     margin-bottom: 0.5rem;
+    color: var(--secondary-color);
+}
+
+.temas-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 0.85rem 1rem;
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+    border: 1px solid rgba(55, 95, 122, 0.12);
+    margin-bottom: 1.2rem;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex: 1;
+    background: rgba(38, 186, 165, 0.08);
+    border-radius: 12px;
+    padding: 0.65rem 0.9rem;
+    color: var(--secondary-color);
+}
+
+.search-box i {
+    font-size: 1rem;
+}
+
+.search-box input {
+    border: none;
+    background: transparent;
+    width: 100%;
+    font-size: 0.98rem;
+    color: var(--secondary-color);
+    outline: none;
+}
+
+.search-box input::placeholder {
+    color: rgba(55, 95, 122, 0.7);
+}
+
+.view-toggle {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.toggle-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    border: 1px solid rgba(55, 95, 122, 0.2);
+    border-radius: 10px;
+    padding: 0.55rem 0.85rem;
+    background: #ffffff;
+    color: var(--secondary-color);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.toggle-btn i {
+    font-size: 0.95rem;
+}
+
+.toggle-btn.active,
+.toggle-btn:hover {
+    background: rgba(38, 186, 165, 0.12);
+    border-color: rgba(38, 186, 165, 0.6);
+    color: var(--primary-color);
+}
+
+.temas-count {
+    font-size: 0.95rem;
+    color: rgba(55, 95, 122, 0.8);
+    margin-bottom: 1.5rem;
 }
 
 .temas-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.75rem;
+}
+
+.temas-grid.list-view {
+    grid-template-columns: 1fr;
+}
+
+.temas-grid.list-view .tema-item {
+    border-left: 5px solid var(--primary-color);
+    padding: 1rem 1.25rem;
+    box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
+}
+
+.temas-grid.list-view .tema-nombre {
+    font-size: 1.15rem;
+}
+
+.tema-item.is-hidden {
+    display: none;
+}
+
+.temas-empty {
+    text-align: center;
+    padding: 2rem 1rem 0;
+    color: rgba(55, 95, 122, 0.7);
+    font-weight: 600;
+}
+
+.temas-empty i {
+    font-size: 1.6rem;
+    color: var(--primary-color);
+    margin-bottom: 0.6rem;
 }
 
 .tema-card {
@@ -394,6 +507,16 @@
         align-items: flex-start;
         gap: 1rem;
     }
+
+    .temas-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .view-toggle {
+        width: 100%;
+        justify-content: space-between;
+    }
     
     .materia-stats {
         flex-direction: column;
@@ -414,6 +537,11 @@
 @media (max-width: 576px) {
     .materia-content h1 {
         font-size: 2rem;
+    }
+
+    .toggle-btn {
+        flex: 1;
+        justify-content: center;
     }
     
     .tema-header {

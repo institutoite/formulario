@@ -52,7 +52,7 @@ body {
     font-family: var(--font-family);
     line-height: 1.6;
     color: var(--dark-color);
-    background-color: var(--light-color);
+    background-color: #f6f8fb;
 }
 
 img {
@@ -93,6 +93,8 @@ ul {
     color: var(--dark-color);
     position: relative;
     display: inline-block;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
 }
 
 .section-header h2::after {
@@ -185,11 +187,13 @@ ul {
 
 /* Header */
 .main-header {
-    background-color: white;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
     position: sticky;
     top: 0;
     z-index: 1000;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.06);
 }
 
 .header-container {
@@ -250,8 +254,19 @@ ul {
 
 /* Hero Section */
 .hero-section {
-    padding: 5rem 0;
-    background: linear-gradient(135deg, #f0f4ff 0%, #e0e7ff 100%);
+    padding: 5.5rem 0;
+    background: linear-gradient(135deg, #f8fafc 0%, #eef2ff 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 15% 20%, rgba(38, 186, 165, 0.08), transparent 50%),
+                radial-gradient(circle at 85% 10%, rgba(55, 95, 122, 0.08), transparent 45%);
+    pointer-events: none;
 }
 
 .hero-section .container {
@@ -259,6 +274,8 @@ ul {
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
     align-items: center;
+    position: relative;
+    z-index: 1;
 }
 
 .hero-content h2 {
@@ -266,17 +283,20 @@ ul {
     line-height: 1.2;
     margin-bottom: 1rem;
     color: var(--dark-color);
+    letter-spacing: -0.02em;
 }
 
 .hero-content p {
     font-size: 1.2rem;
     color: var(--gray-color);
     margin-bottom: 2rem;
+    max-width: 560px;
 }
 
 .hero-buttons {
     display: flex;
     gap: 1rem;
+    flex-wrap: wrap;
 }
 
 .hero-image {
@@ -286,7 +306,8 @@ ul {
 .hero-image img {
     max-width: 100%;
     border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.16);
+    border: 6px solid rgba(255, 255, 255, 0.9);
 }
 
 /* Materias Section */
@@ -305,8 +326,9 @@ ul {
     background-color: white;
     border-radius: var(--border-radius);
     overflow: hidden;
-    box-shadow: var(--box-shadow);
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
     transition: var(--transition);
+    border: 1px solid rgba(15, 23, 42, 0.06);
 }
 
 .card:hover {
@@ -361,9 +383,10 @@ ul {
     background-color: white;
     padding: 2rem;
     border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
+    box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
     text-align: center;
     transition: var(--transition);
+    border: 1px solid rgba(15, 23, 42, 0.06);
 }
 
 .curso-item:hover {
@@ -384,7 +407,7 @@ ul {
     background-color: white;
     padding: 2rem;
     border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
+    box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
     text-align: center;
     transition: var(--transition);
     position: relative; /* Necesario para el posicionamiento del botón */
@@ -392,6 +415,7 @@ ul {
     min-height: 300px; /* Altura mínima para consistencia */
     display: flex;
     flex-direction: column;
+    border: 1px solid rgba(15, 23, 42, 0.06);
 }
 
 .curso-item:hover {
@@ -900,6 +924,20 @@ ul {
 }
 
 /* Responsive Styles */
+@media (min-width: 1200px) {
+    .hero-section .container {
+        gap: 3rem;
+    }
+
+    .hero-content h2 {
+        font-size: 3.2rem;
+    }
+
+    .hero-content p {
+        font-size: 1.25rem;
+    }
+}
+
 @media (max-width: 992px) {
     .hero-content h2 {
         font-size: 2.2rem;
@@ -992,5 +1030,24 @@ ul {
     .social-link {
         width: 100%;
         justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h2 {
+        font-size: 2rem;
+    }
+
+    .hero-content p {
+        font-size: 1.05rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .hero-buttons .btn {
+        width: 100%;
     }
 }

@@ -1,127 +1,205 @@
+/* Sección principal */
+.formula-section {
+    padding: 3rem 0 4.5rem;
+    background: #f6f8fb;
+}
+
+.formula-hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+    padding: 2rem;
+    border-radius: 18px;
+    background: linear-gradient(135deg, rgba(38, 186, 165, 0.12), rgba(55, 95, 122, 0.08));
+    border: 1px solid rgba(55, 95, 122, 0.15);
+    box-shadow: 0 18px 36px rgba(15, 23, 42, 0.08);
+    margin-bottom: 2.5rem;
+}
+
+.formula-hero-text h1 {
+    font-size: 2.6rem;
+    color: rgb(55, 95, 122);
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+}
+
+.formula-eyebrow {
+    display: inline-flex;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: rgb(38, 186, 165);
+    margin-bottom: 0.5rem;
+}
+
+.formula-subtitle {
+    font-size: 1.1rem;
+    color: rgba(55, 95, 122, 0.85);
+    max-width: 520px;
+    margin-bottom: 1.5rem;
+}
+
+.formula-stats {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.formula-stats .stat-number {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: rgb(55, 95, 122);
+}
+
+.formula-stats .stat-label {
+    font-size: 0.95rem;
+    color: rgba(55, 95, 122, 0.7);
+}
+
+.formula-hero-actions {
+    display: flex;
+    align-items: center;
+}
+
+.formula-download {
+    background: rgb(38, 186, 165);
+    color: #fff;
+    padding: 0.9rem 1.4rem;
+    border-radius: 999px;
+    font-weight: 600;
+    box-shadow: 0 12px 24px rgba(38, 186, 165, 0.25);
+    transition: all 0.3s ease;
+}
+
+.formula-download:hover {
+    background: rgb(55, 95, 122);
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+/* Grid de fórmulas */
 .formula-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-    padding: 10px;
-    justify-items: center;
+    gap: 1.75rem;
 }
 
 .formula-card {
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 16px 30px rgba(15, 23, 42, 0.08);
+    border: 1px solid rgba(55, 95, 122, 0.12);
     overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    width: 100%;
-    /*max-width: 350px;*/
+    transition: all 0.3s ease;
     display: flex;
     flex-direction: column;
+    animation: fadeInUp 0.45s ease both;
 }
 
 .formula-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.12);
+    border-color: rgba(38, 186, 165, 0.45);
 }
 
 .formula-header {
-    padding: 5px;
-    background: #2c3e50;
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 5px 5px 0 0;
+    padding: 0.9rem 1.1rem;
+    background: linear-gradient(135deg, rgb(55, 95, 122), rgba(55, 95, 122, 0.85));
+    color: #ffffff;
 }
 
 .formula-header h3 {
     margin: 0;
     font-size: 1.1rem;
     font-weight: 600;
-    text-align: left;
-    word-wrap: break-word;
+    line-height: 1.3;
 }
 
 .formula-body {
-    padding: 10px;
+    padding: 1rem 1.2rem 0;
     display: flex;
     align-items: center;
     justify-content: center;
     background: #ffffff;
+    min-height: 180px;
 }
 
 .formula-image {
     max-width: 100%;
-    max-height: 200px;
+    max-height: 220px;
     object-fit: contain;
 }
 
 .formula-footer {
-    padding: 10px 15px;
-    background: #ecf0f1;
-    text-align: center;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
+    padding: 1rem 1.2rem 1.3rem;
+    background: #f8fafc;
+    text-align: left;
 }
 
 .formula-content {
-    font-family: 'Times New Roman', serif;
-    font-size: 1rem;
-    margin-bottom: 10px;
-    color: #2c3e50;
-    max-height: 100px;
+    font-family: 'Inter', 'Times New Roman', serif;
+    font-size: 0.98rem;
+    margin-bottom: 0.9rem;
+    color: rgb(55, 95, 122);
+    max-height: 120px;
     overflow-y: auto;
 }
 
-.whatsapp-btn {
+.download-btn {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    padding: 8px 15px;
-    background-color: #25D366;
-    color: white;
+    gap: 0.5rem;
+    padding: 0.6rem 1.1rem;
+    background: rgba(38, 186, 165, 0.15);
+    color: rgb(38, 186, 165);
     text-decoration: none;
-    border-radius: 5px;
-    font-weight: 500;
-    transition: background-color 0.3s;
+    border-radius: 999px;
+    font-weight: 600;
+    transition: all 0.25s ease;
     font-size: 0.9rem;
 }
 
-.whatsapp-btn:hover {
-    background-color: #375F7A;
-    color: white;
+.download-btn:hover {
+    background: rgb(38, 186, 165);
+    color: #ffffff;
 }
 
 .formula-actions {
     display: flex;
-    gap: 10px;
-    justify-content: center;
-    padding: 10px;
+    gap: 0.75rem;
+    justify-content: flex-end;
+    padding: 0 1.2rem 1.1rem;
 }
 
 .action-btn {
-    color: white;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: color 0.2s;
-    padding: 5px;
+    color: rgba(55, 95, 122, 0.8);
+    background: rgba(55, 95, 122, 0.08);
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
 }
 
 .action-btn:hover {
-    color: #f1c40f;
+    color: #ffffff;
+    background: rgb(38, 186, 165);
+    transform: translateY(-2px);
 }
 
 .action-btn.edit:hover {
-    color: #2ecc71;
+    background: rgb(55, 95, 122);
 }
 
 .action-btn.delete:hover {
-    color: #e74c3c;
+    background: #ef4444;
 }
 
 .action-btn.add:hover {
-    color: #3498db;
+    background: #10b981;
 }
 
 
@@ -131,10 +209,12 @@
 
  /* Contenedor principal del encabezado */
 .main-header {
-    background-color: #26baa5;
-    color: white;
-    padding: 20px 0;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background-color: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(10px);
+    color: rgb(55, 95, 122);
+    padding: 16px 0;
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+    border-bottom: 1px solid rgba(55, 95, 122, 0.08);
 }
 
 .header-container {
@@ -152,13 +232,14 @@
 
 .logo-title {
     margin: 0;
-    font-size: 2rem;
-    font-weight: bold;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: rgb(38, 186, 165);
 }
 
 .tagline {
-    font-size: 1rem;
-    color: white;
+    font-size: 0.95rem;
+    color: rgba(55, 95, 122, 0.75);
 }
 
 /* Navegación */
@@ -175,13 +256,14 @@
 }
 
 .nav-links a {
-    color: white;
+    color: rgb(55, 95, 122);
     text-decoration: none;
     font-weight: 500;
 }
 
 .nav-links a:hover {
-    text-decoration: underline;
+    text-decoration: none;
+    color: rgb(38, 186, 165);
 }
 
 /* Botón hamburguesa */
@@ -194,7 +276,7 @@
 .hamburger {
     width: 25px;
     height: 2px;
-    background-color: white;
+    background-color: rgb(55, 95, 122);
     display: block;
     position: relative;
 }
@@ -205,7 +287,7 @@
     position: absolute;
     width: 25px;
     height: 2px;
-    background-color: white;
+    background-color: rgb(55, 95, 122);
     transition: 0.3s;
 }
 
@@ -219,7 +301,7 @@
 
 /* Breadcrumb */
 .breadcrumb-container {
-    background-color: #ecf0f1;
+    background-color: #f8fafc;
     padding: 10px 0;
     font-size: 0.9rem;
 }
@@ -244,11 +326,62 @@
 
 .breadcrumb a {
     text-decoration: none;
-    color: #3498db;
+    color: rgb(38, 186, 165);
 }
 
 .breadcrumb a:hover {
     text-decoration: underline;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 992px) {
+    .formula-hero {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .formula-hero-text h1 {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .formula-section {
+        padding: 2.5rem 0 3.5rem;
+    }
+
+    .formula-hero {
+        padding: 1.6rem;
+    }
+
+    .formula-hero-actions {
+        width: 100%;
+    }
+
+    .formula-download {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .formula-hero-text h1 {
+        font-size: 2rem;
+    }
+
+    .formula-subtitle {
+        font-size: 1rem;
+    }
 }
 
 /* Sección de título del tema */

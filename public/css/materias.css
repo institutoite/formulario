@@ -3,7 +3,8 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
-    padding: 2rem;
+  padding: 1.5rem;
+  align-items: stretch;
   }
   
   /* Estilos de la tarjeta */
@@ -67,6 +68,10 @@
     color: #666;
     margin-bottom: 1.5rem;
     line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
   
   /* Botón de la tarjeta */
