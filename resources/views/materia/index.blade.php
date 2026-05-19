@@ -1,7 +1,8 @@
 @extends('adminlte::page')
 @section('css')
     <link rel="stylesheet" href="{{asset('bootstrap/css/bootstrap.css')}}">
-    <link rel="icon" href="{{ asset('image/ite.ico') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('images/ife.ico') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ asset('css/admin_custom.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-BTkxV7Ou8VVZTsLwZIn57c1gmiEUE2OxDxv7+PrKk8h/o7yXrzAa+YSrQe/T1OKKPz7mJrPZgA3qWd5ll5GtQw==" crossorigin="anonymous" />
     <link rel="stylesheet" href="{{asset('css/card.css')}}">
     <link rel="stylesheet" href="{{asset('vendor/sweetalert2/sweetalert2.min.css')}}">
@@ -48,7 +49,7 @@
 
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">
-@stop
+@append
 
 @section('js')
     <script src="{{asset('vendor/sweetalert2/sweetalert2.all.js')}}"></script>
@@ -70,8 +71,8 @@
                     icon: 'question',
                     showCancelButton: true,
                     showConfirmButton: true,
-                    confirmButtonColor: '#25ff80',
-                    cancelButtonColor: '#d33',
+                    confirmButtonColor: '#26BAA5',
+                    cancelButtonColor: '#375F7A',
                     confirmButtonText: 'Eliminar..!',
                     position: 'center',
                 }).then((result) => {

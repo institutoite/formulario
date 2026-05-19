@@ -35,7 +35,7 @@
     </table> --}}
     <div class="mt-3">
         <div class="card">
-            <img class="card-img-top" src="{{asset('/public/images/areas.png')}}" alt="">
+            <img class="card-img-top" src="{{asset('images/matematica.jpg')}}" alt="Matemática en IFE formulas">
             <div class="card-header">
                 AREAS
             </div>
@@ -93,7 +93,7 @@
                     </div>
                 </div>   
             </div>
-            <img class="card-img-bottom" src="" alt="">
+            <img class="card-img-bottom" src="" alt="Matemática en IFE formulas">
         </div>
     </div>
 @stop

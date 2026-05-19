@@ -127,12 +127,12 @@
     <table width="100%">
         <tr>
             <td width="">
-                <img src="{{ public_path('images/logo.png') }}" alt="ITE Educabol">
+                <img src="{{ public_path('images/logoife.png') }}" alt="IFE formulas">
             </td>
             <td width="60%" style="text-align: center;">
                 <h2 style="margin: 0; font-size: 20px;">Tema:{{ $tema->tema }}</h2>
-                <p style="margin: 0; font-size: 13px;">Tel: +591 75553338 | www.ite.com.bo</p>
-                <p style="margin: 0; font-size: 13px;">www.formula.ite.com.bo</p>
+                <p style="margin: 0; font-size: 13px;">Tel: +591 75553338 | www.ife.com.bo</p>
+                <p style="margin: 0; font-size: 13px;">formula.ife.bo</p>
             </td>
             <td width="20%" style="text-align: right; font-size: 12px;">
                 <p>Fecha: {{ \Carbon\Carbon::now()->format('d/m/Y') }}</p>
@@ -197,11 +197,11 @@
         <table width="100%">
             <tr>
                 <td width="15%" style="text-align: left;">
-                    <img src="{{ public_path('images/logo.png') }}" alt="ITE" style="height: 45px;">
+                    <img src="{{ public_path('images/logoife.png') }}" alt="IFE formulas" style="height: 45px;">
                 </td>
                 <td width="70%" style="text-align: center;">
-                    <p style="margin: 0;">ITE Educabol</p>
-                    <p style="margin: 0;">Tel:+59175553338 | www.ite.com.bo | www.formula.ite.com.bo</p>
+                    <p style="margin: 0;">IFE formulas</p>
+                    <p style="margin: 0;">Tel:+59175553338 | www.ife.com.bo | formula.ife.bo</p>
                     <p style="margin: 0;">Santa Cruz, Bolivia</p>
                 </td>
                 

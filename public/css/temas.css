@@ -323,15 +323,15 @@
 }
 
 .action-btn.edit:hover {
-    background-color: #3b82f6;
+    background-color: #26BAA5;
 }
 
 .action-btn.delete:hover {
-    background-color: #ef4444;
+    background-color: #375F7A;
 }
 
 .action-btn.add:hover {
-    background-color: #10b981;
+    background-color: #26BAA5;
 }
 
 .tema-content {
@@ -422,6 +422,7 @@
     width: 100%;
     height: auto;
     object-fit: cover;
+    object-position: center 24%;
 }
 
 /* Related Subjects */

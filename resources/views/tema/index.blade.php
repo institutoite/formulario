@@ -2,10 +2,10 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" href="{{ asset('image/ite.ico') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('images/ife.ico') }}" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ $materia->materia }} - Temas | ITE Fórmulas</title>
+    <title>{{ $materia->materia }} - Temas | IFE formulas</title>
     
     <!-- Estilos -->
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
@@ -23,7 +23,7 @@
     <header class="main-header">
         <div class="container header-container">
             <div class="logo-container">
-                <h1>Fórmulas</h1>
+                <img src="{{ asset('images/logoife.png') }}" alt="IFE formulas" class="brand-logo">
                 <p class="tagline">Tu recurso educativo completo</p>
             </div>
             <nav class="main-nav">
@@ -77,7 +77,11 @@
                     </div>
                 </div>
                 <div class="materia-image">
-                    <img src="{{ asset('images/david.png') }}" alt="Fórmulas educativas">
+                    @php
+                        $materiaNombre = Str::of($materia->materia)->ascii()->lower();
+                        $materiaImagen = str_contains($materiaNombre, 'fis') ? 'fisica.png' : (str_contains($materiaNombre, 'qu') ? 'quimica.jpg' : 'matematica.jpg');
+                    @endphp
+                    <img src="{{ asset('images/'.$materiaImagen) }}" alt="{{ $materia->materia }} en IFE formulas">
                 </div>
             </div>
         </div>
@@ -182,21 +186,21 @@
             <p class="subtitle">Contenido exclusivo, tips de estudio y novedades tecnológicas</p>
             
             <div class="social-links">
-                <a href="https://www.tiktok.com/@ite_educabol" target="_blank" class="social-link tiktok">
+                <a href="https://www.tiktok.com/@IFE_educabol" target="_blank" class="social-link tiktok">
                     <div class="social-icon">
                         <i class="fab fa-tiktok"></i>
                     </div>
                     <span>TikTok</span>
                 </a>
                 
-                <a href="https://www.facebook.com/ite.educabol" target="_blank" class="social-link facebook">
+                <a href="https://www.facebook.com/IFE.educabol" target="_blank" class="social-link facebook">
                     <div class="social-icon">
                         <i class="fab fa-facebook-f"></i>
                     </div>
                     <span>Facebook</span>
                 </a>
                 
-                <a href="https://www.youtube.com/@ite_educabol" target="_blank" class="social-link youtube">
+                <a href="https://www.youtube.com/@IFE_educabol" target="_blank" class="social-link youtube">
                     <div class="social-icon">
                         <i class="fab fa-youtube"></i>
                     </div>
@@ -216,7 +220,7 @@
                     </div>
                     <span>Instagram</span>
                 </a>
-                 <a href="https://ite.com.bo" target="_blank" class="social-link website">
+                 <a href="https://ife.com.bo" target="_blank" class="social-link website">
                     <div class="social-icon">
                         <i class="fas fa-globe"></i>
                     </div>
@@ -421,10 +425,10 @@
                         <li><i class="fas fa-check-circle"></i> Grupos reducidos</li>
                         <li><i class="fas fa-check-circle"></i> Material didáctico exclusivo</li>
                     </ul>
-                    <a target="_blank" href="https://wa.me/59175553338?text=Me%20interesa%20aprender%20matemáticas.%20Vengo%20de%20https://formula.ite.com.bo" class="btn btn-primary">Enviar mensaje por WhatsApp</a>
+                    <a target="_blank" href="https://wa.me/59175553338?text=Me%20interesa%20aprender%20matemáticas.%20Vengo%20de%20https://formula.ife.bo" class="btn btn-primary">Enviar mensaje por WhatsApp</a>
                 </div>
                 <div class="promo-image">
-                    <img src="{{ asset('images/cursos-promo.jpg') }}" alt="Cursos de apoyo">
+                    <img src="{{ asset('images/autor.png') }}" alt="Apoyo educativo de IFE formulas">
                 </div>
             </div>
         </div>
@@ -453,24 +457,24 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-about">
-                    <h3>Qué es ite?</h3>
+                    <h3>Qué es IFE?</h3>
                     <p>Somos una institución educativa dedicada a proporcionar recursos de calidad para estudiantes de todos los niveles.</p>
                     <div class="footer-social">
-                        <a target="_blank" href="https://www.tiktok.com/@ite_educabol" class="social-icon"><i class="fab fa-tiktok"></i></a>
-                        <a target="_blank" href="https://www.facebook.com/ite.educabol" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                        <a target="_blank" href="https://www.youtube.com/@ite_educabol" class="social-icon"><i class="fab fa-youtube"></i></a>
+                        <a target="_blank" href="https://www.tiktok.com/@IFE_educabol" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                        <a target="_blank" href="https://www.facebook.com/IFE.educabol" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a target="_blank" href="https://www.youtube.com/@IFE_educabol" class="social-icon"><i class="fab fa-youtube"></i></a>
                         <a target="_blank" href="https://wa.me/59160902299" class="social-icon"><i class="fab fa-whatsapp"></i></a>
                         <a target="_blank" href="https://www.instagram.com/tu_usuario" class="social-icon"><i class="fab fa-instagram"></i></a>
-                        <a target="_blank" href="https://ite.com.bo" class="social-icon"><i class="fas fa-globe"></i></a>
+                        <a target="_blank" href="https://ife.com.bo" class="social-icon"><i class="fas fa-globe"></i></a>
                     </div>
                 </div>
                 
                 <div class="footer-links">
                     <h4>Enlaces rápidos</h4>
                     <ul>
-                        <li><a target="_blank" href="https://ite.com.bo">Qué es ite?</a></li>
-                        <li><a target="_blank" href="https://formula.ite.com.bo">Fórmulas</a></li>
-                        <li><a target="_blank" href="https://services.ite.com.bo">Cursos</a></li>
+                        <li><a target="_blank" href="https://ife.com.bo">Qué es IFE?</a></li>
+                        <li><a target="_blank" href="https://formula.ife.bo">Fórmulas</a></li>
+                        <li><a target="_blank" href="https://services.ife.com.bo">Cursos</a></li>
                     </ul>
                 </div>
                 
@@ -499,10 +503,10 @@
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2025 ITE Fórmulas. Todos los derechos reservados.</p>
+                <p>&copy; 2025 IFE Fórmulas. Todos los derechos reservados.</p>
                 <div class="footer-legal">
-                    <a href="https://www.tiktok.com/@davidflores.ite" target="_blank">David Flores</a>
-                    <a href="https://www.ite.com.bo" target="_blank">ite educabol</a>
+                    <a href="https://www.tiktok.com/@davidflores.IFE" target="_blank">David Flores</a>
+                    <a href="https://www.ife.com.bo" target="_blank">IFE formulas</a>
                 </div>
             </div>
         </div>
@@ -516,7 +520,7 @@
          function enviarWhatsApp() {
             const email = document.getElementById('email').value;
             if (email) {
-            const mensaje = `Me interesa aprender matemáticas. Mi correo es ${email} (Vengo de https://formula.ite.com.bo)`;
+            const mensaje = `Me interesa aprender matemáticas. Mi correo es ${email} (Vengo de https://formula.ife.bo)`;
             const url = `https://wa.me/59175553338?text=${encodeURIComponent(mensaje)}`;
             window.open(url, '_blank'); // Abre en nueva pestaña
             }
@@ -530,34 +534,34 @@
             // Mensajes personalizados para cada materia
             switch(materia) {
                 case 'Computación':
-                    mensaje = '¡Hola! Estoy interesado/a en el curso de *COMPUTACIÓN* Mensaje enviado desde https://formula.ite.com.bo';
+                    mensaje = '¡Hola! Estoy interesado/a en el curso de *COMPUTACIÓN* Mensaje enviado desde https://formula.ife.bo';
                     break;
                 case 'Robótica':
-                    mensaje = '¡Buenos días! Quisiera información sobre el curso de *ROBÓTICA.* Mensaje enviado desde https://formula.ite.com.bo';
+                    mensaje = '¡Buenos días! Quisiera información sobre el curso de *ROBÓTICA.* Mensaje enviado desde https://formula.ife.bo';
                     break;
                 case 'Cubo Rubik':
-                    mensaje = '¡Saludos! Me interesa el curso de *CUBO RUBIK.* Mensaje enviado desde https://formula.ite.com.bo';
+                    mensaje = '¡Saludos! Me interesa el curso de *CUBO RUBIK.* Mensaje enviado desde https://formula.ife.bo';
                     break;
                 case 'Programación':
-                    mensaje = '¡Hola! Busco información sobre el curso de *PROGRAMACIÓN.* Mensaje enviado desde https://formula.ite.com.bo';
+                    mensaje = '¡Hola! Busco información sobre el curso de *PROGRAMACIÓN.* Mensaje enviado desde https://formula.ife.bo';
                     break;
                 case 'Apoyo escolar':
-                    mensaje = '¡Buenas tardes! Necesito *APOYO ESCOLAR.* Mensaje enviado desde https://formula.ite.com.bo';
+                    mensaje = '¡Buenas tardes! Necesito *APOYO ESCOLAR.* Mensaje enviado desde https://formula.ife.bo';
                     break;
                 case 'Matematicas':
-                    mensaje = '¡Hola! Estoy interesado/a en clases de *MATEMÁTICAS.* Mensaje enviado desde https://formula.ite.com.bo';
+                    mensaje = '¡Hola! Estoy interesado/a en clases de *MATEMÁTICAS.* Mensaje enviado desde https://formula.ife.bo';
                     break;
                 case 'Fisica':
-                    mensaje = '¡Buenos días! Necesito clases de *FÍSICA.* Mensaje enviado desde https://formula.ite.com.bo';
+                    mensaje = '¡Buenos días! Necesito clases de *FÍSICA.* Mensaje enviado desde https://formula.ife.bo';
                     break;
                 case 'Quimica':
-                    mensaje = '¡Saludos! Busco clases de *QUÍMICA.* Mensaje enviado desde https://formula.ite.com.bo';
+                    mensaje = '¡Saludos! Busco clases de *QUÍMICA.* Mensaje enviado desde https://formula.ife.bo';
                     break;
                 case 'Programacion':
-                    mensaje = '¡Hola! Quiero aprender *PROGRAMACIÓN.* Mensaje enviado desde https://formula.ite.com.bo';
+                    mensaje = '¡Hola! Quiero aprender *PROGRAMACIÓN.* Mensaje enviado desde https://formula.ife.bo';
                     break;
                 case 'lenguaje':
-                    mensaje = '¡Buenas tardes! Me interesa el curso de *Escritura y Lectura.* Mensaje enviado desde https://formula.ite.com.bo';
+                    mensaje = '¡Buenas tardes! Me interesa el curso de *Escritura y Lectura.* Mensaje enviado desde https://formula.ife.bo';
                     break;
                
             }
@@ -642,8 +646,8 @@
                     icon: 'question',
                     showCancelButton: true,
                     showConfirmButton: true,
-                    confirmButtonColor: '#4f46e5',
-                    cancelButtonColor: '#ef4444',
+                    confirmButtonColor: '#26BAA5',
+                    cancelButtonColor: '#375F7A',
                     confirmButtonText: 'Sí, eliminar',
                     cancelButtonText: 'Cancelar',
                     position: 'center',
@@ -665,7 +669,7 @@
                                     title: '¡Eliminado!',
                                     text: 'El tema ha sido eliminado correctamente.',
                                     icon: 'success',
-                                    confirmButtonColor: '#4f46e5'
+                                    confirmButtonColor: '#26BAA5'
                                 });
                             },
                             error: function (xhr, ajaxOptions, thrownError) {
@@ -673,7 +677,7 @@
                                     title: 'Error',
                                     text: 'Ocurrió un error al eliminar el tema.',
                                     icon: 'error',
-                                    confirmButtonColor: '#4f46e5'
+                                    confirmButtonColor: '#26BAA5'
                                 });
                             }
                         });

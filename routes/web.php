@@ -30,6 +30,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/buscar', [FormulaController::class, 'search'])->name('buscar');
+
 Route::get('temas/{materia}', [TemaController::class,'index'])->name('temas.index');
 Route::get('formulas/{tema}', [FormulaController::class,'index'])->name('formulas.index');
 Route::get('/mostrarqr/{tema}', [App\Http\Controllers\FormulaController::class, 'mostrarQr'])->name('mostrar.qr');

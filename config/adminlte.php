@@ -14,8 +14,8 @@ return [
     |
     */
 
-    'title' => '',
-    'title_prefix' => 'ite',
+    'title' => 'IFE formulas',
+    'title_prefix' => 'IFE',
     'title_postfix' => '',
 
     /*
@@ -63,12 +63,12 @@ return [
     |
     */
 
-    'logo' => 'Fórmulas',
-    'logo_img' => 'vendor/adminlte/dist/img/logoite.png',
-    'logo_img_class' => 'brand-image img-circle elevation-3',
+    'logo' => '<b>IFE</b> formulas',
+    'logo_img' => 'images/isologo.png',
+    'logo_img_class' => 'brand-image elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'Admin Logo',
+    'logo_img_alt' => 'IFE formulas',
 
     /*
     |--------------------------------------------------------------------------
@@ -84,13 +84,13 @@ return [
     */
 
     'auth_logo' => [
-        'enabled' => false,
+        'enabled' => true,
         'img' => [
-            'path' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
-            'alt' => 'Auth Logo',
-            'class' => '',
-            'width' => 50,
-            'height' => 50,
+            'path' => 'images/logoife.png',
+            'alt' => 'IFE formulas',
+            'class' => 'ife-auth-logo',
+            'width' => 180,
+            'height' => null,
         ],
     ],
 
@@ -109,8 +109,8 @@ return [
     'preloader' => [
         'enabled' => true,
         'img' => [
-            'path' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
-            'alt' => 'AdminLTE Preloader Image',
+            'path' => 'images/isologo.png',
+            'alt' => 'IFE formulas',
             'effect' => 'animation__shake',
             'width' => 60,
             'height' => 60,
@@ -167,12 +167,12 @@ return [
     |
     */
 
-    'classes_auth_card' => 'card-outline card-primary',
-    'classes_auth_header' => '',
-    'classes_auth_body' => '',
-    'classes_auth_footer' => '',
-    'classes_auth_icon' => '',
-    'classes_auth_btn' => 'btn-flat btn-primary',
+    'classes_auth_card' => 'ife-auth-card',
+    'classes_auth_header' => 'ife-auth-header',
+    'classes_auth_body' => 'ife-auth-body',
+    'classes_auth_footer' => 'ife-auth-footer',
+    'classes_auth_icon' => 'ife-auth-icon',
+    'classes_auth_btn' => 'ife-auth-btn',
 
     /*
     |--------------------------------------------------------------------------
@@ -186,13 +186,13 @@ return [
     |
     */
 
-    'classes_body' => '',
-    'classes_brand' => '',
-    'classes_brand_text' => '',
-    'classes_content_wrapper' => '',
+    'classes_body' => 'ife-admin',
+    'classes_brand' => 'ife-brand',
+    'classes_brand_text' => 'ife-brand-text',
+    'classes_content_wrapper' => 'ife-content-wrapper',
     'classes_content_header' => '',
     'classes_content' => '',
-    'classes_sidebar' => 'sidebar-dark-primary elevation-4',
+    'classes_sidebar' => 'sidebar-dark-primary elevation-4 ife-sidebar',
     'classes_sidebar_nav' => '',
     'classes_topnav' => 'navbar-white navbar-light',
     'classes_topnav_nav' => 'navbar-expand',

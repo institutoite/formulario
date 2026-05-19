@@ -7,7 +7,7 @@
 .servicios-titulo {
     text-align: center;
     font-size: 2rem;
-    color: rgb(55, 95, 122);
+    color: #375F7A;
     margin-bottom: 30px;
     position: relative;
 }
@@ -17,7 +17,7 @@
     display: block;
     width: 80px;
     height: 3px;
-    background: rgb(38, 186, 165);
+    background: #26BAA5;
     margin: 15px auto 0;
 }
 
@@ -34,7 +34,7 @@
     text-align: center;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
     transition: transform 0.3s, box-shadow 0.3s;
-    border-top: 4px solid rgb(55, 95, 122);
+    border-top: 4px solid #375F7A;
 }
 
 .servicio-card:hover {
@@ -49,7 +49,7 @@
 
 .servicio-nombre {
     font-size: 1.3rem;
-    color: rgb(55, 95, 122);
+    color: #375F7A;
     margin-bottom: 10px;
 }
 
@@ -62,7 +62,7 @@
 
 .servicio-boton {
     display: inline-block;
-    background: rgb(38, 186, 165);
+    background: #26BAA5;
     color: white;
     padding: 10px 20px;
     border-radius: 6px;
@@ -72,7 +72,7 @@
 }
 
 .servicio-boton:hover {
-    background: rgb(55, 95, 122);
+    background: #375F7A;
     color: white;
 }
 

@@ -19,7 +19,7 @@
 
 .formula-hero-text h1 {
     font-size: 2.6rem;
-    color: rgb(55, 95, 122);
+    color: #375F7A;
     margin-bottom: 0.5rem;
     letter-spacing: -0.02em;
 }
@@ -28,7 +28,7 @@
     display: inline-flex;
     font-size: 0.95rem;
     font-weight: 600;
-    color: rgb(38, 186, 165);
+    color: #26BAA5;
     margin-bottom: 0.5rem;
 }
 
@@ -48,7 +48,7 @@
 .formula-stats .stat-number {
     font-size: 1.6rem;
     font-weight: 700;
-    color: rgb(55, 95, 122);
+    color: #375F7A;
 }
 
 .formula-stats .stat-label {
@@ -62,7 +62,7 @@
 }
 
 .formula-download {
-    background: rgb(38, 186, 165);
+    background: #26BAA5;
     color: #fff;
     padding: 0.9rem 1.4rem;
     border-radius: 999px;
@@ -72,7 +72,7 @@
 }
 
 .formula-download:hover {
-    background: rgb(55, 95, 122);
+    background: #375F7A;
     color: #fff;
     transform: translateY(-2px);
 }
@@ -104,7 +104,7 @@
 
 .formula-header {
     padding: 0.9rem 1.1rem;
-    background: linear-gradient(135deg, rgb(55, 95, 122), rgba(55, 95, 122, 0.85));
+    background: linear-gradient(135deg, #375F7A, rgba(55, 95, 122, 0.85));
     color: #ffffff;
 }
 
@@ -140,7 +140,7 @@
     font-family: 'Inter', 'Times New Roman', serif;
     font-size: 0.98rem;
     margin-bottom: 0.9rem;
-    color: rgb(55, 95, 122);
+    color: #375F7A;
     max-height: 120px;
     overflow-y: auto;
 }
@@ -151,7 +151,7 @@
     gap: 0.5rem;
     padding: 0.6rem 1.1rem;
     background: rgba(38, 186, 165, 0.15);
-    color: rgb(38, 186, 165);
+    color: #26BAA5;
     text-decoration: none;
     border-radius: 999px;
     font-weight: 600;
@@ -160,7 +160,7 @@
 }
 
 .download-btn:hover {
-    background: rgb(38, 186, 165);
+    background: #26BAA5;
     color: #ffffff;
 }
 
@@ -186,20 +186,20 @@
 
 .action-btn:hover {
     color: #ffffff;
-    background: rgb(38, 186, 165);
+    background: #26BAA5;
     transform: translateY(-2px);
 }
 
 .action-btn.edit:hover {
-    background: rgb(55, 95, 122);
+    background: #375F7A;
 }
 
 .action-btn.delete:hover {
-    background: #ef4444;
+    background: #375F7A;
 }
 
 .action-btn.add:hover {
-    background: #10b981;
+    background: #26BAA5;
 }
 
 
@@ -211,7 +211,7 @@
 .main-header {
     background-color: rgba(255, 255, 255, 0.92);
     backdrop-filter: blur(10px);
-    color: rgb(55, 95, 122);
+    color: #375F7A;
     padding: 16px 0;
     box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
     border-bottom: 1px solid rgba(55, 95, 122, 0.08);
@@ -234,7 +234,7 @@
     margin: 0;
     font-size: 1.8rem;
     font-weight: 700;
-    color: rgb(38, 186, 165);
+    color: #26BAA5;
 }
 
 .tagline {
@@ -256,14 +256,14 @@
 }
 
 .nav-links a {
-    color: rgb(55, 95, 122);
+    color: #375F7A;
     text-decoration: none;
     font-weight: 500;
 }
 
 .nav-links a:hover {
     text-decoration: none;
-    color: rgb(38, 186, 165);
+    color: #26BAA5;
 }
 
 /* Botón hamburguesa */
@@ -276,7 +276,7 @@
 .hamburger {
     width: 25px;
     height: 2px;
-    background-color: rgb(55, 95, 122);
+    background-color: #375F7A;
     display: block;
     position: relative;
 }
@@ -287,7 +287,7 @@
     position: absolute;
     width: 25px;
     height: 2px;
-    background-color: rgb(55, 95, 122);
+    background-color: #375F7A;
     transition: 0.3s;
 }
 
@@ -326,7 +326,7 @@
 
 .breadcrumb a {
     text-decoration: none;
-    color: rgb(38, 186, 165);
+    color: #26BAA5;
 }
 
 .breadcrumb a:hover {

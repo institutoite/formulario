@@ -318,8 +318,8 @@
                     icon: 'question',
                     showCancelButton: true,
                     showConfirmButton: true,
-                    confirmButtonColor: '#25ff80',
-                    cancelButtonColor: '#d33',
+                    confirmButtonColor: '#26BAA5',
+                    cancelButtonColor: '#375F7A',
                     confirmButtonText: 'Eliminar..!',
                     position: 'center',
                 }).then((result) => {
@@ -362,8 +362,8 @@
                     icon: 'question',
                     showCancelButton: true,
                     showConfirmButton: true,
-                    confirmButtonColor: '#25ff80',
-                    cancelButtonColor: '#d33',
+                    confirmButtonColor: '#26BAA5',
+                    cancelButtonColor: '#375F7A',
                     confirmButtonText: 'Eliminar..!',
                     position: 'center',
                 }).then((result) => {

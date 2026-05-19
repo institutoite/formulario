@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ITE - Números Primos</title>
+    <title>IFE formulas - NÃºmeros Primos</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
       :root {
-        --primary: rgb(38,186,165);
-        --secondary: rgb(55,95,122);
+        --primary: #26BAA5;
+        --secondary: #375F7A;
         --white: #ffffff;
         --gray-light: #f8f9fa;
         --gray: #e9ecef;
-        --text: #2c3e50;
+        --text: #375F7A;
         --shadow: 0 2px 8px rgba(0,0,0,0.1);
         --radius: 5px;
         --transition: all 0.3s ease;
@@ -269,6 +269,7 @@
         border-radius: 50%;
         margin-bottom: 1.5rem;
         object-fit: cover;
+        object-position: center 24%;
     }
     
     /* Social Section */
@@ -396,18 +397,18 @@
     </style>
 </head>
 <body class="light-mode">
-    <!-- Agregar después del body -->
+    <!-- Agregar despuÃ©s del body -->
  
 
     <header class="main-header">
         <nav class="nav-container">
             <div class="logo">
-                <h1>ITE</h1>
-                <p class="tagline">Facilitamos tu Educación</p>
+                <h1>IFE</h1>
+                <p class="tagline">Facilitamos tu EducaciÃ³n</p>
             </div>
             <div class="nav-links">
-                <a href="#primos" class="nav-link"><i class="fas fa-calculator"></i> Números Primos</a>
-                <a href="#esprimo" class="nav-link"><i class="fas fa-check-circle"></i> ¿Es Primo?</a>
+                <a href="#primos" class="nav-link"><i class="fas fa-calculator"></i> NÃºmeros Primos</a>
+                <a href="#esprimo" class="nav-link"><i class="fas fa-check-circle"></i> Â¿Es Primo?</a>
                 <a href="#nosotros" class="nav-link"><i class="fas fa-users"></i> Sobre Nosotros</a>
                 <a href="#redes" class="nav-link"><i class="fas fa-share-alt"></i> Redes Sociales</a>
             </div>
@@ -418,13 +419,13 @@
     <main>
         <section class="hero-section">
             <div class="hero-content">
-                <img id="logoITE" src="logo.png" style="" alt="Logo ITE">
-                <h2 class="animate-title">Explora el Mundo de los Números Primos</h2>
-                <p class="hero-description">Descubre la magia de los bloques fundamentales de las matemáticas</p>
+                <img id="logoIFE" src="/images/logoife.png" style="" alt="Logo IFE formulas">
+                <h2 class="animate-title">Explora el Mundo de los NÃºmeros Primos</h2>
+                <p class="hero-description">Descubre la magia de los bloques fundamentales de las matemÃ¡ticas</p>
                 <div class="prime-fact">
                     <div class="fact-card">
                         <span id="primeOfDay" class="prime-number">17</span>
-                        <p>Número Primo del Día</p>
+                        <p>NÃºmero Primo del DÃ­a</p>
                     </div>
                 </div>
             </div>
@@ -432,7 +433,7 @@
         </section>
         
         <section id="primos" class="generator-section">
-            <h2>Generador de Números Primos</h2>
+            <h2>Generador de NÃºmeros Primos</h2>
             <div class="controls-container">
                 <div class="quick-buttons">
                     <button class="action-btn" onclick="mostrarPrimos(100)">
@@ -448,7 +449,7 @@
                 <div class="custom-input">
                     <div class="input-group">
                         <label for="inputN">Encontrar primos menores a:</label>
-                        <input type="number" id="inputN" min="1" max="100000" placeholder="Ingresa un número">
+                        <input type="number" id="inputN" min="1" max="100000" placeholder="Ingresa un nÃºmero">
                         <button onclick="primosMenoresA()" class="search-btn action-btn">
                             <i class="fas fa-search"></i> Buscar
                         </button>
@@ -470,10 +471,10 @@
         </section>
 
         <section id="esprimo" class="checker-section">
-            <h2>Verificador de Números Primos</h2>
+            <h2>Verificador de NÃºmeros Primos</h2>
             <div class="checker-container">
                 <div class="input-group">
-                    <input type="number" id="checkNumero" placeholder="Ingresa un número para verificar">
+                    <input type="number" id="checkNumero" placeholder="Ingresa un nÃºmero para verificar">
                     <button onclick="verificarPrimo()" class="tool-btn">
                         <i class="fas fa-check"></i> Verificar
                     </button>
@@ -486,12 +487,12 @@
             <div class="about-content">
                 <h2>Sobre Nosotros</h2>
                 <div class="team-card">
-                    <img src="david.png" alt="Foto del fundador" class="team-photo">
+                    <img src="/images/autor.png" alt="Foto del fundador" class="team-photo">
                     <div class="team-info">
-                        <h3>Fundador de ITE</h3>
+                        <h3>Fundador de IFE formulas</h3>
                         <p class="team-description">
-                            Educador apasionado por las matemáticas y la tecnología. 
-                            Comprometido con hacer el aprendizaje más accesible y divertido.
+                            Educador apasionado por las matemÃ¡ticas y la tecnologÃ­a. 
+                            Comprometido con hacer el aprendizaje mÃ¡s accesible y divertido.
                         </p>
                     </div>
                 </div>
@@ -499,30 +500,30 @@
         </section>
 
         <section id="redes" class="social-section">
-            <h2>Conéctate con Nosotros</h2>
+            <h2>ConÃ©ctate con Nosotros</h2>
             <div class="social-grid">
-                <a href="https://www.tiktok.com/@ite_educabol" class="social-card"  target="_blank" >
+                <a href="https://www.tiktok.com/@ife_educabol" class="social-card"  target="_blank" >
                     <i class="fab fa-tiktok"></i>
                     <span>TikTok</span>
-                    <p>Trucos matemáticos diarios</p>
+                    <p>Trucos matemÃ¡ticos diarios</p>
                 </a>
-                <a href="https://www.youtube.com/@ite_educabol" class="social-card"  target="_blank" >
+                <a href="https://www.youtube.com/@ife_educabol" class="social-card"  target="_blank" >
                     <i class="fab fa-youtube"></i>
                     <span>YouTube</span>
                     <p>Tutoriales y explicaciones</p>
                 </a>
-                <a href="https://www.facebook.com/ite.educabol" class="social-card"  target="_blank" >
+                <a href="https://www.facebook.com/ife.educabol" class="social-card"  target="_blank" >
                     <i class="fab fa-facebook"></i>
                     <span>Facebook</span>
-                    <p>Comunidad matemática</p>
+                    <p>Comunidad matemÃ¡tica</p>
                 </a>
-                <a href="https://wa.me/59160902299?text=Vengo%20de%20su%20página%20de%20números%20primos" 
+                <a href="https://wa.me/59160902299?text=Vengo%20de%20su%20pÃ¡gina%20de%20nÃºmeros%20primos" 
                   class="social-card" 
                   target="_blank" 
                   rel="noopener noreferrer">
                     <i class="fab fa-whatsapp"></i>
                     <span>Whatsapp</span>
-                    <p>Escríbenos estamos a un click</p>
+                    <p>EscrÃ­benos estamos a un click</p>
                 </a>
 
             </div>
@@ -531,11 +532,11 @@
 
     <footer>
         <div class="footer-content">
-            <p>&copy; 2024 ITE - Educación que transforma</p>
+            <p>&copy; 2024 IFE formulas - Educación que transforma</p>
         </div>
     </footer>
     <script>
-      // Inicialización
+      // InicializaciÃ³n
 document.addEventListener('DOMContentLoaded', () => {
   initThemeToggle();
   initAnimatedGrid();
@@ -554,7 +555,7 @@ function initThemeToggle() {
   });
 }
 
-// Animación de la cuadrícula de números
+// AnimaciÃ³n de la cuadrÃ­cula de nÃºmeros
 function initAnimatedGrid() {
   const grid = document.getElementById('animatedGrid');
   const numbers = Array.from({length: 100}, (_, i) => i + 1);
@@ -570,7 +571,7 @@ function initAnimatedGrid() {
   });
 }
 
-// Actualizar el número primo del día
+// Actualizar el nÃºmero primo del dÃ­a
 function updatePrimeOfDay() {
   const primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47];
   const today = new Date();
@@ -578,7 +579,7 @@ function updatePrimeOfDay() {
   document.getElementById('primeOfDay').textContent = primes[index];
 }
 
-// Funciones principales de números primos
+// Funciones principales de nÃºmeros primos
 function esPrimo(n) {
   if (n <= 1) return false;
   if (n <= 3) return true;
@@ -611,7 +612,7 @@ function mostrarPrimos(cantidad) {
 function primosMenoresA() {
   const N = parseInt(document.getElementById('inputN').value);
   if (isNaN(N) || N < 2) {
-      alert('Por favor, ingresa un número válido mayor a 1');
+      alert('Por favor, ingresa un nÃºmero vÃ¡lido mayor a 1');
       return;
   }
 
@@ -633,7 +634,7 @@ function verificarPrimo() {
   const resultadoElement = document.getElementById('resultadoCheck');
   
   if (isNaN(num) || num < 1) {
-      resultadoElement.innerHTML = `<div class="error">Por favor, ingresa un número válido</div>`;
+      resultadoElement.innerHTML = `<div class="error">Por favor, ingresa un nÃºmero vÃ¡lido</div>`;
       return;
   }
 
@@ -641,8 +642,8 @@ function verificarPrimo() {
   resultadoElement.innerHTML = `
      <div class="result ${esPrimoResult ? 'success' : 'error'}">
       ${esPrimoResult 
-        ? `<i class="fas fa-check-circle fa-2x" style="color: green;"></i> ¡${num} es un número primo!` 
-        : `<i class="fas fa-times-circle fa-2x" style="color: red;"></i> ${num} no es un número primo`}
+        ? `<i class="fas fa-check-circle fa-2x" style="color: green;"></i> Â¡${num} es un nÃºmero primo!` 
+        : `<i class="fas fa-times-circle fa-2x" style="color: red;"></i> ${num} no es un nÃºmero primo`}
     </div>
 
   `;
@@ -656,11 +657,11 @@ function copiarResultados() {
   
   navigator.clipboard.writeText(primos)
       .then(() => {
-          mostrarNotificacion('¡Números copiados al portapapeles!');
+          mostrarNotificacion('Â¡NÃºmeros copiados al portapapeles!');
       })
       .catch(err => {
           console.error('Error al copiar:', err);
-          mostrarNotificacion('Error al copiar los números', 'error');
+          mostrarNotificacion('Error al copiar los nÃºmeros', 'error');
       });
 }
 
@@ -675,7 +676,7 @@ function mostrarNotificacion(mensaje, tipo = 'success') {
   }, 3000);
 }
 
-// Función para descargar PDF (requiere librería jsPDF)
+// FunciÃ³n para descargar PDF (requiere librerÃ­a jsPDF)
 function descargarPDF() {
   // Importar jsPDF
   
@@ -686,19 +687,19 @@ function descargarPDF() {
   // Crear nuevo documento PDF
   const doc = new jsPDF();
   
-  // Configurar fuente y tamaño
+  // Configurar fuente y tamaÃ±o
   doc.setFont("helvetica");
   doc.setFontSize(16);
   
-  // Título
+  // TÃ­tulo
   doc.text("NUMEROS PRIMOS GENERADOS",20,20);
   doc.setFontSize(15);
   
-  // Obtener los números primos del grid
+  // Obtener los nÃºmeros primos del grid
   const primos = Array.from(document.querySelectorAll('.prime-number'))
       .map(el => el.textContent);
   
-  // Configuración de la página
+  // ConfiguraciÃ³n de la pÃ¡gina
   const pageWidth = doc.internal.pageSize.getWidth();
   const margin = 20;
   const lineHeight = 10;
@@ -707,24 +708,24 @@ function descargarPDF() {
   
  
 
-  // Agregar números primos al PDF
+  // Agregar nÃºmeros primos al PDF
   doc.setFontSize(10);
-  doc.text("Descargado de www://primos.ite.com.bo", margin, currentY);
+  doc.text("Descargado de https://formula.ife.bo", margin, currentY);
   currentY += lineHeight;
 
-  // Calcular cuántos números caben por línea
-  const numberWidth = 15; // Espacio aproximado para cada número
+  // Calcular cuÃ¡ntos nÃºmeros caben por lÃ­nea
+  const numberWidth = 15; // Espacio aproximado para cada nÃºmero
   const numbersPerLine = Math.floor((pageWidth - 2 * margin) / numberWidth);
   doc.setFontSize(14);
-  // Agregar números en filas
+  // Agregar nÃºmeros en filas
   for (let i = 0; i < primos.length; i++) {
-      // Si llegamos al final de la página, crear nueva página
+      // Si llegamos al final de la pÃ¡gina, crear nueva pÃ¡gina
       if (currentY > doc.internal.pageSize.getHeight() - margin) {
           doc.addPage();
           currentY = margin + lineHeight;
       }
       
-      // Si llegamos al final de la línea, nueva línea
+      // Si llegamos al final de la lÃ­nea, nueva lÃ­nea
       if (currentX > pageWidth - margin) {
           currentX = margin;
           currentY += lineHeight;
@@ -733,20 +734,20 @@ function descargarPDF() {
       doc.text(primos[i].toString(), currentX, currentY);
       currentX += numberWidth;
       
-      // Nueva línea después de numbersPerLine números
+      // Nueva lÃ­nea despuÃ©s de numbersPerLine nÃºmeros
       if ((i + 1) % numbersPerLine === 0) {
           currentX = margin;
           currentY += lineHeight;
       }
   }
   
-  // Agregar pie de página
+  // Agregar pie de pÃ¡gina
   const totalPages = doc.internal.getNumberOfPages();
   for (let i = 1; i <= totalPages; i++) {
       doc.setPage(i);
       doc.setFontSize(10);
       doc.text(
-          `Página ${i} de ${totalPages}`,
+          `PÃ¡gina ${i} de ${totalPages}`,
           doc.internal.pageSize.getWidth() / 2,
           doc.internal.pageSize.getHeight() - 10,
           { align: 'center' }
@@ -758,7 +759,7 @@ function descargarPDF() {
       const fileName = `numeros_primos_.pdf`;
       doc.save(fileName);
       
-      // Mostrar notificación de éxito
+      // Mostrar notificaciÃ³n de Ã©xito
       mostrarNotificacion('PDF descargado correctamente');
   } catch (error) {
       console.error('Error al generar el PDF:', error);
@@ -766,7 +767,7 @@ function descargarPDF() {
   }
 }
 
-// Función auxiliar para mostrar notificaciones
+// FunciÃ³n auxiliar para mostrar notificaciones
 function mostrarNotificacion(mensaje, tipo = 'success') {
   const notification = document.createElement('div');
   notification.className = `notification ${tipo}`;
@@ -786,7 +787,7 @@ function mostrarNotificacion(mensaje, tipo = 'success') {
   notification.textContent = mensaje;
   document.body.appendChild(notification);
   
-  // Agregar animación CSS
+  // Agregar animaciÃ³n CSS
   const style = document.createElement('style');
   style.textContent = `
       @keyframes slideIn {
@@ -807,7 +808,7 @@ function mostrarNotificacion(mensaje, tipo = 'success') {
   `;
   document.head.appendChild(style);
   
-  // Remover la notificación después de 3 segundos
+  // Remover la notificaciÃ³n despuÃ©s de 3 segundos
   setTimeout(() => {
       notification.style.animation = 'fadeOut 0.3s ease-out';
       setTimeout(() => {

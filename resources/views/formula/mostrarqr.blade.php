@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" href="{{ asset('image/ite.ico') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('images/ife.ico') }}" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Donación</title>
     <style>
     :root {
         --color-primary: #10b981;
-        --color-whatsapp: #25D366;
+        --color-whatsapp: #26BAA5;
         --color-text: #334155;
         --color-light: #f8fafc;
     }
@@ -148,7 +148,7 @@
     }
     
     .whatsapp-btn:hover {
-        background-color: #128C7E;
+        background-color: #375F7A;
         transform: translateY(-2px);
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
@@ -189,7 +189,7 @@
         padding: 15px;
         background: linear-gradient(135deg, #f8f9fa 0%, #e9f5ff 100%);
         border-radius: 10px;
-        border-left: 4px solid #3498db;
+        border-left: 4px solid #26BAA5;
     }
 
     .frase-principal {
@@ -213,7 +213,7 @@
         display: block;
         width: 50px;
         height: 2px;
-        background: #3498db;
+        background: #26BAA5;
         margin: 0 auto 8px;
     }
 </style>

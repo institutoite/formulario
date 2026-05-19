@@ -5,9 +5,10 @@
     
 
     <link rel="stylesheet" href="{{asset('css/card.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/admin_custom.css') }}">
     <link rel="stylesheet" href="{{asset('vendor/sweetalert2/sweetalert2.min.css')}}">
 @stop
-@section('title', 'Temas')
+@section('title', 'Calcular | IFE formulas')
 @section('content')
     <div class="contenedor">
         <div class="row">

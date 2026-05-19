@@ -1,5 +1,5 @@
 .social-banner {
-    background: linear-gradient(135deg, #2C3E50 0%, #4A6491 100%);
+    background: linear-gradient(135deg, #375F7A 0%, #375F7A 100%);
     color: white;
     padding: 3rem 0;
     text-align: center;
@@ -83,11 +83,11 @@
 
 /* Colores específicos para cada red social */
 .tiktok .social-icon { background-color: #000000; }
-.facebook .social-icon { background-color: #1877F2; }
-.youtube .social-icon { background-color: #FF0000; }
-.whatsapp .social-icon { background-color: #25D366; }
+.facebook .social-icon { background-color: #375F7A; }
+.youtube .social-icon { background-color: #375F7A; }
+.whatsapp .social-icon { background-color: #26BAA5; }
 .instagram .social-icon { 
-    background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+    background: linear-gradient(45deg, #375F7A, #375F7A, #375F7A, #375F7A, #26BAA5, #375F7A);
 }
 
 /* Efectos hover */

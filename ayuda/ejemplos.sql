@@ -15,13 +15,12 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Dumping data for table `materias`
+-- Dumping data for table `ejemplos`
 --
 
-LOCK TABLES `materias` WRITE;
-/*!40000 ALTER TABLE `materias` DISABLE KEYS */;
-INSERT INTO `materias` (`id`, `materia`, `slogan`, `detalle`, `indice`, `created_at`, `updated_at`) VALUES (1,'Matemáticas','¡Descubre el poder de las matemáticas!','<p>Ciencia fundamental para el razonamiento lógico y resolución de problemas en ciencia, tecnología e ingeniería.</p>',NULL,'2025-05-01 16:14:22','2025-06-11 02:08:42'),(2,'Física','La ciencia que desafía los límites de lo posible','<p>Estudio de las leyes que gobiernan la materia y energía, desde partículas subatómicas hasta el cosmos.</p>',NULL,'2025-05-01 16:14:22','2025-06-11 02:09:25'),(3,'Química','Transforma la materia','<p>Ciencia que estudia la composición, propiedades y transformaciones de la materia.</p>',NULL,'2025-05-01 16:14:22','2025-06-11 02:10:05');
-/*!40000 ALTER TABLE `materias` ENABLE KEYS */;
+LOCK TABLES `ejemplos` WRITE;
+/*!40000 ALTER TABLE `ejemplos` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ejemplos` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -32,4 +31,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-05-19  6:36:14
+-- Dump completed on 2026-05-19  6:36:12

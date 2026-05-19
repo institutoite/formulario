@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             MateriaSeeder::class,
             TemaSeeder::class,
             FormulaSeeder::class,
+            EjemploSeeder::class,
             DimensionSeeder::class,
             UnidadSeeder::class,
             VariableSeeder::class,

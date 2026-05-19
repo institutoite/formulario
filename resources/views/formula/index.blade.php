@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="{{ asset('image/ite.ico') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('images/ife.ico') }}" type="image/x-icon">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Fórmulas de {{ $tema->tema }} | ITE Fórmulas</title>
+    <title>F�rmulas de {{ $tema->tema }} | IFE formulas</title>
     
     <!-- Styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
@@ -32,6 +32,7 @@
         <header class="main-header">
     <div class="container header-container">
         <div class="logo-section">
+            <img src="{{ asset('images/logoife.png') }}" alt="IFE formulas" class="brand-logo">
             <h1 class="logo-title">{{ $tema->tema }}</h1>
             <p class="tagline">Tu recurso educativo completo</p>
         </div>
@@ -191,15 +192,15 @@
                 <div class="social-content">
                     <h2>¡Síguenos para más recursos educativos!</h2>
                     <div class="social-links">
-                        <a href="https://www.tiktok.com/@ite_educabol" target="_blank" class="social-link tiktok">
+                        <a href="https://www.tiktok.com/@IFE_educabol" target="_blank" class="social-link tiktok">
                             <i class="fab fa-tiktok"></i>
                             <span>TikTok</span>
                         </a>
-                        <a href="https://www.facebook.com/ite.educabol" target="_blank" class="social-link facebook">
+                        <a href="https://www.facebook.com/IFE.educabol" target="_blank" class="social-link facebook">
                             <i class="fab fa-facebook-f"></i>
                             <span>Facebook</span>
                         </a>
-                        <a href="https://www.youtube.com/@ite_educabol" target="_blank" class="social-link youtube">
+                        <a href="https://www.youtube.com/@IFE_educabol" target="_blank" class="social-link youtube">
                             <i class="fab fa-youtube"></i>
                             <span>YouTube</span>
                         </a>
@@ -221,24 +222,24 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-about">
-                    <h3>Qué es ite?</h3>
+                    <h3>Qué es IFE?</h3>
                     <p>Somos una institución educativa dedicada a proporcionar recursos de calidad para estudiantes de todos los niveles.</p>
                     <div class="footer-social">
-                        <a target="_blank" href="https://www.tiktok.com/@ite_educabol" class="social-icon"><i class="fab fa-tiktok"></i></a>
-                        <a target="_blank" href="https://www.facebook.com/ite.educabol" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                        <a target="_blank" href="https://www.youtube.com/@ite_educabol" class="social-icon"><i class="fab fa-youtube"></i></a>
+                        <a target="_blank" href="https://www.tiktok.com/@IFE_educabol" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                        <a target="_blank" href="https://www.facebook.com/IFE.educabol" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a target="_blank" href="https://www.youtube.com/@IFE_educabol" class="social-icon"><i class="fab fa-youtube"></i></a>
                         <a target="_blank" href="https://wa.me/59160902299" class="social-icon"><i class="fab fa-whatsapp"></i></a>
                         <a target="_blank" href="https://www.instagram.com/tu_usuario" class="social-icon"><i class="fab fa-instagram"></i></a>
-                        <a target="_blank" href="https://ite.com.bo" class="social-icon"><i class="fas fa-globe"></i></a>
+                        <a target="_blank" href="https://ife.com.bo" class="social-icon"><i class="fas fa-globe"></i></a>
                     </div>
                 </div>
                 
                 <div class="footer-links">
                     <h4>Enlaces rápidos</h4>
                     <ul>
-                        <li><a target="_blank" href="https://ite.com.bo">Qué es ite?</a></li>
-                        <li><a target="_blank" href="https://formula.ite.com.bo">Fórmulas</a></li>
-                        <li><a target="_blank" href="https://services.ite.com.bo">Cursos</a></li>
+                        <li><a target="_blank" href="https://ife.com.bo">Qué es IFE?</a></li>
+                        <li><a target="_blank" href="https://formula.ife.bo">Fórmulas</a></li>
+                        <li><a target="_blank" href="https://services.ife.com.bo">Cursos</a></li>
                     </ul>
                 </div>
                 
@@ -267,10 +268,10 @@
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2025 ITE Fórmulas. Todos los derechos reservados.</p>
+                <p>&copy; 2025 IFE Fórmulas. Todos los derechos reservados.</p>
                 <div class="footer-legal">
-                    <a href="https://www.tiktok.com/@davidflores.ite" target="_blank">David Flores</a>
-                    <a href="https://www.ite.com.bo" target="_blank">ite educabol</a>
+                    <a href="https://www.tiktok.com/@davidflores.IFE" target="_blank">David Flores</a>
+                    <a href="https://www.ife.com.bo" target="_blank">IFE formulas</a>
                 </div>
             </div>
         </div>
@@ -293,34 +294,34 @@
             // Mensajes personalizados para cada materia
             switch(materia) {
                 case 'Computación':
-                    mensaje = '¡Hola! Estoy interesado/a en el curso de *COMPUTACIÓN* Mensaje enviado desde https://formula.ite.com.bo';
+                    mensaje = '¡Hola! Estoy interesado/a en el curso de *COMPUTACIÓN* Mensaje enviado desde https://formula.ife.bo';
                     break;
                 case 'Robótica':
-                    mensaje = '¡Buenos días! Quisiera información sobre el curso de *ROBÓTICA.* Mensaje enviado desde https://formula.ite.com.bo';
+                    mensaje = '¡Buenos días! Quisiera información sobre el curso de *ROBÓTICA.* Mensaje enviado desde https://formula.ife.bo';
                     break;
                 case 'Cubo Rubik':
-                    mensaje = '¡Saludos! Me interesa el curso de *CUBO RUBIK.* Mensaje enviado desde https://formula.ite.com.bo';
+                    mensaje = '¡Saludos! Me interesa el curso de *CUBO RUBIK.* Mensaje enviado desde https://formula.ife.bo';
                     break;
                 case 'Programación':
-                    mensaje = '¡Hola! Busco información sobre el curso de *PROGRAMACIÓN.* Mensaje enviado desde https://formula.ite.com.bo';
+                    mensaje = '¡Hola! Busco información sobre el curso de *PROGRAMACIÓN.* Mensaje enviado desde https://formula.ife.bo';
                     break;
                 case 'Apoyo escolar':
-                    mensaje = '¡Buenas tardes! Necesito *APOYO ESCOLAR.* Mensaje enviado desde https://formula.ite.com.bo';
+                    mensaje = '¡Buenas tardes! Necesito *APOYO ESCOLAR.* Mensaje enviado desde https://formula.ife.bo';
                     break;
                 case 'Matematicas':
-                    mensaje = '¡Hola! Estoy interesado/a en clases de *MATEMÁTICAS.* Mensaje enviado desde https://formula.ite.com.bo';
+                    mensaje = '¡Hola! Estoy interesado/a en clases de *MATEMÁTICAS.* Mensaje enviado desde https://formula.ife.bo';
                     break;
                 case 'Fisica':
-                    mensaje = '¡Buenos días! Necesito clases de *FÍSICA.* Mensaje enviado desde https://formula.ite.com.bo';
+                    mensaje = '¡Buenos días! Necesito clases de *FÍSICA.* Mensaje enviado desde https://formula.ife.bo';
                     break;
                 case 'Quimica':
-                    mensaje = '¡Saludos! Busco clases de *QUÍMICA.* Mensaje enviado desde https://formula.ite.com.bo';
+                    mensaje = '¡Saludos! Busco clases de *QUÍMICA.* Mensaje enviado desde https://formula.ife.bo';
                     break;
                 case 'Programacion':
-                    mensaje = '¡Hola! Quiero aprender *PROGRAMACIÓN.* Mensaje enviado desde https://formula.ite.com.bo';
+                    mensaje = '¡Hola! Quiero aprender *PROGRAMACIÓN.* Mensaje enviado desde https://formula.ife.bo';
                     break;
                 case 'lenguaje':
-                    mensaje = '¡Buenas tardes! Me interesa el curso de *Escritura y Lectura.* Mensaje enviado desde https://formula.ite.com.bo';
+                    mensaje = '¡Buenas tardes! Me interesa el curso de *Escritura y Lectura.* Mensaje enviado desde https://formula.ife.bo';
                     break;
                
             }
@@ -347,8 +348,8 @@
                     icon: 'question',
                     showCancelButton: true,
                     showConfirmButton: true,
-                    confirmButtonColor: '#25ff80',
-                    cancelButtonColor: '#d33',
+                    confirmButtonColor: '#26BAA5',
+                    cancelButtonColor: '#375F7A',
                     confirmButtonText: 'Eliminar..!',
                     position: 'center',
                 }).then((result) => {

@@ -7,6 +7,7 @@ use App\Models\Tema;
 use App\Models\Dimension;
 use App\Http\Requests\StoreFormulaRequest;
 use App\Http\Requests\UpdateFormulaRequest;
+use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 
@@ -35,6 +36,21 @@ class FormulaController extends Controller
         $formulas = $tema->formulas;
         $materia=$tema->materia;
         return response()->view('formula.index', compact('formulas','tema','materia'));
+    }
+
+    public function search(Request $request)
+    {
+        $query = $request->get('q');
+        if (!$query) {
+            return redirect()->route('inicio');
+        }
+
+        $formulas = Formula::where('nombre', 'LIKE', '%' . $query . '%')
+            ->orWhere('detalle', 'LIKE', '%' . $query . '%')
+            ->with(['tema.materia', 'imagen'])
+            ->paginate(10);
+
+        return view('buscar.index', compact('formulas', 'query'));
     }
 
     /**
